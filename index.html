@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>ΑΦΟΙ ΡΟΥΣΣΑ — Φωτιστικά</title>
+<script src="products.js?v=20250407"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>emailjs.init('ZTGFOEu0Iqfa2dleA');</script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--dark:#1a1a2e;--dark2:#16213e;--accent:#e63946;--sidebar-w:200px;--cart-h:54px}
+html{height:100%}
+body{height:100vh;overflow:hidden;display:flex;flex-direction:column;font-family:'Segoe UI',Arial,sans-serif;background:#f0f2f5;color:#222}
+
+/* HEADER */
+header{background:linear-gradient(135deg,var(--dark),var(--dark2));color:#fff;padding:10px 14px 8px;flex-shrink:0;box-shadow:0 3px 14px rgba(0,0,0,.45)}
+.hdr-top{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+header h1{font-size:1.05rem;letter-spacing:.8px;flex:1}
+header h1 span{opacity:.55;font-weight:400;font-size:.8rem}
+.hdr-search{padding:7px 13px;border:none;border-radius:8px;background:rgba(255,255,255,.15);color:#fff;font-size:.82rem;width:260px;outline:none}
+.hdr-search::placeholder{color:rgba(255,255,255,.45)}
+.hdr-search:focus{background:rgba(255,255,255,.25)}
+.brand-bar{display:flex;gap:5px;flex-wrap:wrap}
+.br-btn{padding:4px 11px;border:1.5px solid rgba(255,255,255,.2);border-radius:20px;background:rgba(255,255,255,.08);color:rgba(255,255,255,.75);font-size:.72rem;font-weight:600;cursor:pointer;transition:all .18s;white-space:nowrap}
+.br-btn:hover{background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.4);color:#fff}
+.br-btn.active{background:var(--accent);border-color:var(--accent);color:#fff}
+
+/* MAIN LAYOUT */
+.main-wrap{display:flex;flex:1;overflow:hidden;min-height:0}
+
+/* SIDEBAR */
+.sidebar{width:var(--sidebar-w);flex-shrink:0;background:#fff;border-right:1px solid #e0e4eb;display:flex;flex-direction:column;overflow:hidden;min-height:0}
+.sidebar-head{padding:11px 13px 9px;background:var(--dark2);color:#fff;font-size:.68rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;flex-shrink:0;border-bottom:2px solid var(--accent)}
+.cat-list{overflow-y:auto;flex:1;padding:6px 0}
+.cat-list::-webkit-scrollbar{width:4px}
+.cat-list::-webkit-scrollbar-thumb{background:#ddd;border-radius:4px}
+.cat-item{display:flex;align-items:center;gap:8px;padding:7px 13px;cursor:pointer;font-size:.78rem;color:#444;border-left:3px solid transparent;transition:all .15s}
+.cat-item:hover{background:#f5f6fa;color:var(--dark);border-left-color:#ccc}
+.cat-item.active{background:linear-gradient(90deg,#eef0fa,#f8f9fc);color:var(--dark);font-weight:700;border-left-color:var(--accent)}
+.cat-icon{font-size:1rem;width:20px;text-align:center;flex-shrink:0}
+.cat-label{flex:1;line-height:1.25;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cat-count{font-size:.64rem;font-weight:700;background:#e8eaf0;color:#888;padding:1px 6px;border-radius:10px;flex-shrink:0}
+.cat-item.active .cat-count{background:var(--accent);color:#fff}
+
+/* CONTENT */
+.content{flex:1;display:flex;flex-direction:column;overflow:hidden;min-width:0;min-height:0}
+.stats{padding:5px 12px;background:#e8f4fd;font-size:.73rem;color:#556;border-bottom:1px solid #d4e8f7;flex-shrink:0}
+
+/* GRID */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));grid-auto-rows:390px;gap:11px;padding:11px;overflow-y:auto;flex:1;min-height:0}
+.card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.09);border:2px solid transparent;transition:transform .15s,box-shadow .15s;display:flex;flex-direction:column;height:100%}
+.card:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,.13)}
+.card.selected{border-color:var(--accent)}
+.card-img-wrap{position:relative;width:100%;height:140px;flex-shrink:0;overflow:hidden;cursor:pointer;background:#f0f2f5}
+.card-thumb{width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform .3s}
+.card-thumb:hover{transform:scale(1.04)}
+.card-ph{width:100%;height:140px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:2.5rem;background:linear-gradient(135deg,#e8eaf0,#d0d3de);cursor:pointer}
+.card-img-wrap .overlay{position:absolute;inset:0;background:rgba(26,26,46,.55);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .2s}
+.card-img-wrap:hover .overlay{opacity:1}
+.overlay span{color:#fff;font-size:.78rem;font-weight:700;background:rgba(0,0,0,.4);padding:5px 13px;border-radius:20px;border:1.5px solid rgba(255,255,255,.4)}
+.card-body{padding:7px 9px 8px;flex:1;display:flex;flex-direction:column;min-height:0;overflow:hidden}
+.card-code{font-family:monospace;font-size:.65rem;color:#bbb;margin-bottom:1px}
+.card-name{font-weight:700;font-size:.82rem;color:var(--dark);margin-bottom:2px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;line-height:1.3;min-height:2.6em}
+.card-cat{font-size:.62rem;color:#fff;background:var(--dark2);padding:1px 6px;border-radius:10px;display:inline-block;margin-bottom:3px}
+.card-brand{font-size:.63rem;color:#888;margin-bottom:2px}
+.card-specs{font-size:.64rem;color:#999;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;flex-shrink:0}
+.card-color{display:inline-flex;align-items:center;gap:4px;font-size:.68rem;font-weight:700;color:var(--dark);background:#f0f2f5;border-radius:6px;padding:2px 6px;margin-top:3px;margin-right:3px;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.card-dim{display:inline-flex;align-items:center;gap:4px;font-size:.68rem;font-weight:700;color:var(--accent);background:#fff0f1;border:1px solid #fcc;border-radius:6px;padding:2px 6px;margin-top:3px;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.qty-row{display:flex;align-items:center;gap:4px;margin-top:auto;padding-top:4px}
+.qty-row button{width:26px;height:26px;border:none;border-radius:6px;background:#f0f0f0;font-size:.95rem;cursor:pointer;font-weight:700;flex-shrink:0}
+.qty-row button:hover{background:var(--accent);color:#fff}
+.qty-num{font-weight:700;min-width:22px;text-align:center;font-size:.9rem}
+.add-btn{width:100%;padding:6px 0;border:none;border-radius:8px;background:var(--accent);color:#fff;font-size:.78rem;font-weight:700;cursor:pointer;margin-top:6px;letter-spacing:.3px;transition:background .15s}
+.add-btn:hover{background:#c1121f}
+.add-btn.in{background:var(--dark)}
+.add-btn.in:hover{background:#2d2d4e}
+.no-res{grid-column:1/-1;text-align:center;padding:60px;color:#aaa}
+/* TOAST */
+.toast{position:fixed;top:70px;right:16px;background:#1aaa55;color:#fff;padding:10px 18px;border-radius:10px;font-size:.82rem;font-weight:700;z-index:999;opacity:0;transform:translateY(-10px);transition:all .25s;pointer-events:none;box-shadow:0 4px 16px rgba(0,0,0,.2)}
+.toast.show{opacity:1;transform:translateY(0)}
+.toast.remove{background:#e63946}
+
+
+/* PAGINATION */
+.pag-bar{display:flex;align-items:center;justify-content:center;gap:8px;padding:8px 12px;background:#fff;border-top:1px solid #e0e4eb;flex-shrink:0}
+.pag-btn{padding:5px 14px;border:1.5px solid #d0d4de;border-radius:8px;background:#fff;color:var(--dark);font-size:.78rem;font-weight:700;cursor:pointer;transition:all .15s}
+.pag-btn:hover:not(:disabled){background:var(--dark);color:#fff;border-color:var(--dark)}
+.pag-btn:disabled{opacity:.35;cursor:default}
+.pag-pages{display:flex;gap:4px;align-items:center}
+.pag-num{width:30px;height:30px;border:1.5px solid #e0e4eb;border-radius:7px;background:#fff;color:#555;font-size:.75rem;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s}
+.pag-num:hover{background:#f0f2f5}
+.pag-num.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+.pag-dots{padding:0 4px;color:#aaa;font-size:.85rem}
+
+.badge{background:var(--accent);min-width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.72rem;padding:0 4px;flex-shrink:0;margin-left:-8px;margin-top:-8px}
+.cart-btn{padding:6px 14px;border:none;border-radius:8px;background:var(--accent);color:#fff;font-weight:700;cursor:pointer;font-size:.82rem;display:flex;align-items:center;gap:6px;position:relative;white-space:nowrap}
+.cart-btn-wrap{position:relative;display:inline-flex;align-items:flex-start}
+
+/* PAGE VIEWER A4 */
+.pg-ov{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:500;display:none;flex-direction:column;align-items:center}
+.pg-ov.open{display:flex}
+.pg-topbar{width:100%;background:var(--dark);display:flex;align-items:center;gap:10px;padding:10px 16px;flex-shrink:0}
+.pg-topbar-info{flex:1;min-width:0}
+.pg-topbar-info strong{display:block;color:#fff;font-size:.9rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pg-topbar-info small{color:rgba(255,255,255,.6);font-size:.72rem}
+.pg-close-btn{background:none;border:1.5px solid rgba(255,255,255,.3);color:#fff;font-size:1rem;cursor:pointer;padding:4px 10px;border-radius:6px;line-height:1.4}
+.pg-close-btn:hover{background:rgba(255,255,255,.1)}
+.pg-scroll{width:100%;flex:1;overflow-y:auto;overflow-x:hidden;display:flex;justify-content:center;align-items:flex-start;background:#2a2a2a;padding:20px}
+.pg-a4{position:relative;width:calc(100vw - 40px);max-width:1100px;background:#fff;border-radius:2px;box-shadow:0 12px 50px rgba(0,0,0,.8);flex-shrink:0}
+.pg-a4 img{display:block;width:100%;height:auto;border-radius:2px}
+.pg-a4-loading{width:600px;aspect-ratio:1/1.414;display:flex;align-items:center;justify-content:center;color:#888;font-size:.9rem;background:#f5f5f5}
+.pg-a4-noimg{width:600px;aspect-ratio:1/1.414;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;color:#aaa;font-size:.85rem;text-align:center;padding:20px}
+.pg-botbar{width:100%;background:#111;padding:10px 16px;display:flex;gap:10px;align-items:center;flex-shrink:0}
+.pg-qty{display:flex;align-items:center;gap:8px}
+.pg-qty button{width:32px;height:32px;border:none;border-radius:7px;background:#333;color:#fff;font-size:1rem;cursor:pointer;font-weight:700}
+.pg-qty button:hover{background:var(--accent)}
+.pg-qty span{color:#fff;font-weight:700;min-width:24px;text-align:center;font-size:1rem}
+.pg-add{flex:1;padding:11px;border:none;border-radius:9px;background:var(--accent);color:#fff;font-weight:700;font-size:.9rem;cursor:pointer}
+.pg-add.in{background:#1aaa55}
+
+/* CART MODAL */
+.cart-ov{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:400;display:none;align-items:flex-end}
+.cart-ov.open{display:flex}
+.cart-modal{background:#fff;width:100%;max-height:85vh;border-radius:20px 20px 0 0;overflow-y:auto;padding:17px}
+.cm-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.cm-head h2{font-size:1rem;color:var(--dark)}
+.ci{display:flex;align-items:center;gap:8px;padding:9px 0;border-bottom:1px solid #eee}
+.ci-icon{width:40px;height:40px;border-radius:6px;background:#e8eaf0;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.ci-info{flex:1}
+.ci-info strong{display:block;font-size:.85rem;color:var(--dark)}
+.ci-info small{color:#888;font-size:.71rem}
+.ci-qty{display:flex;align-items:center;gap:5px}
+.ci-qty button{width:22px;height:22px;border:none;border-radius:4px;background:#eee;cursor:pointer;font-weight:700;font-size:.8rem}
+.ci-qty button:hover{background:var(--accent);color:#fff}
+.rm{background:none;border:none;color:var(--accent);font-size:1rem;cursor:pointer;margin-left:3px}
+.send-btn{width:100%;padding:14px;border:none;border-radius:12px;background:#1a73e8;color:#fff;font-size:.95rem;font-weight:700;cursor:pointer;margin-top:14px}
+.send-btn:hover{background:#1558b0}
+.clr-btn{width:100%;padding:10px;border:1px solid #ddd;border-radius:12px;background:#fff;font-size:.85rem;cursor:pointer;margin-top:7px;color:#777}
+
+/* CONTACT FORM MODAL */
+.cf-ov{position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:600;display:none;align-items:center;justify-content:center;padding:16px}
+.cf-ov.open{display:flex}
+.cf-modal{background:#fff;width:100%;max-width:420px;border-radius:18px;padding:22px;box-shadow:0 16px 50px rgba(0,0,0,.3)}
+.cf-title{font-size:1rem;font-weight:700;color:var(--dark);margin-bottom:4px}
+.cf-sub{font-size:.75rem;color:#888;margin-bottom:18px;line-height:1.5}
+.cf-field{margin-bottom:13px}
+.cf-field label{display:block;font-size:.75rem;font-weight:700;color:#555;margin-bottom:4px;letter-spacing:.3px}
+.cf-field input{width:100%;padding:10px 13px;border:1.5px solid #dde0e8;border-radius:9px;font-size:.88rem;outline:none;transition:border-color .15s;font-family:inherit}
+.cf-field input:focus{border-color:var(--accent)}
+.cf-field .cf-hint{font-size:.68rem;color:#aaa;margin-top:3px}
+.cf-confirm{width:100%;padding:13px;border:none;border-radius:11px;background:#1a73e8;color:#fff;font-size:.92rem;font-weight:700;cursor:pointer;margin-top:6px;transition:background .15s}
+.cf-confirm:hover{background:#1558b0}
+.cf-cancel{width:100%;padding:9px;border:1px solid #ddd;border-radius:11px;background:#fff;font-size:.82rem;cursor:pointer;margin-top:7px;color:#777}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hdr-top">
+    <h1>🔆 ΑΦΟΙ ΡΟΥΣΣΑ <span>— Κατάλογος Φωτιστικών</span></h1>
+    <input type="text" class="hdr-search" id="srch" placeholder="🔍 Κωδικός, IP, watt, χρώμα..." oninput="doF()">
+    <div class="cart-btn-wrap">
+      <button class="cart-btn" onclick="openCart()">🛒 Καλάθι <span id="cSum2"></span></button>
+      <div class="badge" id="cBadge" style="display:none">0</div>
+    </div>
+  </div>
+  <div class="brand-bar" id="brandBar"></div>
+</header>
+
+<div class="main-wrap">
+  <div class="sidebar">
+    <div class="sidebar-head">📂 Κατηγορίες</div>
+    <div class="cat-list" id="catList"></div>
+  </div>
+  <div class="content">
+    <div class="stats" id="stats"></div>
+    <div class="grid" id="grid"></div>
+    <div class="pag-bar" id="pagBar" style="display:none"></div>
+  </div>
+</div>
+
+
+
+<div class="pg-ov" id="pgOv">
+  <div class="pg-topbar">
+    <div class="pg-topbar-info">
+      <strong id="pgCode">—</strong>
+      <small id="pgBrand">—</small>
+    </div>
+    <button class="pg-close-btn" onclick="closePg()">✕ Κλείσιμο</button>
+  </div>
+  <div class="pg-scroll" id="pgScroll">
+    <div class="pg-a4" id="pgA4">
+      <div class="pg-a4-loading">⏳ Φόρτωση...</div>
+    </div>
+  </div>
+  <div class="pg-botbar">
+    <div class="pg-qty">
+      <button onclick="pgQ(-1)">−</button>
+      <span id="pgQty">1</span>
+      <button onclick="pgQ(1)">+</button>
+    </div>
+    <button class="pg-add" id="pgAddBtn" onclick="pgAdd()">+ Προσθήκη στο Καλάθι</button>
+  </div>
+</div>
+
+<div class="cart-ov" id="cartOv">
+  <div class="cart-modal">
+    <div class="cm-head">
+      <h2>🛒 Αίτηση Προσφοράς</h2>
+      <button onclick="closeCart()" style="background:none;border:none;font-size:1.2rem;cursor:pointer;color:#888">✕</button>
+    </div>
+    <div id="cItems"></div>
+    <button class="send-btn" onclick="openCF()">📧 Αποστολή Αίτησης Προσφοράς</button>
+    <button class="clr-btn" onclick="clearCart()">🗑 Καθαρισμός</button>
+    <button class="clr-btn" style="margin-top:5px" onclick="closeCart()">Κλείσιμο</button>
+  </div>
+</div>
+
+<!-- CONTACT FORM MODAL -->
+<div class="cf-ov" id="cfOv">
+  <div class="cf-modal">
+    <div class="cf-title">📋 Στοιχεία Επικοινωνίας</div>
+    <div class="cf-sub">Συμπληρώστε τα στοιχεία σας για να σταλεί η αίτηση προσφοράς.<br>Θα επικοινωνήσουμε μαζί σας το συντομότερο.</div>
+    <div class="cf-field">
+      <label>👤 ΟΝΟΜΑ / ΕΠΩΝΥΜΟ *</label>
+      <input type="text" id="cfName" placeholder="π.χ. Γιώργης Παπαδόπουλος" autocomplete="name">
+    </div>
+    <div class="cf-field">
+      <label>📱 ΤΗΛΕΦΩΝΟ (για επικοινωνία Viber)</label>
+      <input type="tel" id="cfPhone" placeholder="π.χ. 6912345678" autocomplete="tel">
+      <div class="cf-hint">Προαιρετικό — για γρήγορη επικοινωνία μέσω Viber</div>
+    </div>
+    <div class="cf-field">
+      <label>📧 EMAIL ΣΑΣ (για απάντηση προσφοράς)</label>
+      <input type="email" id="cfEmail" placeholder="π.χ. pelatis@mail.com" autocomplete="email">
+      <div class="cf-hint">Προαιρετικό — αν θέλετε να λάβετε την προσφορά στο email σας</div>
+    </div>
+    <button class="cf-confirm" onclick="sendEmail()">✉️ Αποστολή Αίτησης</button>
+    <button class="cf-cancel" onclick="closeCF()">Ακύρωση</button>
+  </div>
+</div>
+
+<script>
+const CAT_ICONS = {
+  'Solar Panel':'☀️','Ανεμιστήρας Οροφής':'🌀','Εξωτερικό':'🏡','Εξωτερικού':'🏡',
+  'Υποβρύχια':'💧','Κήπου':'🌿','Σποτ':'🔦','Μπάνιο':'🚿','Επαναφορτιζόμενο':'🔋',
+  'Παιδικό':'🧸','Natural Series':'🌾','Ανεμιστήρας':'🌀','Κολόνα':'🏛️',
+  'Επιτοίχια':'🧱','Track Light':'📏','Κρεμαστό':'🪔','Οροφής':'🏠',
+  'Επιτραπέζια':'🕯️','Μονόφωτο':'💡','Πολύφωτο':'✨','Απλίκα':'🔆',
+  'Επιδαπέδια':'🗼','Αξεσουάρ':'🔧','Εσωτερικό':'🏠','Εσωτερικού':'🏠',
+  'Άλλο':'💡'
+};
+
+const BRANDS = [
+  {label:'🌐 Όλες', value:''},
+  {label:'☀️ Eurolamp Outdoor', value:'Eurolamp Outdoor 2025'},
+  {label:'✨ Arte Illumina', value:'Arte Illumina 2026'},
+  {label:'💡 Eurolamp', value:'Eurolamp'},
+  {label:'🔦 IT Lighting', value:'IT Lighting 2024'},
+  {label:'⚡ Arlight', value:'Arlight 2026'},
+  {label:'🌟 InLight 25-26', value:'InLight 2025-2026'},
+  {label:'🌟 InLight 23-24', value:'InLight 2023-2024'},
+  {label:'💎 Viokef', value:'Viokef'}
+];
+
+const PER_PAGE = 60;
+let cart = {}, activeCat = 'Όλα', activeBrand = '', pgCode = null;
+let filteredAll = [], curPage = 0;
+
+const CATS = ['Όλα', ...new Set(P.map(p => p.cat || 'Άλλο'))];
+
+/* ---- BRANDS ---- */
+function buildBrands() {
+  document.getElementById('brandBar').innerHTML = BRANDS.map(b =>
+    '<button class="br-btn' + (b.value === activeBrand ? ' active' : '') +
+    '" onclick="setBrand(\'' + b.value + '\')">' + b.label + '</button>'
+  ).join('');
+}
+function setBrand(v) {
+  activeBrand = v;
+  document.querySelectorAll('.br-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  doF();
+}
+
+/* ---- CATS ---- */
+function buildCats() {
+  const counts = {};
+  CATS.forEach(c => {
+    counts[c] = c === 'Όλα' ? P.length : P.filter(p => (p.cat || 'Άλλο') === c).length;
+  });
+  document.getElementById('catList').innerHTML = CATS.map(c => {
+    const ico = CAT_ICONS[c] || '💡';
+    return '<div class="cat-item' + (c === activeCat ? ' active' : '') +
+      '" onclick="setCat(\'' + c.replace(/'/g, "\\'") + '\')" data-cat="' + c + '">' +
+      '<span class="cat-icon">' + ico + '</span>' +
+      '<span class="cat-label">' + c + '</span>' +
+      '<span class="cat-count">' + counts[c] + '</span>' +
+      '</div>';
+  }).join('');
+}
+function setCat(c) {
+  activeCat = c;
+  document.querySelectorAll('.cat-item').forEach(b => b.classList.toggle('active', b.dataset.cat === c));
+  doF();
+}
+
+/* ---- FILTER ---- */
+function getF() {
+  const q = document.getElementById('srch').value.toLowerCase();
+  return P.filter(p => {
+    const mc = activeCat === 'Όλα' || (p.cat || 'Άλλο') === activeCat;
+    const mb = !activeBrand || p.brand === activeBrand;
+    const txt = [p.code, p.name, p.brand, p.power, p.lum, p.ip, p.temp, p.color, p.mat, p.series].join(' ').toLowerCase();
+    return mc && mb && (!q || txt.includes(q));
+  });
+}
+function specsLine(p) {
+  return [p.power, p.lum && p.lum + 'Lm', p.ip, p.temp, p.mat].filter(Boolean).join(' · ');
+}
+
+/* ---- CARD HTML ---- */
+function makeCard(p) {
+  const k = p.code, ic = !!cart[k], q = cart[k] ? cart[k].qty : 1;
+  const specs = specsLine(p), ico = CAT_ICONS[p.cat] || '💡';
+  const thumb = p.pg
+    ? '<div class="card-img-wrap" onclick="openPg(\'' + k + '\')">' +
+      '<img class="card-thumb" src="' + p.pg + '" loading="lazy" alt="' + k + '">' +
+      '<div class="overlay"><span>🔍 Σελίδα καταλόγου</span></div></div>'
+    : '<div class="card-ph" onclick="openPg(\'' + k + '\')">' + ico + '</div>';
+  return '<div class="card' + (ic ? ' selected' : '') + '" id="cd-' + k + '">' +
+    thumb +
+    '<div class="card-body">' +
+    '<div class="card-code">' + k + '</div>' +
+    '<div class="card-name">' + (p.name || '—') + '</div>' +
+    '<span class="card-cat">' + (p.cat || 'Άλλο') + '</span>' +
+    '<div class="card-brand">' + ico + ' ' + p.brand + '</div>' +
+    (specs ? '<div class="card-specs">' + specs + '</div>' : '') +
+    '<div style="display:flex;flex-wrap:wrap;gap:3px;margin-top:4px">' +
+    (p.color ? '<span class="card-color">🎨 ' + p.color + '</span>' : '') +
+    (p.dim ? '<span class="card-dim">📐 ' + p.dim + '</span>' : '') +
+    '</div>' +
+    '<div class="qty-row">' +
+    '<button onclick="chQ(\'' + k + '\',-1)">−</button>' +
+    '<span class="qty-num" id="q-' + k + '">' + q + '</span>' +
+    '<button onclick="chQ(\'' + k + '\',1)">+</button>' +
+    '</div>' +
+    '<button class="add-btn' + (ic ? ' in' : '') + '" onclick="addC(\'' + k + '\',event)">' + (ic ? '✓ Στο Καλάθι' : '🛒 Προσθήκη στο Καλάθι') + '</button>' +
+    '</div></div>';
+}
+
+/* ---- RENDER + PAGINATION ---- */
+function doF() {
+  const q = document.getElementById('srch').value;
+  if (q.length > 0) {
+    // search mode: ignore category/brand filters
+    activeCat = 'Όλα';
+    activeBrand = '';
+    document.querySelectorAll('.cat-item').forEach(b => b.classList.toggle('active', b.dataset.cat === 'Όλα'));
+    document.querySelectorAll('.br-btn').forEach(b => b.classList.toggle('active', b.textContent.includes('Όλες')));
+  }
+  filteredAll = getF();
+  curPage = 0;
+  showPage();
+}
+
+function showPage() {
+  const g = document.getElementById('grid');
+  const pb = document.getElementById('pagBar');
+  const total = filteredAll.length;
+  const totalPages = Math.ceil(total / PER_PAGE);
+  const slice = filteredAll.slice(curPage * PER_PAGE, (curPage + 1) * PER_PAGE);
+  const from = total ? curPage * PER_PAGE + 1 : 0;
+  const to = Math.min((curPage + 1) * PER_PAGE, total);
+
+  // Stats
+  if (!total) {
+    g.innerHTML = '<div class="no-res">Δεν βρέθηκαν αποτελέσματα</div>';
+    pb.style.display = 'none';
+    document.getElementById('stats').textContent = '0 αποτελέσματα | Σύνολο: ' + P.length;
+    return;
+  }
+  document.getElementById('stats').textContent = totalPages > 1
+    ? 'Σελίδα ' + (curPage + 1) + '/' + totalPages + '  —  Προϊόντα ' + from + '–' + to + ' από ' + total + ' | Σύνολο βάσης: ' + P.length
+    : total + ' προϊόντα | Σύνολο βάσης: ' + P.length;
+
+  // Grid
+  g.innerHTML = slice.map(makeCard).join('');
+  g.scrollTop = 0;
+
+  // Pagination
+  if (totalPages <= 1) { pb.style.display = 'none'; return; }
+  pb.style.display = 'flex';
+
+  const range = [];
+  for (let i = 0; i < totalPages; i++) {
+    if (i === 0 || i === totalPages - 1 || Math.abs(i - curPage) <= 2) range.push(i);
+    else if (range[range.length - 1] !== '…') range.push('…');
+  }
+  const nums = range.map(i => i === '…'
+    ? '<span class="pag-dots">…</span>'
+    : '<button class="pag-num' + (i === curPage ? ' active' : '') + '" onclick="goPage(' + i + ')">' + (i + 1) + '</button>'
+  ).join('');
+
+  pb.innerHTML =
+    '<button class="pag-btn" onclick="goPage(' + (curPage - 1) + ')"' + (curPage === 0 ? ' disabled' : '') + '>← Προηγούμενη</button>' +
+    '<div class="pag-pages">' + nums + '</div>' +
+    '<button class="pag-btn" onclick="goPage(' + (curPage + 1) + ')"' + (curPage >= totalPages - 1 ? ' disabled' : '') + '>Επόμενη →</button>';
+}
+
+function goPage(n) {
+  const totalPages = Math.ceil(filteredAll.length / PER_PAGE);
+  if (n < 0 || n >= totalPages) return;
+  curPage = n;
+  showPage();
+}
+
+/* ---- CART QTY ---- */
+function chQ(k, d) {
+  const e = document.getElementById('q-' + k); if (!e) return;
+  let v = Math.max(1, +e.textContent + d); e.textContent = v;
+  if (cart[k]) { cart[k].qty = v; updC(); }
+}
+function addC(k, ev) {
+  if (ev) ev.stopPropagation();
+  const p = P.find(x => x.code === k); if (!p) return;
+  const wasIn = !!cart[k];
+  if (wasIn) {
+    delete cart[k];
+    showToast('Αφαιρέθηκε: ' + k, true);
+  } else {
+    const qEl = document.getElementById('q-' + k) || document.getElementById('pgQty');
+    const qty = qEl ? +qEl.textContent : 1;
+    cart[k] = Object.assign({}, p, {qty: qty});
+    showToast('✓ Προστέθηκε: ' + k);
+  }
+  updC();
+  // update only this card's button - no full re-render
+  const cardEl = document.getElementById('cd-' + k);
+  if (cardEl) {
+    const ic = !!cart[k];
+    cardEl.classList.toggle('selected', ic);
+    const btn = cardEl.querySelector('.add-btn');
+    if (btn) { btn.textContent = ic ? '✓ Στο Καλάθι' : '+ Καλάθι'; btn.classList.toggle('in', ic); }
+  }
+  if (pgCode === k) updPgBtn();
+}
+
+function showToast(msg, isRemove) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast' + (isRemove ? ' remove' : '');
+  // force reflow
+  void t.offsetWidth;
+  t.classList.add('show');
+  clearTimeout(window._toastT);
+  window._toastT = setTimeout(() => t.classList.remove('show'), 2000);
+}
+function updC() {
+  const it = Object.values(cart), t = it.reduce((s, i) => s + i.qty, 0);
+  const badge = document.getElementById('cBadge');
+  const sum2 = document.getElementById('cSum2');
+  badge.textContent = it.length;
+  badge.style.display = it.length ? 'flex' : 'none';
+  sum2.textContent = it.length ? it.length + ' κωδ. · ' + t + ' τεμ.' : '';
+}
+
+/* ---- PAGE VIEWER ---- */
+function openPg(k) {
+  pgCode = k;
+  const p = P.find(x => x.code === k); if (!p) return;
+  document.getElementById('pgCode').textContent = p.code + (p.name ? ' — ' + p.name : '');
+  document.getElementById('pgBrand').textContent = p.brand + (p.cat ? ' | ' + p.cat : '');
+  const a4 = document.getElementById('pgA4');
+  a4.innerHTML = '<div class="pg-a4-loading">⏳ Φόρτωση...</div>';
+  document.getElementById('pgQty').textContent = document.getElementById('q-' + k) ? document.getElementById('q-' + k).textContent : '1';
+  updPgBtn();
+  document.getElementById('pgOv').classList.add('open');
+  document.getElementById('pgScroll').scrollTop = 0;
+  if (p.pg) {
+    const img = new Image();
+    img.onload = function() { a4.innerHTML = ''; a4.appendChild(img); };
+    img.onerror = function() { a4.innerHTML = '<div class="pg-a4-noimg">❌ Δεν φορτώθηκε η εικόνα<br><small>Βεβαιώσου ότι ο φάκελος <b>pages/</b><br>βρίσκεται δίπλα στο index.html</small></div>'; };
+    img.src = p.pg;
+  } else {
+    a4.innerHTML = '<div class="pg-a4-noimg">Δεν υπάρχει σελίδα καταλόγου</div>';
+  }
+}
+function updPgBtn() {
+  if (!pgCode) return;
+  const ic = !!cart[pgCode], btn = document.getElementById('pgAddBtn');
+  btn.textContent = ic ? '✓ Αφαίρεση από Καλάθι' : '+ Προσθήκη στο Καλάθι';
+  btn.classList.toggle('in', ic);
+}
+function pgQ(d) {
+  const e = document.getElementById('pgQty');
+  let v = Math.max(1, +e.textContent + d); e.textContent = v;
+  if (cart[pgCode]) { cart[pgCode].qty = v; updC(); }
+  const ge = document.getElementById('q-' + pgCode); if (ge) ge.textContent = v;
+}
+function pgAdd() { addC(pgCode, null); }
+function closePg() { pgCode = null; document.getElementById('pgOv').classList.remove('open'); }
+
+/* ---- CART MODAL ---- */
+function openCart() {
+  const it = Object.values(cart);
+  if (!it.length) { alert('Κενό καλάθι!'); return; }
+  document.getElementById('cItems').innerHTML = it.map(i =>
+    '<div class="ci">' +
+    '<div class="ci-icon">' + (CAT_ICONS[i.cat] || '💡') + '</div>' +
+    '<div class="ci-info"><strong>' + i.code + (i.name ? ' — ' + i.name : '') + '</strong>' +
+    '<small>' + i.brand + (i.cat ? ' | ' + i.cat : '') + (i.power ? ' | ' + i.power : '') + (i.ip ? ' | ' + i.ip : '') + '</small>' +
+    (i.dim ? '<small>📐 ' + i.dim + '</small>' : '') + '</div>' +
+    '<div class="ci-qty">' +
+    '<button onclick="cqty(\'' + i.code + '\',-1)">−</button>' +
+    '<span id="cq-' + i.code + '">' + i.qty + '</span>' +
+    '<button onclick="cqty(\'' + i.code + '\',1)">+</button>' +
+    '<button class="rm" onclick="rmv(\'' + i.code + '\')">✕</button>' +
+    '</div></div>'
+  ).join('');
+  document.getElementById('cartOv').classList.add('open');
+}
+function cqty(k, d) { if (!cart[k]) return; cart[k].qty = Math.max(1, cart[k].qty + d); document.getElementById('cq-' + k).textContent = cart[k].qty; updC(); }
+function rmv(k) { delete cart[k]; updC(); openCart(); if (!Object.keys(cart).length) closeCart(); }
+function closeCart() { document.getElementById('cartOv').classList.remove('open'); }
+function clearCart() { if (confirm('Καθαρισμός καλαθιού;')) { cart = {}; updC(); showPage(); closeCart(); } }
+
+/* ---- CONTACT FORM ---- */
+function openCF() {
+  const it = Object.values(cart); if (!it.length) return;
+  document.getElementById('cfOv').classList.add('open');
+  setTimeout(() => document.getElementById('cfName').focus(), 100);
+}
+function closeCF() {
+  document.getElementById('cfOv').classList.remove('open');
+}
+
+function sendEmail() {
+  const name  = document.getElementById('cfName').value.trim();
+  const phone = document.getElementById('cfPhone').value.trim();
+  const email = document.getElementById('cfEmail').value.trim();
+
+  if (!name) { document.getElementById('cfName').focus(); alert('Παρακαλώ συμπληρώστε το όνομά σας.'); return; }
+
+  const it = Object.values(cart);
+  const today = new Date().toLocaleDateString('el-GR');
+  const t = it.reduce((s, i) => s + i.qty, 0);
+
+  let msg = '━━━━━━━━━━━━━━━━━━━━━━\n';
+  msg += 'Ημερομηνία: ' + today + '\n';
+  msg += 'Πελάτης: ' + name + '\n';
+  if (phone) msg += 'Τηλέφωνο (Viber): ' + phone + '\n';
+  if (email) msg += 'Email πελάτη: ' + email + '\n';
+  msg += '━━━━━━━━━━━━━━━━━━━━━━\n\nΠΡΟΙΟΝΤΑ:\n\n';
+
+  it.forEach((i, j) => {
+    msg += (j+1) + '. ' + i.code;
+    if (i.name) msg += ' — ' + i.name;
+    msg += '\n   Μάρκα: ' + i.brand;
+    if (i.cat) msg += ' | ' + i.cat;
+    const sp = [i.power, i.temp, i.ip].filter(Boolean).join(' · ');
+    if (sp) msg += '\n   Τεχνικά: ' + sp;
+    if (i.color) msg += '\n   Χρώμα: ' + i.color;
+    if (i.dim) msg += '\n   Διαστάσεις: ' + i.dim;
+    msg += '\n   Ποσότητα: ' + i.qty + ' τεμ.\n\n';
+  });
+  msg += '━━━━━━━━━━━━━━━━━━━━━━\n';
+  msg += 'Σύνολο: ' + it.length + ' κωδ. / ' + t + ' τεμ.';
+
+  // Disable button during send
+  const btn = document.querySelector('.cf-confirm');
+  btn.disabled = true;
+  btn.textContent = '⏳ Αποστολή...';
+
+  emailjs.send('service_yo4iacb', '5zz1ded', {
+    name:    name,
+    time:    today + (phone ? ' | Viber: ' + phone : ''),
+    message: msg,
+    email:   email || 'Δεν δόθηκε'
+  })
+  .then(() => {
+    closeCF();
+    closeCart();
+    showToast('✅ Στάλθηκε στο afoiroussa@yahoo.gr!');
+    btn.disabled = false;
+    btn.textContent = '✉️ Αποστολή Αίτησης';
+  })
+  .catch((err) => {
+    alert('Σφάλμα αποστολής. Δοκίμασε ξανά.\n' + JSON.stringify(err));
+    btn.disabled = false;
+    btn.textContent = '✉️ Αποστολή Αίτησης';
+  });
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { closePg(); closeCart(); closeCF(); } });
+document.getElementById('cartOv').onclick = e => { if (e.target.id === 'cartOv') closeCart(); };
+document.getElementById('cfOv').onclick = e => { if (e.target.id === 'cfOv') closeCF(); };
+
+buildBrands();
+buildCats();
+filteredAll = getF();
+showPage();
+</script>
+<div class="toast" id="toast"></div>
+</body>
+</html>
