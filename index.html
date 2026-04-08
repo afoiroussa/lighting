@@ -374,6 +374,7 @@ function buildBrands() {
 function setBrand(v) {
   activeBrand = v;
   activeCat = 'Όλα';
+  document.getElementById('srch').value = '';
   document.querySelectorAll('.br-btn').forEach(b => b.classList.remove('active'));
   event.target.classList.add('active');
   document.querySelectorAll('.cat-item').forEach(b => b.classList.toggle('active', b.dataset.cat === 'Όλα'));
@@ -399,6 +400,7 @@ function buildCats() {
 function setCat(c) {
   activeCat = c;
   activeBrand = '';
+  document.getElementById('srch').value = '';
   document.querySelectorAll('.cat-item').forEach(b => b.classList.toggle('active', b.dataset.cat === c));
   document.querySelectorAll('.br-btn').forEach(b => b.classList.toggle('active', b.textContent.includes('Όλες')));
   doF();
@@ -457,14 +459,6 @@ function makeCard(p) {
 
 /* ---- RENDER + PAGINATION ---- */
 function doF() {
-  const q = document.getElementById('srch').value;
-  if (q.length > 0) {
-    // search mode: ignore category/brand filters
-    activeCat = 'Όλα';
-    activeBrand = '';
-    document.querySelectorAll('.cat-item').forEach(b => b.classList.toggle('active', b.dataset.cat === 'Όλα'));
-    document.querySelectorAll('.br-btn').forEach(b => b.classList.toggle('active', b.textContent.includes('Όλες')));
-  }
   filteredAll = getF();
   curPage = 0;
   showPage();
