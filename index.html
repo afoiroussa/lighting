@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>ΑΦΟΙ ΡΟΥΣΣΑ — Φωτιστικά</title>
+<title>ΗΛΕΚΤΡΟΦΩΤΙΣΤΙΚΗ - ΑΦΟΙ ΡΟΥΣΣΑ Ο.Ε. | Κατάλογος Φωτιστικών</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%231a1a2e'/><text y='68' x='50' text-anchor='middle' font-size='56' font-family='Arial'>🔆</text></svg>">
 <script src="products.js?v=20250407"></script>
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>emailjs.init('ZTGFOEu0Iqfa2dleA');</script>
@@ -55,7 +56,8 @@ header h1 span{opacity:.55;font-weight:400;font-size:.8rem}
 .card-img-wrap{position:relative;width:100%;height:140px;flex-shrink:0;overflow:hidden;cursor:pointer;background:#f0f2f5}
 .card-thumb{width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform .3s}
 .card-thumb:hover{transform:scale(1.04)}
-.card-ph{width:100%;height:140px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:2.5rem;background:linear-gradient(135deg,#e8eaf0,#d0d3de);cursor:pointer}
+.card-ph{width:100%;height:140px;flex-shrink:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font-size:2rem;background:linear-gradient(135deg,#e8eaf0,#d0d3de);cursor:pointer}
+.card-ph small{font-size:.6rem;color:#999;font-weight:600;letter-spacing:.5px;text-transform:uppercase}
 .card-img-wrap .overlay{position:absolute;inset:0;background:rgba(26,26,46,.55);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .2s}
 .card-img-wrap:hover .overlay{opacity:1}
 .overlay span{color:#fff;font-size:.78rem;font-weight:700;background:rgba(0,0,0,.4);padding:5px 13px;border-radius:20px;border:1.5px solid rgba(255,255,255,.4)}
@@ -76,7 +78,90 @@ header h1 span{opacity:.55;font-weight:400;font-size:.8rem}
 .add-btn.in{background:var(--dark)}
 .add-btn.in:hover{background:#2d2d4e}
 .no-res{grid-column:1/-1;text-align:center;padding:60px;color:#aaa}
-/* TOAST */
+/* CONTACT INFO MODAL */
+.info-ov{position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:700;display:none;align-items:center;justify-content:center;padding:16px}
+.info-ov.open{display:flex}
+.info-modal{background:#fff;width:100%;max-width:400px;border-radius:20px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.35)}
+.info-head{background:linear-gradient(135deg,var(--dark),var(--dark2));padding:22px 20px;color:#fff;text-align:center}
+.info-head h2{font-size:1.1rem;margin-bottom:4px}
+.info-head p{font-size:.75rem;opacity:.65}
+.info-body{padding:22px 20px}
+.info-row{display:flex;align-items:center;gap:13px;padding:11px 0;border-bottom:1px solid #f0f0f0}
+.info-row:last-child{border:none}
+.info-ico{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.info-ico.green{background:#e8fdf0}
+.info-ico.blue{background:#e8f0fd}
+.info-ico.red{background:#fde8e8}
+.info-ico.orange{background:#fdf4e8}
+.info-txt strong{display:block;font-size:.85rem;color:#222}
+.info-txt small{font-size:.72rem;color:#999}
+.info-close{width:100%;padding:13px;border:none;border-radius:0 0 20px 20px;background:var(--dark);color:#fff;font-weight:700;cursor:pointer;font-size:.88rem}
+.info-close:hover{background:var(--accent)}
+
+/* HEADER CTA button */
+.offer-cta{padding:6px 13px;border:none;border-radius:8px;background:#fff;color:var(--accent);font-weight:700;cursor:pointer;font-size:.78rem;white-space:nowrap;border:2px solid rgba(255,255,255,.4);transition:all .18s}
+.offer-cta:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+
+/* WELCOME MODAL — 2 stores style */
+.wc-ov{position:fixed;inset:0;background:rgba(10,10,30,.82);z-index:800;display:flex;align-items:center;justify-content:center;padding:12px}
+.wc-modal{background:#fff;width:100%;max-width:560px;border-radius:22px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.5);animation:wcIn .4s cubic-bezier(.22,1,.36,1)}
+@keyframes wcIn{from{opacity:0;transform:scale(.93) translateY(20px)}to{opacity:1;transform:scale(1) translateY(0)}}
+.wc-head{background:linear-gradient(135deg,#1a1a2e 0%,#16213e 60%,#0f3460 100%);padding:22px 24px 18px;text-align:center}
+.wc-logo-row{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:5px}
+.wc-logo-icon{font-size:1.8rem;line-height:1}
+.wc-logo-text strong{display:block;color:#fff;font-size:.95rem;font-weight:800;letter-spacing:.4px}
+.wc-logo-text span{color:rgba(255,255,255,.45);font-size:.65rem;letter-spacing:1px;text-transform:uppercase}
+.wc-tagline{color:rgba(255,255,255,.4);font-size:.7rem;letter-spacing:.3px;text-align:center}
+.wc-stores{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.wc-store{padding:16px 22px}
+.wc-store:first-child{border-right:1px solid #eef0f5}
+.wc-store-title{font-size:.6rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+.wc-store-line{display:flex;align-items:center;gap:9px;margin-bottom:8px}
+.wc-store-line .ic{font-size:.82rem;flex-shrink:0;width:18px;text-align:center}
+.wc-store-line p{font-size:.76rem;color:#333;line-height:1.4;margin:0}
+.wc-store-line a{font-size:.76rem;color:#1a1a2e;font-weight:600;text-decoration:none}
+.wc-store-line a:hover{color:var(--accent)}
+.wc-divider{height:1px;background:linear-gradient(90deg,transparent,#e0e4eb,transparent);margin:0}
+.wc-hours{padding:13px 22px 12px;background:#f8f9fc}
+.wc-hours-title{font-size:.6rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);margin-bottom:9px}
+.wc-hours-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.wc-hours-row{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:.73rem;background:#fff;border-radius:7px;padding:6px 10px;border:1px solid #eef0f5}
+.wc-hours-row span:first-child{color:#666}
+.wc-hours-row span:last-child{color:#1a1a2e;font-weight:700;white-space:nowrap}
+.wc-btns{padding:13px 20px 16px;display:flex;gap:10px}
+.wc-enter{flex:1;padding:12px;border:none;border-radius:11px;background:var(--accent);color:#fff;font-size:.88rem;font-weight:700;cursor:pointer;letter-spacing:.3px;transition:background .15s}
+.wc-enter:hover{background:#c1121f}
+.wc-skip{padding:12px 16px;border:1.5px solid #e0e4eb;border-radius:11px;background:#fff;color:#aaa;font-size:.78rem;cursor:pointer;transition:all .15s;white-space:nowrap}
+.wc-skip:hover{border-color:#ccc;color:#777}
+
+/* INFO LINK in header */
+.info-link{padding:6px 11px;border:1.5px solid rgba(255,255,255,.25);border-radius:8px;background:rgba(255,255,255,.08);color:rgba(255,255,255,.8);font-size:.75rem;cursor:pointer;white-space:nowrap;transition:all .18s}
+.info-link:hover{background:rgba(255,255,255,.18);color:#fff}
+
+/* MOBILE */
+@media(max-width:600px){
+  .sidebar{display:none}
+  .grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:auto;gap:6px;padding:7px}
+  .card-img-wrap,.card-ph{height:105px}
+  .card-body{padding:5px 7px 7px}
+  .card-name{font-size:.75rem}
+  .card-specs{display:none}
+  .hdr-search{width:120px;font-size:.75rem}
+  .add-btn{font-size:.7rem;padding:5px 0}
+  .qty-row button{width:22px;height:22px;font-size:.8rem}
+  .wc-stores{grid-template-columns:1fr}
+  .wc-store:first-child{border-right:none;border-bottom:1px solid #eef0f5}
+  .wc-hours-grid{grid-template-columns:1fr}
+  .wc-btns{flex-direction:column}
+  header h1{font-size:.82rem}
+  .info-link span{display:none}
+}
+@media(max-width:380px){
+  .grid{grid-template-columns:1fr}
+  .hdr-search{width:90px}
+}
+
+
 .toast{position:fixed;top:70px;right:16px;background:#1aaa55;color:#fff;padding:10px 18px;border-radius:10px;font-size:.82rem;font-weight:700;z-index:999;opacity:0;transform:translateY(-10px);transition:all .25s;pointer-events:none;box-shadow:0 4px 16px rgba(0,0,0,.2)}
 .toast.show{opacity:1;transform:translateY(0)}
 .toast.remove{background:#e63946}
@@ -158,8 +243,9 @@ header h1 span{opacity:.55;font-weight:400;font-size:.8rem}
 
 <header>
   <div class="hdr-top">
-    <h1>🔆 ΑΦΟΙ ΡΟΥΣΣΑ <span>— Κατάλογος Φωτιστικών</span></h1>
+    <h1>🔆 ΗΛΕΚΤΡΟΦΩΤΙΣΤΙΚΗ - ΑΦΟΙ ΡΟΥΣΣΑ Ο.Ε. <span>— Κατάλογος Φωτιστικών</span></h1>
     <input type="text" class="hdr-search" id="srch" placeholder="🔍 Κωδικός, IP, watt, χρώμα..." oninput="doF()">
+    <button class="info-link" onclick="openInfo()">📍 Επικοινωνία</button>
     <div class="cart-btn-wrap">
       <button class="cart-btn" onclick="openCart()">🛒 Καλάθι <span id="cSum2"></span></button>
       <div class="badge" id="cBadge" style="display:none">0</div>
@@ -230,7 +316,7 @@ header h1 span{opacity:.55;font-weight:400;font-size:.8rem}
     <div class="cf-field">
       <label>📱 ΤΗΛΕΦΩΝΟ (για επικοινωνία Viber)</label>
       <input type="tel" id="cfPhone" placeholder="π.χ. 6912345678" autocomplete="tel">
-      <div class="cf-hint">Προαιρετικό — για γρήγορη επικοινωνία μέσω Viber</div>
+      <div class="cf-hint">Προαιρετικό — για γρήγορη επικοινωνία μέσω Viber (698 005 627)</div>
     </div>
     <div class="cf-field">
       <label>📧 EMAIL ΣΑΣ (για απάντηση προσφοράς)</label>
@@ -280,8 +366,10 @@ function buildBrands() {
 }
 function setBrand(v) {
   activeBrand = v;
+  activeCat = 'Όλα';
   document.querySelectorAll('.br-btn').forEach(b => b.classList.remove('active'));
   event.target.classList.add('active');
+  document.querySelectorAll('.cat-item').forEach(b => b.classList.toggle('active', b.dataset.cat === 'Όλα'));
   doF();
 }
 
@@ -303,7 +391,9 @@ function buildCats() {
 }
 function setCat(c) {
   activeCat = c;
+  activeBrand = '';
   document.querySelectorAll('.cat-item').forEach(b => b.classList.toggle('active', b.dataset.cat === c));
+  document.querySelectorAll('.br-btn').forEach(b => b.classList.toggle('active', b.textContent.includes('Όλες')));
   doF();
 }
 
@@ -329,7 +419,7 @@ function makeCard(p) {
     ? '<div class="card-img-wrap" onclick="openPg(\'' + k + '\')">' +
       '<img class="card-thumb" src="' + p.pg + '" loading="lazy" alt="' + k + '">' +
       '<div class="overlay"><span>🔍 Σελίδα καταλόγου</span></div></div>'
-    : '<div class="card-ph" onclick="openPg(\'' + k + '\')">' + ico + '</div>';
+    : '<div class="card-ph" onclick="openPg(\'' + k + '\')">' + ico + '<small>' + (p.brand || '') + '</small></div>';
   return '<div class="card' + (ic ? ' selected' : '') + '" id="cd-' + k + '">' +
     thumb +
     '<div class="card-body">' +
@@ -594,15 +684,104 @@ function sendEmail() {
   });
 }
 
-document.addEventListener('keydown', e => { if (e.key === 'Escape') { closePg(); closeCart(); closeCF(); } });
-document.getElementById('cartOv').onclick = e => { if (e.target.id === 'cartOv') closeCart(); };
-document.getElementById('cfOv').onclick = e => { if (e.target.id === 'cfOv') closeCF(); };
+function openInfo() { document.getElementById('infoOv').classList.add('open'); }
+function closeInfo() { document.getElementById('infoOv').classList.remove('open'); }
+
+document.addEventListener('DOMContentLoaded', function() {
+  document.getElementById('infoOv').onclick = e => { if (e.target.id === 'infoOv') closeInfo(); };
+  document.getElementById('cartOv').onclick = e => { if (e.target.id === 'cartOv') closeCart(); };
+  document.getElementById('cfOv').onclick = e => { if (e.target.id === 'cfOv') closeCF(); };
+});
+
+function closeWc() { document.getElementById('wcOv').style.display='none'; try{localStorage.setItem('wc_seen','1');}catch(e){} }
+if (typeof localStorage !== 'undefined' && localStorage.getItem('wc_seen')) {
+  document.getElementById('wcOv').style.display='none';
+} else {
+  setTimeout(closeWc, 3000);
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { closePg(); closeCart(); closeCF(); closeInfo(); } });
 
 buildBrands();
 buildCats();
 filteredAll = getF();
 showPage();
 </script>
+<!-- WELCOME MODAL -->
+<div class="wc-ov" id="wcOv">
+  <div class="wc-modal">
+    <div class="wc-head">
+      <div class="wc-logo-row">
+        <div class="wc-logo-icon">🔆</div>
+        <div class="wc-logo-text">
+          <strong>ΗΛΕΚΤΡΟΦΩΤΙΣΤΙΚΗ — ΑΦΟΙ ΡΟΥΣΣΑ Ο.Ε.</strong>
+          <span>Φωτιστικά &amp; Ηλεκτρολογικό Υλικό</span>
+        </div>
+      </div>
+      <div class="wc-tagline">Καλωσήλθατε στον ηλεκτρονικό μας κατάλογο</div>
+    </div>
+    <div class="wc-stores">
+      <div class="wc-store">
+        <div class="wc-store-title">📍 Κεντρικό Κατάστημα</div>
+        <div class="wc-store-line"><span class="ic">🏠</span><p>Λεωφ. Φυλής 104, Άνω Λιόσια 13341</p></div>
+        <div class="wc-store-line"><span class="ic">📞</span><p><a href="tel:+302102483377">210 248 3377</a></p></div>
+        <div class="wc-store-line"><span class="ic">✉️</span><p><a href="mailto:liosia@roussas.eu">liosia@roussas.eu</a></p></div>
+      </div>
+      <div class="wc-store">
+        <div class="wc-store-title">📍 Υποκατάστημα Λουτρακίου</div>
+        <div class="wc-store-line"><span class="ic">🏠</span><p>Λεωφ. Αθηνών 250, Λουτράκι 20300</p></div>
+        <div class="wc-store-line"><span class="ic">📞</span><p><a href="tel:+302744069005">27440 69 005</a></p></div>
+        <div class="wc-store-line"><span class="ic">✉️</span><p><a href="mailto:loutraki@roussas.eu">loutraki@roussas.eu</a></p></div>
+      </div>
+    </div>
+    <div class="wc-divider"></div>
+    <div class="wc-hours">
+      <div class="wc-hours-title">🕐 Ωράριο Λειτουργίας — Κεντρικό Κατάστημα</div>
+      <div class="wc-hours-grid">
+        <div class="wc-hours-row"><span>Δευτέρα · Τετάρτη · Σάββατο</span><span>7:30 – 16:00</span></div>
+        <div class="wc-hours-row"><span>Τρίτη · Πέμπτη · Παρασκευή</span><span>7:30 – 21:00</span></div>
+      </div>
+    </div>
+    <div class="wc-btns">
+      <button class="wc-enter" onclick="closeWc()">🔍 Δείτε τον Κατάλογο</button>
+      <button class="wc-skip" onclick="closeWc()">✕ Κλείσιμο</button>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT INFO MODAL -->
+<div class="info-ov" id="infoOv">
+  <div class="info-modal">
+    <div class="info-head">
+      <h2>🔆 ΗΛΕΚΤΡΟΦΩΤΙΣΤΙΚΗ — ΑΦΟΙ ΡΟΥΣΣΑ Ο.Ε.</h2>
+      <p>Κατάστημα Φωτιστικών — Ηλεκτρολογικό Υλικό</p>
+    </div>
+    <div class="info-body">
+      <div class="info-row">
+        <div class="info-ico green">📍</div>
+        <div class="info-txt"><strong>Λεωφόρος Φυλής 104 — Άνω Λιόσια</strong><small>☎️ 210 248 3377</small></div>
+      </div>
+      <div class="info-row">
+        <div class="info-ico green">📍</div>
+        <div class="info-txt"><strong>Λεωφόρος Αθηνών 250 — Λουτράκι</strong><small>Υποκατάστημα</small></div>
+      </div>
+      <div class="info-row">
+        <div class="info-ico blue">📱</div>
+        <div class="info-txt"><strong>Viber: 698 005 627</strong><small>Άμεση επικοινωνία για προσφορές</small></div>
+      </div>
+      <div class="info-row">
+        <div class="info-ico red">✉️</div>
+        <div class="info-txt"><strong>afoiroussa@yahoo.gr</strong><small>Αιτήσεις προσφορών email</small></div>
+      </div>
+      <div class="info-row">
+        <div class="info-ico orange">🕐</div>
+        <div class="info-txt"><strong>Δευτ–Παρ 9:00–17:00</strong><small>Σάββατο 9:00–14:00</small></div>
+      </div>
+    </div>
+    <button class="info-close" onclick="closeInfo()">Κλείσιμο</button>
+  </div>
+</div>
+
 <div class="toast" id="toast"></div>
 </body>
 </html>
