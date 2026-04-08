@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>ΗΛΕΚΤΡΟΦΩΤΙΣΤΙΚΗ - ΑΦΟΙ ΡΟΥΣΣΑ Ο.Ε. | Κατάλογος Φωτιστικών</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%231a1a2e'/><text y='68' x='50' text-anchor='middle' font-size='56' font-family='Arial'>🔆</text></svg>">
-<script src="products.js?v=20250407"></script>
+<script src="products.js?v=20250408"></script>
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>emailjs.init('ZTGFOEu0Iqfa2dleA');</script>
 <style>
@@ -46,7 +46,14 @@ header h1 span{opacity:.55;font-weight:400;font-size:.8rem}
 
 /* CONTENT */
 .content{flex:1;display:flex;flex-direction:column;overflow:hidden;min-width:0;min-height:0}
-.stats{padding:5px 12px;background:#e8f4fd;font-size:.73rem;color:#556;border-bottom:1px solid #d4e8f7;flex-shrink:0}
+/* BACK TO TOP */
+.back-top{position:fixed;bottom:22px;right:18px;z-index:300;background:var(--dark);color:#fff;border:none;border-radius:50%;width:42px;height:42px;font-size:1.1rem;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.25);opacity:0;transform:translateY(10px);transition:all .25s;pointer-events:none}
+.back-top.show{opacity:1;transform:translateY(0);pointer-events:all}
+.back-top:hover{background:var(--accent)}
+/* STATS BAR */
+.stats{padding:5px 12px;background:#e8f4fd;font-size:.73rem;color:#556;border-bottom:1px solid #d4e8f7;flex-shrink:0;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.stats-brand-pill{background:#fff;border:1px solid #c8dff0;border-radius:20px;padding:1px 8px;font-size:.67rem;color:#445;font-weight:600;white-space:nowrap}
+.stats-brand-pill span{color:var(--accent);font-weight:700}
 
 /* GRID */
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));grid-auto-rows:390px;gap:11px;padding:11px;overflow-y:auto;flex:1;min-height:0}
@@ -398,12 +405,19 @@ function setCat(c) {
 }
 
 /* ---- FILTER ---- */
+/* ---- GREEK NORMALIZATION ---- */
+function norm(s) {
+  return (s||'').toLowerCase()
+    .replace(/ά/g,'α').replace(/έ/g,'ε').replace(/ή/g,'η').replace(/ί/g,'ι').replace(/ό/g,'ο').replace(/ύ/g,'υ').replace(/ώ/g,'ω')
+    .replace(/ϊ/g,'ι').replace(/ϋ/g,'υ').replace(/ΐ/g,'ι').replace(/ΰ/g,'υ');
+}
+
 function getF() {
-  const q = document.getElementById('srch').value.toLowerCase();
+  const q = norm(document.getElementById('srch').value);
   return P.filter(p => {
     const mc = activeCat === 'Όλα' || (p.cat || 'Άλλο') === activeCat;
     const mb = !activeBrand || p.brand === activeBrand;
-    const txt = [p.code, p.name, p.brand, p.power, p.lum, p.ip, p.temp, p.color, p.mat, p.series].join(' ').toLowerCase();
+    const txt = norm([p.code, p.name, p.brand, p.power, p.lum, p.ip, p.temp, p.color, p.mat, p.series, p.cat].join(' '));
     return mc && mb && (!q || txt.includes(q));
   });
 }
@@ -469,12 +483,18 @@ function showPage() {
   if (!total) {
     g.innerHTML = '<div class="no-res">Δεν βρέθηκαν αποτελέσματα</div>';
     pb.style.display = 'none';
-    document.getElementById('stats').textContent = '0 αποτελέσματα | Σύνολο: ' + P.length;
+    document.getElementById('stats').innerHTML = '<span>0 αποτελέσματα | Σύνολο: ' + P.length + '</span>';
     return;
   }
-  document.getElementById('stats').textContent = totalPages > 1
-    ? 'Σελίδα ' + (curPage + 1) + '/' + totalPages + '  —  Προϊόντα ' + from + '–' + to + ' από ' + total + ' | Σύνολο βάσης: ' + P.length
-    : total + ' προϊόντα | Σύνολο βάσης: ' + P.length;
+  // Brand breakdown
+  const brandCounts = {};
+  filteredAll.forEach(p => { brandCounts[p.brand] = (brandCounts[p.brand]||0)+1; });
+  const pills = Object.entries(brandCounts).sort((a,b)=>b[1]-a[1])
+    .map(([b,c]) => '<span class="stats-brand-pill">' + b.split(' ')[0] + ' <span>' + c + '</span></span>').join('');
+  const mainTxt = totalPages > 1
+    ? 'Σελίδα ' + (curPage+1) + '/' + totalPages + ' — ' + from + '–' + to + ' από <strong>' + total + '</strong>'
+    : '<strong>' + total + '</strong> προϊόντα';
+  document.getElementById('stats').innerHTML = '<span>' + mainTxt + '</span>' + pills;
 
   // Grid
   g.innerHTML = slice.map(makeCard).join('');
@@ -691,7 +711,9 @@ document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('infoOv').onclick = e => { if (e.target.id === 'infoOv') closeInfo(); };
   document.getElementById('cartOv').onclick = e => { if (e.target.id === 'cartOv') closeCart(); };
   document.getElementById('cfOv').onclick = e => { if (e.target.id === 'cfOv') closeCF(); };
-
+  document.getElementById('grid').addEventListener('scroll', function() {
+    document.getElementById('backTop').classList.toggle('show', this.scrollTop > 300);
+  });
   if (typeof localStorage !== 'undefined' && localStorage.getItem('wc_seen')) {
     document.getElementById('wcOv').style.display='none';
   } else {
@@ -749,6 +771,9 @@ showPage();
     </div>
   </div>
 </div>
+
+<!-- BACK TO TOP -->
+<button class="back-top" id="backTop" onclick="document.getElementById('grid').scrollTop=0;this.classList.remove('show')">↑</button>
 
 <!-- CONTACT INFO MODAL -->
 <div class="info-ov" id="infoOv">
