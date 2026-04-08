@@ -691,14 +691,15 @@ document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('infoOv').onclick = e => { if (e.target.id === 'infoOv') closeInfo(); };
   document.getElementById('cartOv').onclick = e => { if (e.target.id === 'cartOv') closeCart(); };
   document.getElementById('cfOv').onclick = e => { if (e.target.id === 'cfOv') closeCF(); };
+
+  if (typeof localStorage !== 'undefined' && localStorage.getItem('wc_seen')) {
+    document.getElementById('wcOv').style.display='none';
+  } else {
+    setTimeout(closeWc, 3000);
+  }
 });
 
 function closeWc() { document.getElementById('wcOv').style.display='none'; try{localStorage.setItem('wc_seen','1');}catch(e){} }
-if (typeof localStorage !== 'undefined' && localStorage.getItem('wc_seen')) {
-  document.getElementById('wcOv').style.display='none';
-} else {
-  setTimeout(closeWc, 3000);
-}
 
 document.addEventListener('keydown', e => { if (e.key === 'Escape') { closePg(); closeCart(); closeCF(); closeInfo(); } });
 
