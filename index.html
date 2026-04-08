@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>ΗΛΕΚΤΡΟΦΩΤΙΣΤΙΚΗ - ΑΦΟΙ ΡΟΥΣΣΑ Ο.Ε. | Κατάλογος Φωτιστικών</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%231a1a2e'/><text y='68' x='50' text-anchor='middle' font-size='56' font-family='Arial'>🔆</text></svg>">
-<script src="products.js?v=20250408"></script>
+<script src="products.js?v=20260408d"></script>
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>emailjs.init('ZTGFOEu0Iqfa2dleA');</script>
 <style>
@@ -56,24 +56,32 @@ header h1 span{opacity:.55;font-weight:400;font-size:.8rem}
 .stats-brand-pill span{color:var(--accent);font-weight:700}
 
 /* GRID */
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));grid-auto-rows:390px;gap:11px;padding:11px;overflow-y:auto;flex:1;min-height:0}
-.card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.09);border:2px solid transparent;transition:transform .15s,box-shadow .15s;display:flex;flex-direction:column;height:100%}
-.card:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,.13)}
+.grid{display:grid;grid-template-columns:repeat(5,1fr);grid-auto-rows:520px;gap:14px;padding:14px;overflow-y:auto;flex:1;min-height:0}
+.card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.09);border:2px solid #e8eaef;transition:transform .15s,box-shadow .15s;display:flex;flex-direction:column;height:100%}
+.card:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,.13);border-color:#ccd}
 .card.selected{border-color:var(--accent)}
-.card-img-wrap{position:relative;width:100%;height:140px;flex-shrink:0;overflow:hidden;cursor:pointer;background:#f0f2f5}
+.card-img-wrap{position:relative;width:100%;height:280px;flex-shrink:0;overflow:hidden;cursor:pointer;background:#f0f2f5}
 .card-thumb{width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform .3s}
 .card-thumb:hover{transform:scale(1.04)}
-.card-ph{width:100%;height:140px;flex-shrink:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font-size:2rem;background:linear-gradient(135deg,#e8eaf0,#d0d3de);cursor:pointer}
+.card-ph{width:100%;height:200px;flex-shrink:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font-size:2rem;background:linear-gradient(135deg,#e8eaf0,#d0d3de);cursor:pointer}
 .card-ph small{font-size:.6rem;color:#999;font-weight:600;letter-spacing:.5px;text-transform:uppercase}
 .card-img-wrap .overlay{position:absolute;inset:0;background:rgba(26,26,46,.55);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .2s}
 .card-img-wrap:hover .overlay{opacity:1}
 .overlay span{color:#fff;font-size:.78rem;font-weight:700;background:rgba(0,0,0,.4);padding:5px 13px;border-radius:20px;border:1.5px solid rgba(255,255,255,.4)}
-.card-body{padding:7px 9px 8px;flex:1;display:flex;flex-direction:column;min-height:0;overflow:hidden}
-.card-code{font-family:monospace;font-size:.65rem;color:#bbb;margin-bottom:1px}
-.card-name{font-weight:700;font-size:.82rem;color:var(--dark);margin-bottom:2px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;line-height:1.3;min-height:2.6em}
-.card-cat{font-size:.62rem;color:#fff;background:var(--dark2);padding:1px 6px;border-radius:10px;display:inline-block;margin-bottom:3px}
-.card-brand{font-size:.63rem;color:#888;margin-bottom:2px}
-.card-specs{font-size:.64rem;color:#999;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;flex-shrink:0}
+.card-body{padding:10px 12px 10px;flex:1;display:flex;flex-direction:column;min-height:0;overflow:hidden}
+.card-code{font-family:monospace;font-size:.72rem;color:#999;margin-bottom:2px;font-weight:600}
+.card-name{font-weight:700;font-size:.9rem;color:var(--dark);margin-bottom:3px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;line-height:1.3;min-height:2.6em}
+.card-cat{font-size:.66rem;color:#fff;background:var(--dark2);padding:2px 8px;border-radius:10px;display:inline-block;margin-bottom:4px}
+.card-brand{font-size:.68rem;color:#888;margin-bottom:3px}
+.card-specs{font-size:.7rem;color:#666;line-height:1.6;flex-shrink:0}
+.spec-badges{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px}
+.spec-badge{font-size:.65rem;font-weight:600;padding:2px 7px;border-radius:6px;white-space:nowrap}
+.spec-badge.power{background:#e8f5e9;color:#2e7d32}
+.spec-badge.temp{background:#fff3e0;color:#e65100}
+.spec-badge.ip{background:#e3f2fd;color:#1565c0}
+.spec-badge.lum{background:#fce4ec;color:#c62828}
+.spec-badge.mat{background:#f3e5f5;color:#6a1b9a}
+.spec-badge.dim{background:#fff0f1;color:var(--accent);border:1px solid #fcc}
 .card-color{display:inline-flex;align-items:center;gap:4px;font-size:.68rem;font-weight:700;color:var(--dark);background:#f0f2f5;border-radius:6px;padding:2px 6px;margin-top:3px;margin-right:3px;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .card-dim{display:inline-flex;align-items:center;gap:4px;font-size:.68rem;font-weight:700;color:var(--accent);background:#fff0f1;border:1px solid #fcc;border-radius:6px;padding:2px 6px;margin-top:3px;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .qty-row{display:flex;align-items:center;gap:4px;margin-top:auto;padding-top:4px}
@@ -148,7 +156,7 @@ header h1 span{opacity:.55;font-weight:400;font-size:.8rem}
 /* MOBILE */
 @media(max-width:600px){
   .sidebar{display:none}
-  .grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:auto;gap:6px;padding:7px}
+  .grid{grid-template-columns:repeat(2,1fr);gap:6px;padding:7px}
   .card-img-wrap,.card-ph{height:105px}
   .card-body{padding:5px 7px 7px}
   .card-name{font-size:.75rem}
@@ -358,7 +366,7 @@ const BRANDS = [
   {label:'💎 Viokef', value:'Viokef'}
 ];
 
-const PER_PAGE = 60;
+const PER_PAGE = 30;
 let cart = {}, activeCat = 'Όλα', activeBrand = '', pgCode = null;
 let filteredAll = [], curPage = 0;
 
@@ -426,11 +434,21 @@ function getF() {
 function specsLine(p) {
   return [p.power, p.lum && p.lum + 'Lm', p.ip, p.temp, p.mat].filter(Boolean).join(' · ');
 }
+function specBadges(p) {
+  let h = '';
+  if (p.power) h += '<span class="spec-badge power">⚡ ' + p.power + '</span>';
+  if (p.temp) h += '<span class="spec-badge temp">🌡 ' + p.temp + '</span>';
+  if (p.ip) h += '<span class="spec-badge ip">💧 ' + p.ip + '</span>';
+  if (p.lum) h += '<span class="spec-badge lum">💡 ' + p.lum + 'Lm</span>';
+  if (p.mat) h += '<span class="spec-badge mat">🔧 ' + p.mat + '</span>';
+  if (p.dim) h += '<span class="spec-badge dim">📐 ' + p.dim + '</span>';
+  return h ? '<div class="spec-badges">' + h + '</div>' : '';
+}
 
 /* ---- CARD HTML ---- */
 function makeCard(p) {
   const k = p.code, ic = !!cart[k], q = cart[k] ? cart[k].qty : 1;
-  const specs = specsLine(p), ico = CAT_ICONS[p.cat] || '💡';
+  const badges = specBadges(p), ico = CAT_ICONS[p.cat] || '💡';
   const thumb = p.pg
     ? '<div class="card-img-wrap" onclick="openPg(\'' + k + '\')">' +
       '<img class="card-thumb" src="' + p.pg + '" loading="lazy" alt="' + k + '">' +
@@ -442,12 +460,9 @@ function makeCard(p) {
     '<div class="card-code">' + k + '</div>' +
     '<div class="card-name">' + (p.name || '—') + '</div>' +
     '<span class="card-cat">' + (p.cat || 'Άλλο') + '</span>' +
-    '<div class="card-brand">' + ico + ' ' + p.brand + '</div>' +
-    (specs ? '<div class="card-specs">' + specs + '</div>' : '') +
-    '<div style="display:flex;flex-wrap:wrap;gap:3px;margin-top:4px">' +
     (p.color ? '<span class="card-color">🎨 ' + p.color + '</span>' : '') +
-    (p.dim ? '<span class="card-dim">📐 ' + p.dim + '</span>' : '') +
-    '</div>' +
+    '<div class="card-brand">' + ico + ' ' + p.brand + '</div>' +
+    badges +
     '<div class="qty-row">' +
     '<button onclick="chQ(\'' + k + '\',-1)">−</button>' +
     '<span class="qty-num" id="q-' + k + '">' + q + '</span>' +
