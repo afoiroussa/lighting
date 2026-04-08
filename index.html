@@ -3,8 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>ΗΛΕΚΤΡΟΦΩΤΙΣΤΙΚΗ - ΑΦΟΙ ΡΟΥΣΣΑ Ο.Ε. | Κατάλογος Φωτιστικών</title>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%231a1a2e'/><text y='68' x='50' text-anchor='middle' font-size='56' font-family='Arial'>🔆</text></svg>">
+<title>ΑΦΟΙ ΡΟΥΣΣΑ — Φωτιστικά</title>
 <script src="products.js?v=20250407"></script>
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>emailjs.init('ZTGFOEu0Iqfa2dleA');</script>
@@ -56,8 +55,7 @@ header h1 span{opacity:.55;font-weight:400;font-size:.8rem}
 .card-img-wrap{position:relative;width:100%;height:140px;flex-shrink:0;overflow:hidden;cursor:pointer;background:#f0f2f5}
 .card-thumb{width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform .3s}
 .card-thumb:hover{transform:scale(1.04)}
-.card-ph{width:100%;height:140px;flex-shrink:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font-size:2rem;background:linear-gradient(135deg,#e8eaf0,#d0d3de);cursor:pointer}
-.card-ph small{font-size:.6rem;color:#999;font-weight:600;letter-spacing:.5px;text-transform:uppercase}
+.card-ph{width:100%;height:140px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:2.5rem;background:linear-gradient(135deg,#e8eaf0,#d0d3de);cursor:pointer}
 .card-img-wrap .overlay{position:absolute;inset:0;background:rgba(26,26,46,.55);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .2s}
 .card-img-wrap:hover .overlay{opacity:1}
 .overlay span{color:#fff;font-size:.78rem;font-weight:700;background:rgba(0,0,0,.4);padding:5px 13px;border-radius:20px;border:1.5px solid rgba(255,255,255,.4)}
@@ -78,50 +76,7 @@ header h1 span{opacity:.55;font-weight:400;font-size:.8rem}
 .add-btn.in{background:var(--dark)}
 .add-btn.in:hover{background:#2d2d4e}
 .no-res{grid-column:1/-1;text-align:center;padding:60px;color:#aaa}
-/* WHATSAPP FIXED BUTTON */
-.wa-fab{position:fixed;bottom:22px;right:18px;z-index:300;background:#25d366;color:#fff;border:none;border-radius:50px;padding:13px 20px;font-size:.85rem;font-weight:700;cursor:pointer;box-shadow:0 4px 20px rgba(37,211,102,.45);display:flex;align-items:center;gap:8px;transition:all .2s;text-decoration:none}
-.wa-fab:hover{background:#1ebe5d;transform:translateY(-2px);box-shadow:0 8px 28px rgba(37,211,102,.55)}
-.wa-fab .wa-pulse{width:10px;height:10px;background:#fff;border-radius:50%;animation:wapulse 1.8s infinite}
-@keyframes wapulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.85)}}
-
-/* CONTACT INFO MODAL */
-.info-ov{position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:700;display:none;align-items:center;justify-content:center;padding:16px}
-.info-ov.open{display:flex}
-.info-modal{background:#fff;width:100%;max-width:400px;border-radius:20px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.35)}
-.info-head{background:linear-gradient(135deg,var(--dark),var(--dark2));padding:22px 20px;color:#fff;text-align:center}
-.info-head h2{font-size:1.1rem;margin-bottom:4px}
-.info-head p{font-size:.75rem;opacity:.65}
-.info-body{padding:22px 20px}
-.info-row{display:flex;align-items:center;gap:13px;padding:11px 0;border-bottom:1px solid #f0f0f0}
-.info-row:last-child{border:none}
-.info-ico{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
-.info-ico.green{background:#e8fdf0}
-.info-ico.blue{background:#e8f0fd}
-.info-ico.red{background:#fde8e8}
-.info-ico.orange{background:#fdf4e8}
-.info-txt strong{display:block;font-size:.85rem;color:#222}
-.info-txt small{font-size:.72rem;color:#999}
-.info-close{width:100%;padding:13px;border:none;border-radius:0 0 20px 20px;background:var(--dark);color:#fff;font-weight:700;cursor:pointer;font-size:.88rem}
-.info-close:hover{background:var(--accent)}
-
-/* HEADER CTA button */
-.offer-cta{padding:6px 13px;border:none;border-radius:8px;background:#fff;color:var(--accent);font-weight:700;cursor:pointer;font-size:.78rem;white-space:nowrap;border:2px solid rgba(255,255,255,.4);transition:all .18s}
-.offer-cta:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
-
-/* INFO LINK in header */
-.info-link{padding:6px 11px;border:1.5px solid rgba(255,255,255,.25);border-radius:8px;background:rgba(255,255,255,.08);color:rgba(255,255,255,.8);font-size:.75rem;cursor:pointer;white-space:nowrap;transition:all .18s}
-.info-link:hover{background:rgba(255,255,255,.18);color:#fff}
-
-/* MOBILE */
-@media(max-width:600px){
-  .sidebar{display:none}
-  .grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:auto;gap:8px;padding:8px}
-  .card-img-wrap,.card-ph{height:110px}
-  .hdr-search{width:140px}
-  .wa-fab span.wa-label{display:none}
-  .wa-fab{padding:14px}
-}
-
+/* TOAST */
 .toast{position:fixed;top:70px;right:16px;background:#1aaa55;color:#fff;padding:10px 18px;border-radius:10px;font-size:.82rem;font-weight:700;z-index:999;opacity:0;transform:translateY(-10px);transition:all .25s;pointer-events:none;box-shadow:0 4px 16px rgba(0,0,0,.2)}
 .toast.show{opacity:1;transform:translateY(0)}
 .toast.remove{background:#e63946}
@@ -203,9 +158,8 @@ header h1 span{opacity:.55;font-weight:400;font-size:.8rem}
 
 <header>
   <div class="hdr-top">
-    <h1>🔆 ΗΛΕΚΤΡΟΦΩΤΙΣΤΙΚΗ - ΑΦΟΙ ΡΟΥΣΣΑ Ο.Ε. <span>— Κατάλογος Φωτιστικών</span></h1>
+    <h1>🔆 ΑΦΟΙ ΡΟΥΣΣΑ <span>— Κατάλογος Φωτιστικών</span></h1>
     <input type="text" class="hdr-search" id="srch" placeholder="🔍 Κωδικός, IP, watt, χρώμα..." oninput="doF()">
-    <button class="info-link" onclick="openInfo()">📍 Επικοινωνία</button>
     <div class="cart-btn-wrap">
       <button class="cart-btn" onclick="openCart()">🛒 Καλάθι <span id="cSum2"></span></button>
       <div class="badge" id="cBadge" style="display:none">0</div>
@@ -276,7 +230,7 @@ header h1 span{opacity:.55;font-weight:400;font-size:.8rem}
     <div class="cf-field">
       <label>📱 ΤΗΛΕΦΩΝΟ (για επικοινωνία Viber)</label>
       <input type="tel" id="cfPhone" placeholder="π.χ. 6912345678" autocomplete="tel">
-      <div class="cf-hint">Προαιρετικό — για γρήγορη επικοινωνία μέσω Viber (698 005 627)</div>
+      <div class="cf-hint">Προαιρετικό — για γρήγορη επικοινωνία μέσω Viber</div>
     </div>
     <div class="cf-field">
       <label>📧 EMAIL ΣΑΣ (για απάντηση προσφοράς)</label>
@@ -375,7 +329,7 @@ function makeCard(p) {
     ? '<div class="card-img-wrap" onclick="openPg(\'' + k + '\')">' +
       '<img class="card-thumb" src="' + p.pg + '" loading="lazy" alt="' + k + '">' +
       '<div class="overlay"><span>🔍 Σελίδα καταλόγου</span></div></div>'
-    : '<div class="card-ph" onclick="openPg(\'' + k + '\')">' + ico + '<small>' + (p.brand || '') + '</small></div>';
+    : '<div class="card-ph" onclick="openPg(\'' + k + '\')">' + ico + '</div>';
   return '<div class="card' + (ic ? ' selected' : '') + '" id="cd-' + k + '">' +
     thumb +
     '<div class="card-body">' +
@@ -640,11 +594,7 @@ function sendEmail() {
   });
 }
 
-function openInfo() { document.getElementById('infoOv').classList.add('open'); }
-function closeInfo() { document.getElementById('infoOv').classList.remove('open'); }
-document.getElementById('infoOv').onclick = e => { if (e.target.id === 'infoOv') closeInfo(); };
-
-document.addEventListener('keydown', e => { if (e.key === 'Escape') { closePg(); closeCart(); closeCF(); closeInfo(); } });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { closePg(); closeCart(); closeCF(); } });
 document.getElementById('cartOv').onclick = e => { if (e.target.id === 'cartOv') closeCart(); };
 document.getElementById('cfOv').onclick = e => { if (e.target.id === 'cfOv') closeCF(); };
 
@@ -653,46 +603,6 @@ buildCats();
 filteredAll = getF();
 showPage();
 </script>
-<!-- WHATSAPP FAB -->
-<a class="wa-fab" href="https://wa.me/30698005627" target="_blank" rel="noopener">
-  <span style="font-size:1.2rem">📱</span>
-  <span class="wa-label">Viber</span>
-  <div class="wa-pulse"></div>
-</a>
-
-<!-- CONTACT INFO MODAL -->
-<div class="info-ov" id="infoOv">
-  <div class="info-modal">
-    <div class="info-head">
-      <h2>🔆 ΗΛΕΚΤΡΟΦΩΤΙΣΤΙΚΗ — ΑΦΟΙ ΡΟΥΣΣΑ Ο.Ε.</h2>
-      <p>Κατάστημα Φωτιστικών — Ηλεκτρολογικό Υλικό</p>
-    </div>
-    <div class="info-body">
-      <div class="info-row">
-        <div class="info-ico green">📍</div>
-        <div class="info-txt"><strong>Λεωφόρος Φυλής 104 — Άνω Λιόσια</strong><small>☎️ 210 248 3377</small></div>
-      </div>
-      <div class="info-row">
-        <div class="info-ico green">📍</div>
-        <div class="info-txt"><strong>Λεωφόρος Αθηνών 250 — Λουτράκι</strong><small>Υποκατάστημα</small></div>
-      </div>
-      <div class="info-row">
-        <div class="info-ico blue">📱</div>
-        <div class="info-txt"><strong>Viber: 698 005 627</strong><small>Άμεση επικοινωνία για προσφορές</small></div>
-      </div>
-      <div class="info-row">
-        <div class="info-ico red">✉️</div>
-        <div class="info-txt"><strong>afoiroussa@yahoo.gr</strong><small>Αιτήσεις προσφορών email</small></div>
-      </div>
-      <div class="info-row">
-        <div class="info-ico orange">🕐</div>
-        <div class="info-txt"><strong>Δευτ–Παρ 9:00–17:00</strong><small>Σάββατο 9:00–14:00</small></div>
-      </div>
-    </div>
-    <button class="info-close" onclick="closeInfo()">Κλείσιμο</button>
-  </div>
-</div>
-
 <div class="toast" id="toast"></div>
 </body>
 </html>
