@@ -644,7 +644,7 @@ function openInfo() { document.getElementById('infoOv').classList.add('open'); }
 function closeInfo() { document.getElementById('infoOv').classList.remove('open'); }
 document.getElementById('infoOv').onclick = e => { if (e.target.id === 'infoOv') closeInfo(); };
 
- if (e.key === 'Escape') { closePg(); closeCart(); closeCF(); closeInfo(); } });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { closePg(); closeCart(); closeCF(); closeInfo(); } });
 document.getElementById('cartOv').onclick = e => { if (e.target.id === 'cartOv') closeCart(); };
 document.getElementById('cfOv').onclick = e => { if (e.target.id === 'cfOv') closeCF(); };
 
