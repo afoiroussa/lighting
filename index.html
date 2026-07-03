@@ -2,276 +2,695 @@
 <html lang="el">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
 <title>ΗΛΕΚΤΡΟΦΩΤΙΣΤΙΚΗ - ΑΦΟΙ ΡΟΥΣΣΑ Ο.Ε. | Κατάλογος Φωτιστικών</title>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%231a1a2e'/><text y='68' x='50' text-anchor='middle' font-size='56' font-family='Arial'>🔆</text></svg>">
-<script src="products.js?v=20260408d"></script>
+<meta name="description" content="Ηλεκτρονικός κατάλογος φωτιστικών ΑΦΟΙ ΡΟΥΣΣΑ Ο.Ε. — επιλέξτε προϊόντα και ζητήστε προσφορά.">
+<meta name="theme-color" content="#081A30">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Ηλεκτροφωτιστική">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230B2342'/><line x1='50' y1='20' x2='50' y2='42' stroke='%23D6A84F' stroke-width='4'/><path d='M30 64 L70 64 L61 42 L39 42 Z' fill='%23F4E1A1'/><circle cx='50' cy='68' r='7' fill='%23FFC857'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Serif+Display:wght@600;700;800&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-<script>emailjs.init('ZTGFOEu0Iqfa2dleA');</script>
+<script>try{emailjs.init('ZTGFOEu0Iqfa2dleA');}catch(e){}</script>
 <style>
+/* ============================= DESIGN SYSTEM ============================= */
+:root{
+  --font-ui:"Inter","Segoe UI",Arial,sans-serif;
+  --font-brand:"Noto Serif Display",Georgia,serif;
+
+  --bg-main:#F6F2EA;
+  --bg-soft:#FFFDF8;
+
+  --navy-950:#061426;
+  --navy-900:#081A30;
+  --navy-800:#0B2342;
+  --navy-700:#12345A;
+
+  --gold-500:#D6A84F;
+  --gold-400:#E7C879;
+  --gold-300:#F4E1A1;
+  --amber-glow:#FFC857;
+
+  --text-main:#172033;
+  --text-muted:#6F7788;
+  --border-soft:rgba(11,35,66,.10);
+
+  --success:#1B8A4A;
+  --danger:#C94A4A;
+  --info:#2F6FA3;
+
+  --radius-sm:10px;
+  --radius-md:16px;
+  --radius-lg:22px;
+  --radius-xl:30px;
+
+  --shadow-card:0 12px 35px rgba(6,20,38,.10);
+  --shadow-card-hover:0 22px 55px rgba(6,20,38,.18);
+  --shadow-modal:0 30px 90px rgba(6,20,38,.35);
+
+  --transition-fast:160ms ease;
+  --transition-med:260ms cubic-bezier(.22,1,.36,1);
+
+  --sidebar-w:224px;
+  --safe-top:env(safe-area-inset-top,0px);
+  --safe-bottom:env(safe-area-inset-bottom,0px);
+}
 *{box-sizing:border-box;margin:0;padding:0}
-:root{--dark:#1a1a2e;--dark2:#16213e;--accent:#e63946;--sidebar-w:200px;--cart-h:54px}
 html{height:100%}
-body{height:100vh;overflow:hidden;display:flex;flex-direction:column;font-family:'Segoe UI',Arial,sans-serif;background:#f0f2f5;color:#222}
+body{
+  height:100vh;height:100dvh;overflow:hidden;display:flex;flex-direction:column;
+  font-family:var(--font-ui);background:var(--bg-main);color:var(--text-main);
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+}
+.ic{width:1em;height:1em;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+::selection{background:var(--gold-300);color:var(--navy-900)}
 
-/* HEADER */
-header{background:linear-gradient(135deg,var(--dark),var(--dark2));color:#fff;padding:10px 14px 8px;flex-shrink:0;box-shadow:0 3px 14px rgba(0,0,0,.45)}
-.hdr-top{display:flex;align-items:center;gap:10px;margin-bottom:8px}
-header h1{font-size:1.05rem;letter-spacing:.8px;flex:1}
-header h1 span{opacity:.55;font-weight:400;font-size:.8rem}
-.hdr-search{padding:7px 13px;border:none;border-radius:8px;background:rgba(255,255,255,.15);color:#fff;font-size:.82rem;width:260px;outline:none}
-.hdr-search::placeholder{color:rgba(255,255,255,.45)}
-.hdr-search:focus{background:rgba(255,255,255,.25)}
-.brand-bar{display:flex;gap:5px;flex-wrap:wrap}
-.br-btn{padding:4px 11px;border:1.5px solid rgba(255,255,255,.2);border-radius:20px;background:rgba(255,255,255,.08);color:rgba(255,255,255,.75);font-size:.72rem;font-weight:600;cursor:pointer;transition:all .18s;white-space:nowrap}
-.br-btn:hover{background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.4);color:#fff}
-.br-btn.active{background:var(--accent);border-color:var(--accent);color:#fff}
+/* ============================= HEADER ============================= */
+header{
+  position:sticky;top:0;z-index:60;flex-shrink:0;
+  background:
+    radial-gradient(120% 180% at 12% -40%,rgba(214,168,79,.28),transparent 60%),
+    radial-gradient(90% 160% at 95% -30%,rgba(255,200,87,.14),transparent 55%),
+    linear-gradient(135deg,var(--navy-950),var(--navy-800) 60%,var(--navy-700));
+  color:#fff;padding:calc(9px + var(--safe-top)) 16px 9px;
+  box-shadow:0 6px 26px rgba(6,20,38,.45);
+  border-bottom:1px solid rgba(214,168,79,.22);
+}
+.hdr-inner{display:flex;align-items:center;gap:18px}
+.hdr-right{flex:1;min-width:0;display:flex;flex-direction:column;gap:10px}
+.hdr-top{display:flex;align-items:center;gap:14px}
 
-/* MAIN LAYOUT */
+/* LOGO */
+.logo-btn{
+  display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;
+  background:transparent;border:none;border-radius:50%;padding:3px;
+  position:relative;overflow:hidden;
+  transition:transform var(--transition-fast),box-shadow var(--transition-med),filter var(--transition-fast);
+  font-family:inherit;color:inherit;
+}
+.logo-btn::after{
+  content:"";position:absolute;top:0;left:-130%;width:55%;height:100%;
+  background:linear-gradient(105deg,transparent,rgba(255,255,255,.5),transparent);
+  transform:skewX(-18deg);animation:logoShine 6.5s ease-in-out infinite;pointer-events:none;border-radius:50%;
+}
+@keyframes logoShine{0%,72%{left:-130%}87%{left:150%}100%{left:150%}}
+.logo-btn:hover{transform:translateY(-1px) scale(1.04);box-shadow:0 6px 22px rgba(255,200,87,.28)}
+.logo-btn:active{transform:translateY(0) scale(.98)}
+.logo-mark{
+  width:76px;height:76px;flex-shrink:0;display:flex;align-items:center;justify-content:center;border-radius:50%;
+  animation:logoGlow 3.8s ease-in-out infinite;
+}
+.logo-mark img{width:100%;height:100%;object-fit:contain;display:block;border-radius:50%}
+@keyframes logoGlow{
+  0%,100%{filter:drop-shadow(0 3px 10px rgba(0,0,0,.55)) drop-shadow(0 0 5px rgba(255,200,87,.32))}
+  50%{filter:drop-shadow(0 4px 13px rgba(0,0,0,.55)) drop-shadow(0 0 15px rgba(255,200,87,.62))}
+}
+.logo-btn:hover .logo-mark{filter:drop-shadow(0 5px 16px rgba(0,0,0,.5)) drop-shadow(0 0 20px rgba(255,200,87,.75));animation:none}
+
+/* SEARCH */
+.srch-wrap{position:relative;display:flex;align-items:center;flex:1;max-width:440px}
+.srch-ic{position:absolute;left:14px;width:17px;height:17px;color:rgba(255,255,255,.5);pointer-events:none}
+.hdr-search{
+  width:100%;padding:11px 38px 11px 40px;border:1.5px solid rgba(214,168,79,.22);border-radius:var(--radius-md);
+  background:rgba(255,255,255,.10);color:#fff;font-size:.9rem;font-family:inherit;outline:none;
+  transition:border-color var(--transition-fast),background var(--transition-fast),box-shadow var(--transition-fast);
+}
+.hdr-search::placeholder{color:rgba(255,255,255,.5)}
+.hdr-search:focus{border-color:var(--gold-400);background:rgba(255,255,255,.16);box-shadow:0 0 0 4px rgba(214,168,79,.16)}
+.srch-clear{position:absolute;right:8px;width:26px;height:26px;display:none;align-items:center;justify-content:center;
+  background:rgba(255,255,255,.12);border:none;border-radius:50%;color:rgba(255,255,255,.75);cursor:pointer;font-size:.85rem;line-height:1}
+.srch-clear:hover{background:rgba(255,255,255,.24);color:#fff}
+.hdr-search:not(:placeholder-shown) ~ .srch-clear{display:flex}
+
+.hdr-actions{display:flex;align-items:center;gap:9px;margin-left:auto}
+.icon-btn{
+  display:inline-flex;align-items:center;gap:7px;padding:9px 13px;border-radius:12px;cursor:pointer;
+  background:rgba(255,255,255,.08);border:1.5px solid rgba(214,168,79,.22);color:rgba(255,255,255,.9);
+  font-size:.78rem;font-weight:600;font-family:inherit;white-space:nowrap;transition:all var(--transition-fast);min-height:40px;
+}
+.icon-btn svg{width:16px;height:16px}
+.icon-btn:hover{background:rgba(255,255,255,.16);border-color:rgba(231,200,121,.6);color:#fff}
+.mob-cat-btn{display:none}
+
+/* CART BUTTON */
+.cart-btn-wrap{position:relative;display:inline-flex;align-items:flex-start}
+.cart-btn{
+  display:flex;align-items:center;gap:8px;padding:9px 16px;border:none;border-radius:13px;cursor:pointer;
+  background:linear-gradient(135deg,var(--gold-400),var(--gold-500));color:var(--navy-950);
+  font-weight:700;font-size:.82rem;font-family:inherit;white-space:nowrap;min-height:40px;
+  box-shadow:0 6px 18px rgba(214,168,79,.35);transition:transform var(--transition-fast),box-shadow var(--transition-med);
+}
+.cart-btn svg{width:17px;height:17px}
+.cart-btn:hover{transform:translateY(-1px);box-shadow:0 10px 26px rgba(214,168,79,.45)}
+.cart-btn:active{transform:translateY(0)}
+.cart-btn .c-txt{display:flex;flex-direction:column;align-items:flex-start;line-height:1.05}
+.cart-btn .c-txt b{font-size:.82rem}
+#cSum2{font-size:.6rem;font-weight:600;opacity:.75}
+.cart-btn.pulse{animation:cartPulse .5s ease}
+@keyframes cartPulse{0%{transform:scale(1)}35%{transform:scale(1.09)}100%{transform:scale(1)}}
+.badge{
+  position:absolute;top:-7px;right:-7px;min-width:21px;height:21px;border-radius:11px;
+  background:var(--navy-900);color:var(--gold-300);border:2px solid var(--gold-400);
+  display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.68rem;padding:0 4px;z-index:2;
+}
+
+/* BRAND BAR */
+.brand-bar{display:flex;gap:7px;overflow-x:auto;scrollbar-width:none;padding-bottom:1px;-webkit-overflow-scrolling:touch}
+.brand-bar::-webkit-scrollbar{display:none}
+.br-btn{
+  padding:6px 15px;border:1.5px solid rgba(214,168,79,.28);border-radius:999px;
+  background:rgba(255,255,255,.06);color:rgba(255,255,255,.78);
+  font-size:.74rem;font-weight:600;font-family:inherit;cursor:pointer;white-space:nowrap;transition:all var(--transition-fast)}
+.br-btn:hover{background:rgba(255,255,255,.13);border-color:rgba(231,200,121,.6);color:#fff}
+.br-btn.active{
+  background:linear-gradient(135deg,var(--gold-400),var(--gold-500));border-color:var(--gold-400);
+  color:var(--navy-950);font-weight:700;box-shadow:0 4px 14px rgba(214,168,79,.35)}
+
+/* ============================= LAYOUT ============================= */
 .main-wrap{display:flex;flex:1;overflow:hidden;min-height:0}
 
 /* SIDEBAR */
-.sidebar{width:var(--sidebar-w);flex-shrink:0;background:#fff;border-right:1px solid #e0e4eb;display:flex;flex-direction:column;overflow:hidden;min-height:0}
-.sidebar-head{padding:11px 13px 9px;background:var(--dark2);color:#fff;font-size:.68rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;flex-shrink:0;border-bottom:2px solid var(--accent)}
-.cat-list{overflow-y:auto;flex:1;padding:6px 0}
-.cat-list::-webkit-scrollbar{width:4px}
-.cat-list::-webkit-scrollbar-thumb{background:#ddd;border-radius:4px}
-.cat-item{display:flex;align-items:center;gap:8px;padding:7px 13px;cursor:pointer;font-size:.78rem;color:#444;border-left:3px solid transparent;transition:all .15s}
-.cat-item:hover{background:#f5f6fa;color:var(--dark);border-left-color:#ccc}
-.cat-item.active{background:linear-gradient(90deg,#eef0fa,#f8f9fc);color:var(--dark);font-weight:700;border-left-color:var(--accent)}
-.cat-icon{font-size:1rem;width:20px;text-align:center;flex-shrink:0}
+.sidebar{width:var(--sidebar-w);flex-shrink:0;background:var(--bg-soft);border-right:1px solid var(--border-soft);
+  display:flex;flex-direction:column;overflow:hidden;min-height:0}
+.sidebar-head{
+  padding:13px 16px 11px;background:linear-gradient(135deg,var(--navy-900),var(--navy-800));color:#fff;
+  font-size:.64rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;flex-shrink:0;
+  border-bottom:2px solid var(--gold-500);display:flex;align-items:center;gap:8px}
+.sidebar-head svg{width:15px;height:15px;color:var(--gold-300)}
+.cat-list{overflow-y:auto;flex:1;padding:8px 8px}
+.cat-list::-webkit-scrollbar{width:6px}
+.cat-list::-webkit-scrollbar-thumb{background:rgba(11,35,66,.18);border-radius:6px}
+.cat-item{display:flex;align-items:center;gap:10px;padding:9px 11px;cursor:pointer;font-size:.8rem;color:var(--text-main);
+  border-radius:10px;border-left:3px solid transparent;transition:all var(--transition-fast);margin-bottom:1px}
+.cat-item:hover{background:#F3EFE4}
+.cat-item.active{background:linear-gradient(90deg,rgba(214,168,79,.16),rgba(244,225,161,.10));
+  color:var(--navy-900);font-weight:700;border-left-color:var(--gold-500)}
+.cat-icon{font-size:1rem;width:22px;text-align:center;flex-shrink:0;filter:saturate(.85)}
 .cat-label{flex:1;line-height:1.25;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.cat-count{font-size:.64rem;font-weight:700;background:#e8eaf0;color:#888;padding:1px 6px;border-radius:10px;flex-shrink:0}
-.cat-item.active .cat-count{background:var(--accent);color:#fff}
+.cat-count{font-size:.64rem;font-weight:700;background:#EDE7D8;color:var(--text-muted);padding:2px 7px;border-radius:10px;flex-shrink:0}
+.cat-item.active .cat-count{background:var(--gold-500);color:#fff}
 
 /* CONTENT */
 .content{flex:1;display:flex;flex-direction:column;overflow:hidden;min-width:0;min-height:0}
-/* BACK TO TOP */
-.back-top{position:fixed;bottom:22px;right:18px;z-index:300;background:var(--dark);color:#fff;border:none;border-radius:50%;width:42px;height:42px;font-size:1.1rem;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.25);opacity:0;transform:translateY(10px);transition:all .25s;pointer-events:none}
-.back-top.show{opacity:1;transform:translateY(0);pointer-events:all}
-.back-top:hover{background:var(--accent)}
-/* STATS BAR */
-.stats{padding:5px 12px;background:#e8f4fd;font-size:.73rem;color:#556;border-bottom:1px solid #d4e8f7;flex-shrink:0;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.stats-brand-pill{background:#fff;border:1px solid #c8dff0;border-radius:20px;padding:1px 8px;font-size:.67rem;color:#445;font-weight:600;white-space:nowrap}
-.stats-brand-pill span{color:var(--accent);font-weight:700}
+.stats{padding:8px 16px;background:var(--bg-soft);font-size:.76rem;color:var(--text-muted);
+  border-bottom:1px solid var(--border-soft);flex-shrink:0;display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.stats strong{color:var(--navy-800)}
+.stats-brand-pill{background:#fff;border:1px solid var(--border-soft);border-radius:999px;padding:2px 10px;
+  font-size:.68rem;color:var(--text-muted);font-weight:600;white-space:nowrap}
+.stats-brand-pill span{color:var(--gold-500);font-weight:800}
+.sort-sel{padding:5px 10px;border:1px solid var(--border-soft);border-radius:9px;font-size:.72rem;font-weight:600;
+  color:var(--navy-800);background:#fff;cursor:pointer;outline:none;margin-left:auto;font-family:inherit}
+.sort-sel:focus{border-color:var(--gold-400)}
 
 /* GRID */
-.grid{display:grid;grid-template-columns:repeat(5,1fr);grid-auto-rows:520px;gap:14px;padding:14px;overflow-y:auto;flex:1;min-height:0}
-.card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.09);border:2px solid #e8eaef;transition:transform .15s,box-shadow .15s;display:flex;flex-direction:column;height:100%}
-.card:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,.13);border-color:#ccd}
-.card.selected{border-color:var(--accent)}
-.card-img-wrap{position:relative;width:100%;height:280px;flex-shrink:0;overflow:hidden;cursor:pointer;background:#f0f2f5}
-.card-thumb{width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform .3s}
-.card-thumb:hover{transform:scale(1.04)}
-.card-ph{width:100%;height:200px;flex-shrink:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font-size:2rem;background:linear-gradient(135deg,#e8eaf0,#d0d3de);cursor:pointer}
-.card-ph small{font-size:.6rem;color:#999;font-weight:600;letter-spacing:.5px;text-transform:uppercase}
-.card-img-wrap .overlay{position:absolute;inset:0;background:rgba(26,26,46,.55);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .2s}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(232px,1fr));grid-auto-rows:min-content;gap:18px;
+  padding:18px;overflow-y:auto;flex:1;min-height:0;background:var(--bg-main)}
+.grid::-webkit-scrollbar{width:9px}
+.grid::-webkit-scrollbar-thumb{background:rgba(11,35,66,.16);border-radius:9px}
+.grid::-webkit-scrollbar-thumb:hover{background:rgba(11,35,66,.28)}
+
+.card{background:var(--bg-soft);border-radius:20px;overflow:hidden;box-shadow:var(--shadow-card);
+  border:1.5px solid var(--border-soft);transition:transform var(--transition-med),box-shadow var(--transition-med),border-color var(--transition-fast);
+  display:flex;flex-direction:column;animation:cardIn .45s cubic-bezier(.22,1,.36,1) both}
+@keyframes cardIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.card:hover{transform:translateY(-5px);box-shadow:var(--shadow-card-hover);border-color:rgba(214,168,79,.4)}
+.card.selected{border-color:var(--gold-500);box-shadow:0 0 0 3px rgba(214,168,79,.22),var(--shadow-card)}
+.card-img-wrap{position:relative;width:100%;height:250px;flex-shrink:0;overflow:hidden;cursor:pointer;
+  background:linear-gradient(135deg,#f3f1ea,#e7e3d8)}
+.card-thumb{width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform .45s ease}
+.card:hover .card-thumb{transform:scale(1.035)}
+.card-ph{width:100%;height:250px;flex-shrink:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
+  font-size:2.2rem;background:linear-gradient(135deg,#ece7dc,#dcd6c7);cursor:pointer;color:var(--navy-700)}
+.card-ph small{font-size:.6rem;color:var(--text-muted);font-weight:700;letter-spacing:.5px;text-transform:uppercase}
+.card-img-wrap .overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(6,20,38,.62),rgba(6,20,38,.12) 55%,transparent);
+  display:flex;align-items:flex-end;justify-content:center;padding-bottom:16px;opacity:0;transition:opacity var(--transition-med)}
 .card-img-wrap:hover .overlay{opacity:1}
-.overlay span{color:#fff;font-size:.78rem;font-weight:700;background:rgba(0,0,0,.4);padding:5px 13px;border-radius:20px;border:1.5px solid rgba(255,255,255,.4)}
-.card-body{padding:10px 12px 10px;flex:1;display:flex;flex-direction:column;min-height:0;overflow:hidden}
-.card-code{font-family:monospace;font-size:.72rem;color:#999;margin-bottom:2px;font-weight:600}
-.card-name{font-weight:700;font-size:.9rem;color:var(--dark);margin-bottom:3px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;line-height:1.3;min-height:2.6em}
-.card-cat{font-size:.66rem;color:#fff;background:var(--dark2);padding:2px 8px;border-radius:10px;display:inline-block;margin-bottom:4px}
-.card-brand{font-size:.68rem;color:#888;margin-bottom:3px}
-.card-specs{font-size:.7rem;color:#666;line-height:1.6;flex-shrink:0}
-.spec-badges{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px}
-.spec-badge{font-size:.65rem;font-weight:600;padding:2px 7px;border-radius:6px;white-space:nowrap}
-.spec-badge.power{background:#e8f5e9;color:#2e7d32}
-.spec-badge.temp{background:#fff3e0;color:#e65100}
-.spec-badge.ip{background:#e3f2fd;color:#1565c0}
-.spec-badge.lum{background:#fce4ec;color:#c62828}
-.spec-badge.mat{background:#f3e5f5;color:#6a1b9a}
-.spec-badge.dim{background:#fff0f1;color:var(--accent);border:1px solid #fcc}
-.card-color{display:inline-flex;align-items:center;gap:4px;font-size:.68rem;font-weight:700;color:var(--dark);background:#f0f2f5;border-radius:6px;padding:2px 6px;margin-top:3px;margin-right:3px;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.card-dim{display:inline-flex;align-items:center;gap:4px;font-size:.68rem;font-weight:700;color:var(--accent);background:#fff0f1;border:1px solid #fcc;border-radius:6px;padding:2px 6px;margin-top:3px;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.qty-row{display:flex;align-items:center;gap:4px;margin-top:auto;padding-top:4px}
-.qty-row button{width:26px;height:26px;border:none;border-radius:6px;background:#f0f0f0;font-size:.95rem;cursor:pointer;font-weight:700;flex-shrink:0}
-.qty-row button:hover{background:var(--accent);color:#fff}
-.qty-num{font-weight:700;min-width:22px;text-align:center;font-size:.9rem}
-.add-btn{width:100%;padding:6px 0;border:none;border-radius:8px;background:var(--accent);color:#fff;font-size:.78rem;font-weight:700;cursor:pointer;margin-top:6px;letter-spacing:.3px;transition:background .15s}
-.add-btn:hover{background:#c1121f}
-.add-btn.in{background:var(--dark)}
-.add-btn.in:hover{background:#2d2d4e}
-.no-res{grid-column:1/-1;text-align:center;padding:60px;color:#aaa}
-/* CONTACT INFO MODAL */
-.info-ov{position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:700;display:none;align-items:center;justify-content:center;padding:16px}
-.info-ov.open{display:flex}
-.info-modal{background:#fff;width:100%;max-width:400px;border-radius:20px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.35)}
-.info-head{background:linear-gradient(135deg,var(--dark),var(--dark2));padding:22px 20px;color:#fff;text-align:center}
-.info-head h2{font-size:1.1rem;margin-bottom:4px}
-.info-head p{font-size:.75rem;opacity:.65}
-.info-body{padding:22px 20px}
-.info-row{display:flex;align-items:center;gap:13px;padding:11px 0;border-bottom:1px solid #f0f0f0}
-.info-row:last-child{border:none}
-.info-ico{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
-.info-ico.green{background:#e8fdf0}
-.info-ico.blue{background:#e8f0fd}
-.info-ico.red{background:#fde8e8}
-.info-ico.orange{background:#fdf4e8}
-.info-txt strong{display:block;font-size:.85rem;color:#222}
-.info-txt small{font-size:.72rem;color:#999}
-.info-close{width:100%;padding:13px;border:none;border-radius:0 0 20px 20px;background:var(--dark);color:#fff;font-weight:700;cursor:pointer;font-size:.88rem}
-.info-close:hover{background:var(--accent)}
+.overlay span{color:#fff;font-size:.76rem;font-weight:700;letter-spacing:.3px;background:rgba(214,168,79,.9);color:var(--navy-950);
+  padding:7px 15px;border-radius:999px;display:inline-flex;align-items:center;gap:6px;box-shadow:0 4px 14px rgba(0,0,0,.3)}
+.overlay span svg{width:14px;height:14px}
+.card-body{padding:12px 13px 12px;flex:1;display:flex;flex-direction:column}
+.card-code{font-family:"Inter",monospace;font-size:.68rem;color:var(--navy-700);font-weight:700;letter-spacing:.4px;
+  background:#EEEADD;display:inline-block;align-self:flex-start;padding:2px 8px;border-radius:6px;margin-bottom:6px}
+.card-name{font-family:var(--font-brand);font-weight:700;font-size:.98rem;color:var(--navy-900);margin-bottom:5px;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;line-height:1.28;min-height:1.3em}
+.card-cat{font-size:.64rem;color:var(--gold-300);background:var(--navy-800);padding:3px 9px;border-radius:999px;
+  display:inline-block;align-self:flex-start;font-weight:600;letter-spacing:.3px;margin-bottom:5px}
+.card-series{font-size:.62rem;color:var(--navy-700);background:rgba(214,168,79,.14);padding:2px 8px;border-radius:8px;
+  display:inline-block;align-self:flex-start;margin-bottom:5px;font-weight:700;letter-spacing:.4px;text-transform:uppercase}
+.card-color{display:inline-flex;align-items:center;gap:6px;font-size:.68rem;font-weight:600;color:var(--navy-900);
+  background:#F3EFE4;border-radius:7px;padding:3px 8px;margin-bottom:5px;align-self:flex-start;max-width:100%;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.card-color::before{content:"";width:10px;height:10px;border-radius:50%;flex-shrink:0;
+  background:conic-gradient(#D6A84F,#E7C879,#F4E1A1,#D6A84F);border:1px solid rgba(0,0,0,.15)}
+.card-brand{font-size:.7rem;color:var(--text-muted);margin-bottom:7px;font-weight:600}
 
-/* HEADER CTA button */
-.offer-cta{padding:6px 13px;border:none;border-radius:8px;background:#fff;color:var(--accent);font-weight:700;cursor:pointer;font-size:.78rem;white-space:nowrap;border:2px solid rgba(255,255,255,.4);transition:all .18s}
-.offer-cta:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+.spec-badges{display:flex;flex-wrap:wrap;gap:5px;margin-top:2px;margin-bottom:2px}
+.spec-badge{display:inline-flex;align-items:center;gap:4px;font-size:.66rem;font-weight:700;padding:3px 8px;border-radius:7px;white-space:nowrap;line-height:1.2}
+.spec-badge .b-ic{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.spec-badge.power{background:rgba(214,168,79,.16);color:#8a6a1f}
+.spec-badge.temp{background:rgba(255,200,87,.16);color:#9a6a12}
+.spec-badge.ip{background:rgba(47,111,163,.12);color:var(--info)}
+.spec-badge.lum{background:rgba(231,200,121,.20);color:#8a6a1f}
+.spec-badge.mat{background:rgba(11,35,66,.07);color:var(--navy-700)}
+.spec-badge.dim{background:rgba(11,35,66,.06);color:var(--navy-700)}
+.spec-badge.warranty{background:rgba(27,138,74,.12);color:var(--success)}
 
-/* WELCOME MODAL — 2 stores style */
-.wc-ov{position:fixed;inset:0;background:rgba(10,10,30,.82);z-index:800;display:flex;align-items:center;justify-content:center;padding:12px}
-.wc-modal{background:#fff;width:100%;max-width:560px;border-radius:22px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.5);animation:wcIn .4s cubic-bezier(.22,1,.36,1)}
-@keyframes wcIn{from{opacity:0;transform:scale(.93) translateY(20px)}to{opacity:1;transform:scale(1) translateY(0)}}
-.wc-head{background:linear-gradient(135deg,#1a1a2e 0%,#16213e 60%,#0f3460 100%);padding:22px 24px 18px;text-align:center}
-.wc-logo-row{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:5px}
-.wc-logo-icon{font-size:1.8rem;line-height:1}
-.wc-logo-text strong{display:block;color:#fff;font-size:.95rem;font-weight:800;letter-spacing:.4px}
-.wc-logo-text span{color:rgba(255,255,255,.45);font-size:.65rem;letter-spacing:1px;text-transform:uppercase}
-.wc-tagline{color:rgba(255,255,255,.4);font-size:.7rem;letter-spacing:.3px;text-align:center}
-.wc-stores{display:grid;grid-template-columns:1fr 1fr;gap:0}
-.wc-store{padding:16px 22px}
-.wc-store:first-child{border-right:1px solid #eef0f5}
-.wc-store-title{font-size:.6rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
-.wc-store-line{display:flex;align-items:center;gap:9px;margin-bottom:8px}
-.wc-store-line .ic{font-size:.82rem;flex-shrink:0;width:18px;text-align:center}
-.wc-store-line p{font-size:.76rem;color:#333;line-height:1.4;margin:0}
-.wc-store-line a{font-size:.76rem;color:#1a1a2e;font-weight:600;text-decoration:none}
-.wc-store-line a:hover{color:var(--accent)}
-.wc-divider{height:1px;background:linear-gradient(90deg,transparent,#e0e4eb,transparent);margin:0}
-.wc-hours{padding:13px 22px 12px;background:#f8f9fc}
-.wc-hours-title{font-size:.6rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);margin-bottom:9px}
-.wc-hours-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
-.wc-hours-row{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:.73rem;background:#fff;border-radius:7px;padding:6px 10px;border:1px solid #eef0f5}
-.wc-hours-row span:first-child{color:#666}
-.wc-hours-row span:last-child{color:#1a1a2e;font-weight:700;white-space:nowrap}
-.wc-btns{padding:13px 20px 16px;display:flex;gap:10px}
-.wc-enter{flex:1;padding:12px;border:none;border-radius:11px;background:var(--accent);color:#fff;font-size:.88rem;font-weight:700;cursor:pointer;letter-spacing:.3px;transition:background .15s}
-.wc-enter:hover{background:#c1121f}
-.wc-skip{padding:12px 16px;border:1.5px solid #e0e4eb;border-radius:11px;background:#fff;color:#aaa;font-size:.78rem;cursor:pointer;transition:all .15s;white-space:nowrap}
-.wc-skip:hover{border-color:#ccc;color:#777}
-
-/* INFO LINK in header */
-.info-link{padding:6px 11px;border:1.5px solid rgba(255,255,255,.25);border-radius:8px;background:rgba(255,255,255,.08);color:rgba(255,255,255,.8);font-size:.75rem;cursor:pointer;white-space:nowrap;transition:all .18s}
-.info-link:hover{background:rgba(255,255,255,.18);color:#fff}
-
-/* MOBILE */
-@media(max-width:600px){
-  .sidebar{display:none}
-  .grid{grid-template-columns:repeat(2,1fr);gap:6px;padding:7px}
-  .card-img-wrap,.card-ph{height:105px}
-  .card-body{padding:5px 7px 7px}
-  .card-name{font-size:.75rem}
-  .card-specs{display:none}
-  .hdr-search{width:120px;font-size:.75rem}
-  .add-btn{font-size:.7rem;padding:5px 0}
-  .qty-row button{width:22px;height:22px;font-size:.8rem}
-  .wc-stores{grid-template-columns:1fr}
-  .wc-store:first-child{border-right:none;border-bottom:1px solid #eef0f5}
-  .wc-hours-grid{grid-template-columns:1fr}
-  .wc-btns{flex-direction:column}
-  header h1{font-size:.82rem}
-  .info-link span{display:none}
-}
-@media(max-width:380px){
-  .grid{grid-template-columns:1fr}
-  .hdr-search{width:90px}
-}
-
-
-.toast{position:fixed;top:70px;right:16px;background:#1aaa55;color:#fff;padding:10px 18px;border-radius:10px;font-size:.82rem;font-weight:700;z-index:999;opacity:0;transform:translateY(-10px);transition:all .25s;pointer-events:none;box-shadow:0 4px 16px rgba(0,0,0,.2)}
-.toast.show{opacity:1;transform:translateY(0)}
-.toast.remove{background:#e63946}
-
+.qty-row{display:flex;align-items:center;gap:6px;margin-top:auto;padding-top:9px}
+.qty-row button{width:30px;height:30px;border:1.5px solid var(--border-soft);border-radius:9px;background:#fff;
+  font-size:1.05rem;cursor:pointer;font-weight:700;flex-shrink:0;color:var(--navy-800);display:flex;align-items:center;justify-content:center;
+  transition:all var(--transition-fast)}
+.qty-row button:hover{background:var(--gold-500);color:#fff;border-color:var(--gold-500)}
+.qty-num{font-weight:800;min-width:26px;text-align:center;font-size:.95rem;color:var(--navy-900)}
+.add-btn{width:100%;padding:10px 0;border:none;border-radius:12px;
+  background:linear-gradient(135deg,var(--gold-400),var(--gold-500));color:var(--navy-950);
+  font-size:.8rem;font-weight:700;font-family:inherit;cursor:pointer;margin-top:8px;letter-spacing:.2px;
+  transition:transform var(--transition-fast),box-shadow var(--transition-med),background var(--transition-fast);
+  box-shadow:0 5px 14px rgba(214,168,79,.28)}
+.add-btn:hover{transform:translateY(-1px);box-shadow:0 9px 22px rgba(214,168,79,.4)}
+.add-btn:active{transform:translateY(0)}
+.add-btn.in{background:linear-gradient(135deg,#0d6b3a,var(--success));color:#fff;box-shadow:0 5px 14px rgba(27,138,74,.3)}
+.no-res{grid-column:1/-1;text-align:center;padding:70px 20px;color:var(--text-muted);font-size:.95rem}
 
 /* PAGINATION */
-.pag-bar{display:flex;align-items:center;justify-content:center;gap:8px;padding:8px 12px;background:#fff;border-top:1px solid #e0e4eb;flex-shrink:0}
-.pag-btn{padding:5px 14px;border:1.5px solid #d0d4de;border-radius:8px;background:#fff;color:var(--dark);font-size:.78rem;font-weight:700;cursor:pointer;transition:all .15s}
-.pag-btn:hover:not(:disabled){background:var(--dark);color:#fff;border-color:var(--dark)}
+.pag-bar{display:flex;align-items:center;justify-content:center;gap:8px;padding:10px 14px;
+  background:var(--bg-soft);border-top:1px solid var(--border-soft);flex-shrink:0}
+.pag-btn{padding:7px 15px;border:1.5px solid var(--border-soft);border-radius:10px;background:#fff;color:var(--navy-800);
+  font-size:.78rem;font-weight:700;font-family:inherit;cursor:pointer;transition:all var(--transition-fast)}
+.pag-btn:hover:not(:disabled){background:var(--navy-800);color:#fff;border-color:var(--navy-800)}
 .pag-btn:disabled{opacity:.35;cursor:default}
-.pag-pages{display:flex;gap:4px;align-items:center}
-.pag-num{width:30px;height:30px;border:1.5px solid #e0e4eb;border-radius:7px;background:#fff;color:#555;font-size:.75rem;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s}
-.pag-num:hover{background:#f0f2f5}
-.pag-num.active{background:var(--accent);color:#fff;border-color:var(--accent)}
-.pag-dots{padding:0 4px;color:#aaa;font-size:.85rem}
+.pag-pages{display:flex;gap:5px;align-items:center}
+.pag-num{width:33px;height:33px;border:1.5px solid var(--border-soft);border-radius:9px;background:#fff;color:var(--navy-700);
+  font-size:.76rem;font-weight:700;font-family:inherit;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all var(--transition-fast)}
+.pag-num:hover{background:#F3EFE4}
+.pag-num.active{background:linear-gradient(135deg,var(--gold-400),var(--gold-500));color:var(--navy-950);border-color:var(--gold-500)}
+.pag-dots{padding:0 3px;color:var(--text-muted)}
 
-.badge{background:var(--accent);min-width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.72rem;padding:0 4px;flex-shrink:0;margin-left:-8px;margin-top:-8px}
-.cart-btn{padding:6px 14px;border:none;border-radius:8px;background:var(--accent);color:#fff;font-weight:700;cursor:pointer;font-size:.82rem;display:flex;align-items:center;gap:6px;position:relative;white-space:nowrap}
-.cart-btn-wrap{position:relative;display:inline-flex;align-items:flex-start}
+/* BACK TO TOP */
+.back-top{position:fixed;bottom:calc(22px + var(--safe-bottom));right:18px;z-index:300;
+  background:var(--navy-800);color:var(--gold-300);border:1px solid rgba(214,168,79,.5);border-radius:50%;
+  width:46px;height:46px;cursor:pointer;box-shadow:0 8px 22px rgba(6,20,38,.35);
+  opacity:0;transform:translateY(10px);transition:all var(--transition-med);pointer-events:none;
+  display:flex;align-items:center;justify-content:center}
+.back-top svg{width:20px;height:20px}
+.back-top.show{opacity:1;transform:translateY(0);pointer-events:all}
+.back-top:hover{background:var(--gold-500);color:var(--navy-950)}
 
-/* PAGE VIEWER A4 */
-.pg-ov{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:500;display:none;flex-direction:column;align-items:center}
+/* ============================= MODALS (shared) ============================= */
+.ov{position:fixed;inset:0;z-index:500;display:none}
+.ov.open{display:flex}
+
+/* PAGE VIEWER */
+.pg-ov{position:fixed;inset:0;background:rgba(6,12,22,.94);z-index:500;display:none;flex-direction:column;align-items:center;
+  padding-top:var(--safe-top);padding-bottom:var(--safe-bottom)}
 .pg-ov.open{display:flex}
-.pg-topbar{width:100%;background:var(--dark);display:flex;align-items:center;gap:10px;padding:10px 16px;flex-shrink:0}
+.pg-topbar{width:100%;background:linear-gradient(135deg,var(--navy-900),var(--navy-800));display:flex;align-items:center;gap:12px;
+  padding:12px 18px;flex-shrink:0;border-bottom:1px solid rgba(214,168,79,.25)}
 .pg-topbar-info{flex:1;min-width:0}
-.pg-topbar-info strong{display:block;color:#fff;font-size:.9rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.pg-topbar-info small{color:rgba(255,255,255,.6);font-size:.72rem}
-.pg-close-btn{background:none;border:1.5px solid rgba(255,255,255,.3);color:#fff;font-size:1rem;cursor:pointer;padding:4px 10px;border-radius:6px;line-height:1.4}
-.pg-close-btn:hover{background:rgba(255,255,255,.1)}
-.pg-scroll{width:100%;flex:1;overflow-y:auto;overflow-x:hidden;display:flex;justify-content:center;align-items:flex-start;background:#2a2a2a;padding:20px}
-.pg-a4{position:relative;width:calc(100vw - 40px);max-width:1100px;background:#fff;border-radius:2px;box-shadow:0 12px 50px rgba(0,0,0,.8);flex-shrink:0}
-.pg-a4 img{display:block;width:100%;height:auto;border-radius:2px}
-.pg-a4-loading{width:600px;aspect-ratio:1/1.414;display:flex;align-items:center;justify-content:center;color:#888;font-size:.9rem;background:#f5f5f5}
-.pg-a4-noimg{width:600px;aspect-ratio:1/1.414;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;color:#aaa;font-size:.85rem;text-align:center;padding:20px}
-.pg-botbar{width:100%;background:#111;padding:10px 16px;display:flex;gap:10px;align-items:center;flex-shrink:0}
-.pg-qty{display:flex;align-items:center;gap:8px}
-.pg-qty button{width:32px;height:32px;border:none;border-radius:7px;background:#333;color:#fff;font-size:1rem;cursor:pointer;font-weight:700}
-.pg-qty button:hover{background:var(--accent)}
-.pg-qty span{color:#fff;font-weight:700;min-width:24px;text-align:center;font-size:1rem}
-.pg-add{flex:1;padding:11px;border:none;border-radius:9px;background:var(--accent);color:#fff;font-weight:700;font-size:.9rem;cursor:pointer}
-.pg-add.in{background:#1aaa55}
+.pg-topbar-info strong{display:block;color:#fff;font-size:.92rem;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pg-topbar-info small{color:var(--gold-300);font-size:.72rem}
+.pg-close-btn{background:rgba(255,255,255,.08);border:1.5px solid rgba(214,168,79,.4);color:#fff;font-size:.85rem;font-weight:600;
+  cursor:pointer;padding:8px 14px;border-radius:10px;display:inline-flex;align-items:center;gap:7px;font-family:inherit;transition:all var(--transition-fast)}
+.pg-close-btn svg{width:15px;height:15px}
+.pg-close-btn:hover{background:rgba(255,255,255,.18)}
+.pg-scroll{width:100%;flex:1;overflow-y:auto;overflow-x:hidden;display:flex;justify-content:center;align-items:flex-start;
+  background:#1a1f26;padding:22px}
+.pg-a4{position:relative;width:calc(100vw - 44px);max-width:1000px;background:#fff;border-radius:6px;
+  box-shadow:0 20px 70px rgba(0,0,0,.7),0 0 0 1px rgba(214,168,79,.15);flex-shrink:0}
+.pg-a4 img{display:block;width:100%;height:auto;border-radius:6px}
+.pg-a4-loading{width:600px;max-width:100%;aspect-ratio:1/1.414;display:flex;align-items:center;justify-content:center;
+  color:var(--text-muted);font-size:.9rem;background:#f5f5f5;border-radius:6px}
+.pg-a4-noimg{width:600px;max-width:100%;aspect-ratio:1/1.414;display:flex;align-items:center;justify-content:center;flex-direction:column;
+  gap:10px;color:var(--text-muted);font-size:.85rem;text-align:center;padding:20px;background:#f5f5f5;border-radius:6px}
+.pg-botbar{width:100%;background:linear-gradient(135deg,var(--navy-950),var(--navy-900));padding:12px 18px calc(12px + var(--safe-bottom));
+  display:flex;gap:12px;align-items:center;flex-shrink:0;border-top:1px solid rgba(214,168,79,.25)}
+.pg-qty{display:flex;align-items:center;gap:9px;background:rgba(255,255,255,.06);border-radius:11px;padding:4px}
+.pg-qty button{width:36px;height:36px;border:none;border-radius:9px;background:rgba(255,255,255,.1);color:#fff;font-size:1.1rem;cursor:pointer;font-weight:700}
+.pg-qty button:hover{background:var(--gold-500);color:var(--navy-950)}
+.pg-qty span{color:#fff;font-weight:800;min-width:26px;text-align:center;font-size:1.05rem}
+.pg-add{flex:1;padding:13px;border:none;border-radius:11px;background:linear-gradient(135deg,var(--gold-400),var(--gold-500));
+  color:var(--navy-950);font-weight:700;font-size:.92rem;font-family:inherit;cursor:pointer;transition:all var(--transition-fast)}
+.pg-add:hover{transform:translateY(-1px)}
+.pg-add.in{background:linear-gradient(135deg,#0d6b3a,var(--success));color:#fff}
 
-/* CART MODAL */
-.cart-ov{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:400;display:none;align-items:flex-end}
-.cart-ov.open{display:flex}
-.cart-modal{background:#fff;width:100%;max-height:85vh;border-radius:20px 20px 0 0;overflow-y:auto;padding:17px}
-.cm-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
-.cm-head h2{font-size:1rem;color:var(--dark)}
-.ci{display:flex;align-items:center;gap:8px;padding:9px 0;border-bottom:1px solid #eee}
-.ci-icon{width:40px;height:40px;border-radius:6px;background:#e8eaf0;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
-.ci-info{flex:1}
-.ci-info strong{display:block;font-size:.85rem;color:var(--dark)}
-.ci-info small{color:#888;font-size:.71rem}
-.ci-qty{display:flex;align-items:center;gap:5px}
-.ci-qty button{width:22px;height:22px;border:none;border-radius:4px;background:#eee;cursor:pointer;font-weight:700;font-size:.8rem}
-.ci-qty button:hover{background:var(--accent);color:#fff}
-.rm{background:none;border:none;color:var(--accent);font-size:1rem;cursor:pointer;margin-left:3px}
-.send-btn{width:100%;padding:14px;border:none;border-radius:12px;background:#1a73e8;color:#fff;font-size:.95rem;font-weight:700;cursor:pointer;margin-top:14px}
-.send-btn:hover{background:#1558b0}
-.clr-btn{width:100%;padding:10px;border:1px solid #ddd;border-radius:12px;background:#fff;font-size:.85rem;cursor:pointer;margin-top:7px;color:#777}
+/* BOTTOM-SHEET MODALS (cart, mobcat) */
+.sheet-ov{position:fixed;inset:0;background:rgba(6,20,38,.6);z-index:400;display:none;align-items:flex-end;backdrop-filter:blur(2px)}
+.sheet-ov.open{display:flex}
+.sheet{background:var(--bg-soft);width:100%;max-height:86vh;border-radius:24px 24px 0 0;overflow-y:auto;
+  padding:20px 18px calc(20px + var(--safe-bottom));box-shadow:0 -20px 60px rgba(6,20,38,.4);
+  animation:sheetIn .32s cubic-bezier(.22,1,.36,1)}
+@keyframes sheetIn{from{transform:translateY(40px);opacity:.4}to{transform:translateY(0);opacity:1}}
+.sheet::before{content:"";display:block;width:44px;height:5px;border-radius:5px;background:rgba(11,35,66,.18);margin:-6px auto 14px}
+.cm-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.cm-head h2{font-family:var(--font-brand);font-size:1.15rem;color:var(--navy-900);display:flex;align-items:center;gap:9px}
+.cm-head h2 svg{width:20px;height:20px;color:var(--gold-500)}
+.cm-x{background:#F0ECDF;border:none;width:34px;height:34px;border-radius:50%;font-size:1rem;cursor:pointer;color:var(--text-muted);display:flex;align-items:center;justify-content:center}
+.cm-x:hover{background:#E5E0D0}
+.ci{display:flex;align-items:center;gap:11px;padding:11px 0;border-bottom:1px solid var(--border-soft)}
+.ci-icon{width:44px;height:44px;border-radius:11px;background:linear-gradient(135deg,var(--navy-800),var(--navy-900));
+  display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+.ci-info{flex:1;min-width:0}
+.ci-info strong{display:block;font-size:.86rem;color:var(--navy-900);font-weight:700}
+.ci-info small{color:var(--text-muted);font-size:.72rem;display:block}
+.ci-qty{display:flex;align-items:center;gap:6px;flex-shrink:0}
+.ci-qty button{width:26px;height:26px;border:1.5px solid var(--border-soft);border-radius:7px;background:#fff;cursor:pointer;font-weight:700;color:var(--navy-800)}
+.ci-qty button:hover{background:var(--gold-500);color:#fff;border-color:var(--gold-500)}
+.ci-qty span{font-weight:700;min-width:22px;text-align:center;font-size:.85rem}
+.rm{background:none;border:none;color:var(--danger);font-size:.95rem;cursor:pointer;margin-left:4px;width:26px;height:26px;border-radius:7px}
+.rm:hover{background:rgba(201,74,74,.1)}
+.send-btn{width:100%;padding:15px;border:none;border-radius:14px;
+  background:linear-gradient(135deg,var(--gold-400),var(--gold-500));color:var(--navy-950);
+  font-size:.98rem;font-weight:800;font-family:inherit;cursor:pointer;margin-top:16px;
+  display:flex;align-items:center;justify-content:center;gap:9px;box-shadow:0 8px 22px rgba(214,168,79,.35);transition:all var(--transition-fast)}
+.send-btn svg{width:18px;height:18px}
+.send-btn:hover{transform:translateY(-1px);box-shadow:0 12px 30px rgba(214,168,79,.45)}
+.clr-btn{width:100%;padding:11px;border:1.5px solid var(--border-soft);border-radius:12px;background:#fff;
+  font-size:.85rem;font-family:inherit;cursor:pointer;margin-top:8px;color:var(--text-muted);transition:all var(--transition-fast)}
+.clr-btn:hover{border-color:var(--danger);color:var(--danger)}
 
-/* CONTACT FORM MODAL */
-.cf-ov{position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:600;display:none;align-items:center;justify-content:center;padding:16px}
-.cf-ov.open{display:flex}
-.cf-modal{background:#fff;width:100%;max-width:420px;border-radius:18px;padding:22px;box-shadow:0 16px 50px rgba(0,0,0,.3)}
-.cf-title{font-size:1rem;font-weight:700;color:var(--dark);margin-bottom:4px}
-.cf-sub{font-size:.75rem;color:#888;margin-bottom:18px;line-height:1.5}
-.cf-field{margin-bottom:13px}
-.cf-field label{display:block;font-size:.75rem;font-weight:700;color:#555;margin-bottom:4px;letter-spacing:.3px}
-.cf-field input{width:100%;padding:10px 13px;border:1.5px solid #dde0e8;border-radius:9px;font-size:.88rem;outline:none;transition:border-color .15s;font-family:inherit}
-.cf-field input:focus{border-color:var(--accent)}
-.cf-field .cf-hint{font-size:.68rem;color:#aaa;margin-top:3px}
-.cf-confirm{width:100%;padding:13px;border:none;border-radius:11px;background:#1a73e8;color:#fff;font-size:.92rem;font-weight:700;cursor:pointer;margin-top:6px;transition:background .15s}
-.cf-confirm:hover{background:#1558b0}
-.cf-cancel{width:100%;padding:9px;border:1px solid #ddd;border-radius:11px;background:#fff;font-size:.82rem;cursor:pointer;margin-top:7px;color:#777}
+/* MOBILE CATEGORY SHEET */
+.mob-cat-modal h3{font-family:var(--font-brand);font-size:1.05rem;color:var(--navy-900);margin-bottom:13px;text-align:center}
+.mob-cat-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mob-cat-item{display:flex;align-items:center;gap:9px;padding:12px 13px;border-radius:12px;background:var(--bg-main);
+  border:1.5px solid var(--border-soft);cursor:pointer;font-size:.8rem;color:var(--navy-900);transition:all var(--transition-fast);min-height:48px}
+.mob-cat-item:hover{background:#F3EFE4}
+.mob-cat-item.active{background:linear-gradient(135deg,var(--gold-400),var(--gold-500));color:var(--navy-950);border-color:var(--gold-500);font-weight:700}
+.mob-cat-item .mci{font-size:1.1rem;flex-shrink:0}
+.mob-cat-item .mcn{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mob-cat-item .mcc{font-size:.65rem;font-weight:700;background:rgba(11,35,66,.1);padding:2px 7px;border-radius:10px;flex-shrink:0}
+.mob-cat-item.active .mcc{background:rgba(6,20,38,.2);color:#fff}
+.mob-cat-close{width:100%;padding:13px;border:none;border-radius:13px;background:var(--navy-800);color:#fff;
+  font-weight:700;font-family:inherit;cursor:pointer;font-size:.88rem;margin-top:12px}
+.mob-cat-close:hover{background:var(--navy-900)}
+
+/* CENTERED MODALS (info, contact, success) */
+.center-ov{position:fixed;inset:0;background:rgba(6,20,38,.66);z-index:600;display:none;align-items:center;justify-content:center;
+  padding:16px;backdrop-filter:blur(3px)}
+.center-ov.open{display:flex}
+.center-modal{background:var(--bg-soft);width:100%;border-radius:22px;overflow:hidden;box-shadow:var(--shadow-modal);
+  animation:modalIn .38s cubic-bezier(.22,1,.36,1);max-height:92vh;overflow-y:auto}
+@keyframes modalIn{from{opacity:0;transform:scale(.93) translateY(18px)}to{opacity:1;transform:scale(1) translateY(0)}}
+
+/* CONTACT INFO */
+.info-modal{max-width:420px}
+.info-head{background:radial-gradient(120% 160% at 20% -30%,rgba(214,168,79,.3),transparent 60%),linear-gradient(135deg,var(--navy-950),var(--navy-800));
+  padding:24px 22px;color:#fff;text-align:center}
+.info-head h2{font-family:var(--font-brand);font-size:1.12rem;margin-bottom:5px}
+.info-head p{font-size:.76rem;color:var(--gold-300)}
+.info-body{padding:20px 22px}
+.info-row{display:flex;align-items:center;gap:14px;padding:12px 0;border-bottom:1px solid var(--border-soft)}
+.info-row:last-child{border:none}
+.info-ico{width:40px;height:40px;border-radius:11px;display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  background:rgba(214,168,79,.14);color:var(--gold-500)}
+.info-ico svg{width:19px;height:19px}
+.info-txt strong{display:block;font-size:.86rem;color:var(--navy-900)}
+.info-txt small{font-size:.73rem;color:var(--text-muted)}
+.info-close{width:100%;padding:14px;border:none;background:var(--navy-800);color:#fff;font-weight:700;font-family:inherit;cursor:pointer;font-size:.88rem}
+.info-close:hover{background:var(--navy-900)}
+
+/* CONTACT FORM */
+.cf-modal{max-width:430px;padding:24px}
+.cf-title{font-family:var(--font-brand);font-size:1.18rem;font-weight:700;color:var(--navy-900);margin-bottom:6px;display:flex;align-items:center;gap:9px}
+.cf-title svg{width:20px;height:20px;color:var(--gold-500)}
+.cf-sub{font-size:.78rem;color:var(--text-muted);margin-bottom:20px;line-height:1.55}
+.cf-field{margin-bottom:14px}
+.cf-field label{display:block;font-size:.74rem;font-weight:700;color:var(--navy-800);margin-bottom:6px;letter-spacing:.3px}
+.cf-field input{width:100%;padding:12px 14px;border:1.5px solid var(--border-soft);border-radius:11px;font-size:.9rem;
+  outline:none;transition:all var(--transition-fast);font-family:inherit;color:var(--text-main);background:#fff}
+.cf-field input:focus{border-color:var(--gold-400);box-shadow:0 0 0 4px rgba(214,168,79,.14)}
+.cf-field .cf-hint{font-size:.69rem;color:var(--text-muted);margin-top:4px}
+.cf-confirm{width:100%;padding:14px;border:none;border-radius:13px;
+  background:linear-gradient(135deg,var(--gold-400),var(--gold-500));color:var(--navy-950);
+  font-size:.94rem;font-weight:800;font-family:inherit;cursor:pointer;margin-top:6px;
+  display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 8px 22px rgba(214,168,79,.32);transition:all var(--transition-fast)}
+.cf-confirm svg{width:17px;height:17px}
+.cf-confirm:hover:not(:disabled){transform:translateY(-1px)}
+.cf-confirm:disabled{opacity:.7;cursor:default}
+.cf-cancel{width:100%;padding:11px;border:1.5px solid var(--border-soft);border-radius:12px;background:#fff;
+  font-size:.84rem;font-family:inherit;cursor:pointer;margin-top:8px;color:var(--text-muted)}
+.cf-cancel:hover{border-color:var(--text-muted)}
+
+/* SUCCESS */
+.ok-modal{max-width:450px}
+.ok-icon{display:flex;align-items:center;justify-content:center;padding:30px 20px 8px}
+.ok-check{width:74px;height:74px;border-radius:50%;background:radial-gradient(circle at 50% 40%,rgba(27,138,74,.18),transparent 65%);
+  border:2.5px solid var(--success);display:flex;align-items:center;justify-content:center;animation:okPop .5s cubic-bezier(.22,1.4,.5,1)}
+@keyframes okPop{from{transform:scale(.5);opacity:0}to{transform:scale(1);opacity:1}}
+.ok-check svg{width:38px;height:38px;color:var(--success);stroke-width:2.5}
+.ok-body{padding:0 26px 22px;text-align:center}
+.ok-body h2{font-family:var(--font-brand);font-size:1.2rem;color:var(--navy-900);margin-bottom:9px}
+.ok-body p{font-size:.83rem;color:var(--text-muted);line-height:1.6;margin-bottom:6px}
+.ok-items{text-align:left;background:var(--bg-main);border:1px solid var(--border-soft);border-radius:12px;padding:13px 15px;margin:14px 0;
+  max-height:160px;overflow-y:auto;font-size:.76rem;color:var(--text-main);line-height:1.8}
+.ok-items strong{color:var(--navy-900)}
+.ok-phones{display:flex;gap:10px;justify-content:center;margin:14px 0 4px;flex-wrap:wrap}
+.ok-phone{display:inline-flex;align-items:center;gap:7px;background:rgba(214,168,79,.12);border:1px solid rgba(214,168,79,.35);
+  border-radius:11px;padding:9px 15px;font-size:.78rem;font-weight:700;color:var(--navy-800);text-decoration:none;transition:all var(--transition-fast)}
+.ok-phone svg{width:15px;height:15px;color:var(--gold-500)}
+.ok-phone:hover{background:rgba(214,168,79,.22)}
+.ok-close{width:100%;padding:15px;border:none;background:var(--navy-800);color:#fff;font-weight:700;font-family:inherit;cursor:pointer;font-size:.9rem}
+.ok-close:hover{background:var(--navy-900)}
+
+/* WELCOME MODAL */
+.wc-ov{position:fixed;inset:0;background:rgba(6,12,22,.85);z-index:800;display:flex;align-items:center;justify-content:center;padding:14px;backdrop-filter:blur(4px)}
+.wc-modal{background:var(--bg-soft);width:100%;max-width:580px;border-radius:26px;overflow:hidden;
+  box-shadow:var(--shadow-modal);animation:modalIn .45s cubic-bezier(.22,1,.36,1);max-height:94vh;overflow-y:auto}
+.wc-head{background:
+  radial-gradient(130% 150% at 15% -20%,rgba(214,168,79,.32),transparent 58%),
+  radial-gradient(90% 130% at 100% -10%,rgba(255,200,87,.16),transparent 55%),
+  linear-gradient(135deg,var(--navy-950),var(--navy-800) 65%,var(--navy-700));
+  padding:26px 26px 22px;text-align:center;color:#fff}
+.wc-logo-row{display:flex;align-items:center;justify-content:center;margin-bottom:10px}
+.wc-logo-img{width:138px;height:138px;object-fit:contain;border-radius:50%;
+  filter:drop-shadow(0 8px 22px rgba(0,0,0,.45)) drop-shadow(0 0 20px rgba(255,200,87,.4));
+  animation:logoGlowBig 4s ease-in-out infinite}
+@keyframes logoGlowBig{
+  0%,100%{filter:drop-shadow(0 8px 22px rgba(0,0,0,.45)) drop-shadow(0 0 14px rgba(255,200,87,.35))}
+  50%{filter:drop-shadow(0 9px 26px rgba(0,0,0,.45)) drop-shadow(0 0 30px rgba(255,200,87,.6))}
+}
+.wc-title{font-family:var(--font-brand);font-size:1.15rem;color:#fff;margin:6px 0 5px;line-height:1.3}
+.wc-tagline{color:rgba(255,255,255,.62);font-size:.8rem;line-height:1.5}
+.wc-stores{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.wc-store{padding:18px 24px}
+.wc-store:first-child{border-right:1px solid var(--border-soft)}
+.wc-store-title{font-size:.6rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold-500);margin-bottom:13px;display:flex;align-items:center;gap:6px}
+.wc-store-title svg{width:13px;height:13px}
+.wc-store-line{display:flex;align-items:center;gap:10px;margin-bottom:9px}
+.wc-store-line svg{width:15px;height:15px;flex-shrink:0;color:var(--gold-500)}
+.wc-store-line p{font-size:.78rem;color:var(--text-main);line-height:1.4;margin:0}
+.wc-store-line a{font-size:.78rem;color:var(--navy-800);font-weight:600;text-decoration:none}
+.wc-store-line a:hover{color:var(--gold-500)}
+.wc-divider{height:1px;background:linear-gradient(90deg,transparent,var(--border-soft),transparent)}
+.wc-hours{padding:15px 24px 14px;background:var(--bg-main)}
+.wc-hours-title{font-size:.6rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold-500);margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.wc-hours-title svg{width:13px;height:13px}
+.wc-hours-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.wc-hours-row{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:.75rem;
+  background:#fff;border-radius:9px;padding:8px 12px;border:1px solid var(--border-soft)}
+.wc-hours-row span:first-child{color:var(--text-muted)}
+.wc-hours-row span:last-child{color:var(--navy-900);font-weight:700;white-space:nowrap}
+.wc-btns{padding:16px 24px calc(18px + var(--safe-bottom));display:flex;gap:11px}
+.wc-enter{flex:1;padding:14px;border:none;border-radius:13px;
+  background:linear-gradient(135deg,var(--gold-400),var(--gold-500));color:var(--navy-950);
+  font-size:.92rem;font-weight:800;font-family:inherit;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 8px 22px rgba(214,168,79,.32);transition:all var(--transition-fast)}
+.wc-enter svg{width:17px;height:17px}
+.wc-enter:hover{transform:translateY(-1px)}
+.wc-skip{padding:14px 18px;border:1.5px solid var(--border-soft);border-radius:13px;background:#fff;color:var(--text-muted);
+  font-size:.82rem;font-family:inherit;cursor:pointer;white-space:nowrap}
+.wc-skip:hover{border-color:var(--text-muted)}
+
+/* TOAST */
+.toast{position:fixed;top:calc(76px + var(--safe-top));left:50%;transform:translate(-50%,-14px);
+  background:var(--navy-900);color:#fff;padding:12px 22px;border-radius:13px;font-size:.84rem;font-weight:700;
+  z-index:999;opacity:0;transition:all var(--transition-med);pointer-events:none;
+  box-shadow:0 10px 30px rgba(6,20,38,.4);border:1px solid rgba(214,168,79,.4);
+  display:flex;align-items:center;gap:9px;max-width:calc(100vw - 32px)}
+.toast::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--gold-400);flex-shrink:0}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.toast.remove{border-color:rgba(201,74,74,.5)}
+.toast.remove::before{background:var(--danger)}
+.toast.info::before{background:var(--info)}
+
+/* ============================= INTRO SPLASH ============================= */
+#introSplash{
+  position:fixed;inset:0;z-index:900;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  overflow:hidden;padding:24px;cursor:pointer;
+  padding-top:calc(24px + var(--safe-top));padding-bottom:calc(24px + var(--safe-bottom));
+  background:
+    radial-gradient(70% 55% at 50% 40%,rgba(214,168,79,.10),transparent 62%),
+    radial-gradient(130% 110% at 50% 128%,rgba(18,52,90,.55),transparent 60%),
+    linear-gradient(160deg,var(--navy-950),var(--navy-900) 55%,var(--navy-800));
+  transition:opacity .45s ease,transform .5s ease;
+}
+#introSplash.hide{opacity:0;transform:scale(1.05);pointer-events:none}
+#introSplash::after{content:"";position:absolute;top:0;left:-30%;width:20%;height:100%;pointer-events:none;
+  background:linear-gradient(105deg,transparent,rgba(255,255,255,.22),transparent);transform:skewX(-14deg);
+  animation:introShine 1.2s ease-in-out .6s both}
+#introShell{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;max-width:92vw}
+#introGlow{position:absolute;top:34%;left:50%;width:min(64vw,440px);aspect-ratio:1;border-radius:50%;
+  transform:translate(-50%,-50%);pointer-events:none;z-index:0;filter:blur(20px);
+  background:radial-gradient(circle,rgba(255,200,87,.5),rgba(214,168,79,.16) 42%,transparent 70%);
+  animation:introGlowIn .85s ease-out both,introGlowPulse 1.6s ease-in-out .25s}
+#introLogo{position:relative;z-index:1;width:clamp(94px,22vw,130px);height:auto;border-radius:50%;
+  filter:drop-shadow(0 6px 22px rgba(0,0,0,.5)) drop-shadow(0 0 16px rgba(255,200,87,.42));
+  animation:introLogoIn 1s cubic-bezier(.22,1,.36,1) both}
+#introTitle{position:relative;z-index:1;margin-top:20px;font-family:var(--font-brand);font-weight:800;
+  font-size:clamp(1.5rem,6.6vw,2.55rem);letter-spacing:1.5px;line-height:1.04;
+  background:linear-gradient(180deg,#F7E9BD,var(--gold-400) 48%,var(--gold-500));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 2px 20px rgba(214,168,79,.35));
+  animation:introLineUp .6s ease-out .45s both}
+#introCompany{position:relative;z-index:1;margin-top:9px;font-weight:700;
+  font-size:clamp(.82rem,3.3vw,1.08rem);letter-spacing:3px;color:var(--gold-300);
+  animation:introLineUp .6s ease-out .62s both}
+#introSubtitle{position:relative;z-index:1;margin-top:13px;font-size:clamp(.64rem,2.5vw,.8rem);
+  letter-spacing:2.4px;text-transform:uppercase;color:rgba(255,255,255,.58);font-weight:500;
+  animation:introLineUp .55s ease-out .82s both}
+#introSubtitle::before,#introSubtitle::after{content:"";display:inline-block;width:22px;height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold-500));vertical-align:middle;margin:0 10px}
+#introSubtitle::after{background:linear-gradient(90deg,var(--gold-500),transparent)}
+#introSkip{position:absolute;left:0;right:0;bottom:calc(26px + var(--safe-bottom));text-align:center;
+  font-size:.66rem;letter-spacing:1.6px;text-transform:uppercase;color:rgba(255,255,255,.32);
+  animation:introFade .6s ease 1s both}
+@keyframes introLogoIn{0%{opacity:0;transform:scale(.72)}60%{opacity:1}100%{opacity:1;transform:scale(1)}}
+@keyframes introLineUp{0%{opacity:0;transform:translateY(14px)}100%{opacity:1;transform:translateY(0)}}
+@keyframes introGlowIn{0%{opacity:0;transform:translate(-50%,-50%) scale(.5)}100%{opacity:.92;transform:translate(-50%,-50%) scale(1)}}
+@keyframes introGlowPulse{0%,100%{opacity:.68}55%{opacity:1}}
+@keyframes introShine{0%{left:-30%;opacity:0}22%{opacity:1}100%{left:126%;opacity:0}}
+@keyframes introFade{from{opacity:0}to{opacity:1}}
+
+/* ============================= RESPONSIVE ============================= */
+@media(max-width:1000px){
+  .sidebar{width:190px}
+}
+@media(max-width:820px){
+  .sidebar{display:none}
+  .mob-cat-btn{display:inline-flex}
+  .logo-txt .l3{display:none}
+}
+@media(max-width:600px){
+  header{padding:calc(8px + var(--safe-top)) 11px 8px}
+  .hdr-top{gap:9px;margin-bottom:8px;flex-wrap:wrap}
+  .logo-btn{padding:2px}
+  .logo-mark{width:60px;height:60px}
+  .hdr-inner{gap:11px}
+  .hdr-right{gap:8px}
+  .srch-wrap{order:3;flex:1 1 100%;max-width:none;margin-top:2px}
+  .hdr-actions{margin-left:auto}
+  .icon-btn .lbl{display:none}
+  .icon-btn{padding:9px 11px}
+  .cart-btn .c-txt b{font-size:0}
+  .cart-btn .c-txt b::after{content:"Καλάθι";font-size:.8rem}
+  #cSum2{display:none}
+  .grid{grid-template-columns:repeat(2,1fr);gap:11px;padding:11px}
+  .card-img-wrap,.card-ph{height:168px}
+  .card-body{padding:9px 10px}
+  .card-name{font-size:.85rem}
+  .card-series{display:none}
+  .stats-brand-pill{display:none}
+  .wc-stores{grid-template-columns:1fr}
+  .wc-store:first-child{border-right:none;border-bottom:1px solid var(--border-soft)}
+  .wc-hours-grid{grid-template-columns:1fr}
+  .wc-btns{flex-direction:column}
+  .ok-phones{flex-direction:column}
+}
+@media(max-width:380px){
+  .grid{grid-template-columns:repeat(2,1fr);gap:8px;padding:8px}
+  .card-img-wrap,.card-ph{height:140px}
+  .spec-badges{gap:4px}
+}
+
+/* REDUCED MOTION */
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms !important;animation-iteration-count:1 !important;
+    scroll-behavior:auto !important;transition-duration:.01ms !important;
+  }
+  .logo-btn::after{display:none}
+}
 </style>
 </head>
 <body>
 
+<!-- ============ INTRO SPLASH (μία φορά ανά session) ============ -->
+<div id="introSplash" onclick="skipIntroSplash()" role="img" aria-label="ΗΛΕΚΤΡΟΦΩΤΙΣΤΙΚΗ ΑΦΟΙ ΡΟΥΣΣΑ Ο.Ε. — Online Κατάλογος Φωτιστικών">
+  <div id="introShell">
+    <div id="introGlow"></div>
+    <img id="introLogo" src="logo-web.png" alt="ΗΛΕΚΤΡΟΦΩΤΙΣΤΙΚΗ ΑΦΟΙ ΡΟΥΣΣΑ Ο.Ε.">
+    <div id="introTitle">ΗΛΕΚΤΡΟΦΩΤΙΣΤΙΚΗ</div>
+    <div id="introCompany">ΑΦΟΙ ΡΟΥΣΣΑ Ο.Ε.</div>
+    <div id="introSubtitle">Online Κατάλογος Φωτιστικών</div>
+  </div>
+  <div id="introSkip">Πατήστε για παράλειψη</div>
+</div>
+<script>try{if(sessionStorage.getItem('intro_seen')){var _s=document.getElementById('introSplash');if(_s)_s.style.display='none';}}catch(e){}</script>
+
+<!-- ============ SVG ICON SPRITE ============ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></symbol>
+    <symbol id="i-cart" viewBox="0 0 24 24"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2 3h3l2.4 12.3a1.5 1.5 0 0 0 1.5 1.2h8.2a1.5 1.5 0 0 0 1.5-1.2L22 7H6"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-5.7-7-11a7 7 0 0 1 14 0c0 5.3-7 11-7 11z"/><circle cx="12" cy="10" r="2.6"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 6 10 7 10-7"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-2.6-6.4"/><path d="M21 3v5h-5"/></symbol>
+    <symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19V5"/><path d="m5 12 7-7 7 7"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+    <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></symbol>
+    <symbol id="i-doc" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="13" y2="17"/></symbol>
+    <symbol id="i-send" viewBox="0 0 24 24"><path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/></symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></symbol>
+    <symbol id="i-temp" viewBox="0 0 24 24"><path d="M14 14.8V4a2 2 0 0 0-4 0v10.8a4 4 0 1 0 4 0z"/></symbol>
+    <symbol id="i-ip" viewBox="0 0 24 24"><path d="M12 2s7 3 7 9a7 7 0 0 1-14 0c0-6 7-9 7-9z"/></symbol>
+    <symbol id="i-lumen" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+    <symbol id="i-cube" viewBox="0 0 24 24"><path d="M21 8 12 3 3 8v8l9 5 9-5z"/><path d="M3 8l9 5 9-5M12 13v8"/></symbol>
+    <symbol id="i-ruler" viewBox="0 0 24 24"><path d="M3 15 15 3l6 6L9 21z"/><path d="M7 11l2 2M11 7l2 2M15 11l1 1"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-lamp" viewBox="0 0 24 24"><path d="M12 3v6" stroke="#D6A84F"/><path d="M7 15h10l-2.4-6H9.4z" fill="#F4E1A1" stroke="#D6A84F"/><circle cx="12" cy="16.5" r="2.4" fill="#FFC857" stroke="none"/></symbol>
+  </defs>
+</svg>
+
 <header>
-  <div class="hdr-top">
-    <h1>🔆 ΗΛΕΚΤΡΟΦΩΤΙΣΤΙΚΗ - ΑΦΟΙ ΡΟΥΣΣΑ Ο.Ε. <span>— Κατάλογος Φωτιστικών</span></h1>
-    <input type="text" class="hdr-search" id="srch" placeholder="🔍 Κωδικός, IP, watt, χρώμα..." oninput="doF()">
-    <button class="info-link" onclick="openInfo()">📍 Επικοινωνία</button>
-    <div class="cart-btn-wrap">
-      <button class="cart-btn" onclick="openCart()">🛒 Καλάθι <span id="cSum2"></span></button>
-      <div class="badge" id="cBadge" style="display:none">0</div>
+  <div class="hdr-inner">
+    <button class="logo-btn" onclick="hardRefreshApp()" title="Ανανέωση καταλόγου" aria-label="ΗΛΕΚΤΡΟΦΩΤΙΣΤΙΚΗ ΑΦΟΙ ΡΟΥΣΣΑ Ο.Ε. — Ανανέωση καταλόγου">
+      <span class="logo-mark"><img src="logo-web.png" alt="ΗΛΕΚΤΡΟΦΩΤΙΣΤΙΚΗ — ΑΦΟΙ ΡΟΥΣΣΑ Ο.Ε." width="76" height="76"></span>
+    </button>
+    <div class="hdr-right">
+      <div class="hdr-top">
+    <div class="srch-wrap">
+      <svg class="srch-ic" viewBox="0 0 24 24"><use href="#i-search"/></svg>
+      <input type="text" class="hdr-search" id="srch" placeholder="Αναζήτηση με κωδικό, χρώμα, watt, IP..." oninput="doF()" aria-label="Αναζήτηση προϊόντων">
+      <button class="srch-clear" onclick="document.getElementById('srch').value='';doF();document.getElementById('srch').focus()" aria-label="Καθαρισμός αναζήτησης">✕</button>
+    </div>
+
+    <div class="hdr-actions">
+      <button class="icon-btn mob-cat-btn" onclick="openMobCat()" aria-label="Κατηγορίες"><svg viewBox="0 0 24 24"><use href="#i-grid"/></svg><span class="lbl">Κατηγορίες</span></button>
+      <button class="icon-btn" onclick="openInfo()" aria-label="Επικοινωνία"><svg viewBox="0 0 24 24"><use href="#i-pin"/></svg><span class="lbl">Επικοινωνία</span></button>
+      <div class="cart-btn-wrap">
+        <button class="cart-btn" id="cartBtn" onclick="openCart()" aria-label="Καλάθι — Αίτηση προσφοράς">
+          <svg viewBox="0 0 24 24"><use href="#i-cart"/></svg>
+          <span class="c-txt"><b>Καλάθι</b><span id="cSum2"></span></span>
+        </button>
+        <div class="badge" id="cBadge" style="display:none">0</div>
+      </div>
+    </div>
+      </div>
+      <div class="brand-bar" id="brandBar"></div>
     </div>
   </div>
-  <div class="brand-bar" id="brandBar"></div>
 </header>
 
 <div class="main-wrap">
   <div class="sidebar">
-    <div class="sidebar-head">📂 Κατηγορίες</div>
+    <div class="sidebar-head"><svg viewBox="0 0 24 24"><use href="#i-grid"/></svg> Κατηγορίες</div>
     <div class="cat-list" id="catList"></div>
   </div>
   <div class="content">
@@ -281,69 +700,174 @@ header h1 span{opacity:.55;font-weight:400;font-size:.8rem}
   </div>
 </div>
 
-
-
+<!-- PAGE VIEWER -->
 <div class="pg-ov" id="pgOv">
   <div class="pg-topbar">
     <div class="pg-topbar-info">
       <strong id="pgCode">—</strong>
       <small id="pgBrand">—</small>
     </div>
-    <button class="pg-close-btn" onclick="closePg()">✕ Κλείσιμο</button>
+    <button class="pg-close-btn" onclick="closePg()"><svg viewBox="0 0 24 24"><use href="#i-close"/></svg> Κλείσιμο</button>
   </div>
   <div class="pg-scroll" id="pgScroll">
     <div class="pg-a4" id="pgA4">
-      <div class="pg-a4-loading">⏳ Φόρτωση...</div>
+      <div class="pg-a4-loading">Φόρτωση...</div>
     </div>
   </div>
   <div class="pg-botbar">
     <div class="pg-qty">
-      <button onclick="pgQ(-1)">−</button>
+      <button onclick="pgQ(-1)" aria-label="Μείωση">−</button>
       <span id="pgQty">1</span>
-      <button onclick="pgQ(1)">+</button>
+      <button onclick="pgQ(1)" aria-label="Αύξηση">+</button>
     </div>
-    <button class="pg-add" id="pgAddBtn" onclick="pgAdd()">+ Προσθήκη στο Καλάθι</button>
+    <button class="pg-add" id="pgAddBtn" onclick="pgAdd()">Προσθήκη στο καλάθι</button>
   </div>
 </div>
 
-<div class="cart-ov" id="cartOv">
-  <div class="cart-modal">
+<!-- CART SHEET -->
+<div class="sheet-ov" id="cartOv">
+  <div class="sheet">
     <div class="cm-head">
-      <h2>🛒 Αίτηση Προσφοράς</h2>
-      <button onclick="closeCart()" style="background:none;border:none;font-size:1.2rem;cursor:pointer;color:#888">✕</button>
+      <h2><svg viewBox="0 0 24 24"><use href="#i-doc"/></svg> Αίτηση Προσφοράς</h2>
+      <button class="cm-x" onclick="closeCart()" aria-label="Κλείσιμο">✕</button>
     </div>
     <div id="cItems"></div>
-    <button class="send-btn" onclick="openCF()">📧 Αποστολή Αίτησης Προσφοράς</button>
-    <button class="clr-btn" onclick="clearCart()">🗑 Καθαρισμός</button>
-    <button class="clr-btn" style="margin-top:5px" onclick="closeCart()">Κλείσιμο</button>
+    <button class="send-btn" onclick="openCF()"><svg viewBox="0 0 24 24"><use href="#i-send"/></svg> Αποστολή Αίτησης Προσφοράς</button>
+    <button class="clr-btn" onclick="clearCart()">Καθαρισμός καλαθιού</button>
+    <button class="clr-btn" onclick="closeCart()">Κλείσιμο</button>
   </div>
 </div>
 
-<!-- CONTACT FORM MODAL -->
-<div class="cf-ov" id="cfOv">
-  <div class="cf-modal">
-    <div class="cf-title">📋 Στοιχεία Επικοινωνίας</div>
-    <div class="cf-sub">Συμπληρώστε τα στοιχεία σας για να σταλεί η αίτηση προσφοράς.<br>Θα επικοινωνήσουμε μαζί σας το συντομότερο.</div>
+<!-- CONTACT FORM -->
+<div class="center-ov" id="cfOv">
+  <div class="center-modal cf-modal">
+    <div class="cf-title"><svg viewBox="0 0 24 24"><use href="#i-doc"/></svg> Στοιχεία Επικοινωνίας</div>
+    <div class="cf-sub">Συμπληρώστε τα στοιχεία σας για να σταλεί η αίτηση προσφοράς.<br>Χρειαζόμαστε <strong>τουλάχιστον έναν τρόπο επικοινωνίας</strong> (email ή τηλέφωνο) για να σας απαντήσουμε.</div>
     <div class="cf-field">
-      <label>👤 ΟΝΟΜΑ / ΕΠΩΝΥΜΟ *</label>
-      <input type="text" id="cfName" placeholder="π.χ. Γιώργης Παπαδόπουλος" autocomplete="name">
+      <label>ΟΝΟΜΑ / ΕΠΩΝΥΜΟ *</label>
+      <input type="text" id="cfName" placeholder="π.χ. Γιώργος Παπαδόπουλος" autocomplete="name">
     </div>
     <div class="cf-field">
-      <label>📱 ΤΗΛΕΦΩΝΟ (για επικοινωνία Viber)</label>
-      <input type="tel" id="cfPhone" placeholder="π.χ. 6912345678" autocomplete="tel">
-      <div class="cf-hint">Προαιρετικό — για γρήγορη επικοινωνία μέσω Viber (698 005 627)</div>
+      <label>EMAIL ΣΑΣ (για απάντηση προσφοράς) *</label>
+      <input type="email" id="cfEmail" placeholder="π.χ. pelatis@mail.com" autocomplete="email" inputmode="email">
+      <div class="cf-hint">Για να λάβετε την προσφορά στο email σας</div>
     </div>
     <div class="cf-field">
-      <label>📧 EMAIL ΣΑΣ (για απάντηση προσφοράς)</label>
-      <input type="email" id="cfEmail" placeholder="π.χ. pelatis@mail.com" autocomplete="email">
-      <div class="cf-hint">Προαιρετικό — αν θέλετε να λάβετε την προσφορά στο email σας</div>
+      <label>ΤΗΛΕΦΩΝΟ *</label>
+      <input type="tel" id="cfPhone" placeholder="π.χ. 6912345678" autocomplete="tel" inputmode="tel">
+      <div class="cf-hint">Συμπληρώστε email ή τηλέφωνο — τουλάχιστον ένα από τα δύο</div>
     </div>
-    <button class="cf-confirm" onclick="sendEmail()">✉️ Αποστολή Αίτησης</button>
+    <button class="cf-confirm" onclick="sendEmail()"><svg viewBox="0 0 24 24"><use href="#i-send"/></svg> Αποστολή Αίτησης</button>
     <button class="cf-cancel" onclick="closeCF()">Ακύρωση</button>
   </div>
 </div>
 
+<!-- WELCOME MODAL -->
+<div class="wc-ov" id="wcOv">
+  <div class="wc-modal">
+    <div class="wc-head">
+      <div class="wc-logo-row">
+        <img class="wc-logo-img" src="logo-web.png" alt="ΗΛΕΚΤΡΟΦΩΤΙΣΤΙΚΗ — ΑΦΟΙ ΡΟΥΣΣΑ Ο.Ε.">
+      </div>
+      <div class="wc-title">Καλωσήλθατε στον ηλεκτρονικό κατάλογο φωτιστικών</div>
+      <div class="wc-tagline">Επιλέξτε προϊόντα και στείλτε μας αίτηση προσφοράς με ένα κλικ.</div>
+    </div>
+    <div class="wc-stores">
+      <div class="wc-store">
+        <div class="wc-store-title"><svg viewBox="0 0 24 24"><use href="#i-pin"/></svg> Κεντρικό Κατάστημα</div>
+        <div class="wc-store-line"><svg viewBox="0 0 24 24"><use href="#i-pin"/></svg><p>Λεωφ. Φυλής 104, Άνω Λιόσια 13341</p></div>
+        <div class="wc-store-line"><svg viewBox="0 0 24 24"><use href="#i-phone"/></svg><p><a href="tel:+302102483377">210 248 3377</a></p></div>
+        <div class="wc-store-line"><svg viewBox="0 0 24 24"><use href="#i-mail"/></svg><p><a href="mailto:liosia@roussas.eu">liosia@roussas.eu</a></p></div>
+      </div>
+      <div class="wc-store">
+        <div class="wc-store-title"><svg viewBox="0 0 24 24"><use href="#i-pin"/></svg> Υποκατάστημα Λουτρακίου</div>
+        <div class="wc-store-line"><svg viewBox="0 0 24 24"><use href="#i-pin"/></svg><p>Λεωφ. Αθηνών 250, Λουτράκι 20300</p></div>
+        <div class="wc-store-line"><svg viewBox="0 0 24 24"><use href="#i-phone"/></svg><p><a href="tel:+302744069005">27440 69 005</a></p></div>
+        <div class="wc-store-line"><svg viewBox="0 0 24 24"><use href="#i-mail"/></svg><p><a href="mailto:loutraki@roussas.eu">loutraki@roussas.eu</a></p></div>
+      </div>
+    </div>
+    <div class="wc-divider"></div>
+    <div class="wc-hours">
+      <div class="wc-hours-title"><svg viewBox="0 0 24 24"><use href="#i-clock"/></svg> Ωράριο Λειτουργίας — Κεντρικό Κατάστημα</div>
+      <div class="wc-hours-grid">
+        <div class="wc-hours-row"><span>Δευ · Τετ · Σαβ</span><span>7:30 – 16:00</span></div>
+        <div class="wc-hours-row"><span>Τρι · Πεμ · Παρ</span><span>7:30 – 21:00</span></div>
+      </div>
+    </div>
+    <div class="wc-btns">
+      <button class="wc-enter" onclick="closeWc()"><svg viewBox="0 0 24 24"><use href="#i-grid"/></svg> Δείτε τον Κατάλογο</button>
+      <button class="wc-skip" onclick="closeWc()">Κλείσιμο</button>
+    </div>
+  </div>
+</div>
+
+<!-- BACK TO TOP -->
+<button class="back-top" id="backTop" onclick="document.getElementById('grid').scrollTop=0;this.classList.remove('show')" aria-label="Επιστροφή στην κορυφή"><svg viewBox="0 0 24 24"><use href="#i-up"/></svg></button>
+
+<!-- CONTACT INFO MODAL -->
+<div class="center-ov" id="infoOv">
+  <div class="center-modal info-modal">
+    <div class="info-head">
+      <h2>Ηλεκτροφωτιστική — ΑΦΟΙ ΡΟΥΣΣΑ Ο.Ε.</h2>
+      <p>Κατάστημα Φωτιστικών · Ηλεκτρολογικό Υλικό</p>
+    </div>
+    <div class="info-body">
+      <div class="info-row">
+        <div class="info-ico"><svg viewBox="0 0 24 24"><use href="#i-pin"/></svg></div>
+        <div class="info-txt"><strong>Λεωφ. Φυλής 104 — Άνω Λιόσια</strong><small>Κεντρικό Κατάστημα · 210 248 3377</small></div>
+      </div>
+      <div class="info-row">
+        <div class="info-ico"><svg viewBox="0 0 24 24"><use href="#i-pin"/></svg></div>
+        <div class="info-txt"><strong>Λεωφ. Αθηνών 250 — Λουτράκι</strong><small>Υποκατάστημα · 27440 69005</small></div>
+      </div>
+      <div class="info-row">
+        <div class="info-ico"><svg viewBox="0 0 24 24"><use href="#i-phone"/></svg></div>
+        <div class="info-txt"><strong>Τηλέφωνα</strong><small>Κεντρικό: 210 248 3377 · Λουτράκι: 27440 69005</small></div>
+      </div>
+      <div class="info-row">
+        <div class="info-ico"><svg viewBox="0 0 24 24"><use href="#i-mail"/></svg></div>
+        <div class="info-txt"><strong>afoiroussa@yahoo.gr</strong><small>Αιτήσεις προσφορών</small></div>
+      </div>
+      <div class="info-row">
+        <div class="info-ico"><svg viewBox="0 0 24 24"><use href="#i-clock"/></svg></div>
+        <div class="info-txt"><strong>Δευ · Τετ · Σαβ: 7:30–16:00</strong><small>Τρι · Πεμ · Παρ: 7:30–21:00</small></div>
+      </div>
+    </div>
+    <button class="info-close" onclick="closeInfo()">Κλείσιμο</button>
+  </div>
+</div>
+
+<!-- SUCCESS MODAL -->
+<div class="center-ov" id="okOv">
+  <div class="center-modal ok-modal">
+    <div class="ok-icon"><div class="ok-check"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></div></div>
+    <div class="ok-body">
+      <h2>Η αίτησή σας καταχωρήθηκε!</h2>
+      <p id="okMsg"></p>
+      <div class="ok-items" id="okItems"></div>
+      <p>Θα σας αποστείλουμε προσφορά με <strong>τιμές</strong>, <strong>διαθεσιμότητα</strong> και <strong>χρόνο παράδοσης</strong> το συντομότερο δυνατό.</p>
+      <div class="ok-phones">
+        <a class="ok-phone" href="tel:+302102483377"><svg viewBox="0 0 24 24"><use href="#i-phone"/></svg> Κεντρικό: 210 248 3377</a>
+        <a class="ok-phone" href="tel:+302744069005"><svg viewBox="0 0 24 24"><use href="#i-phone"/></svg> Λουτράκι: 27440 69005</a>
+      </div>
+    </div>
+    <button class="ok-close" onclick="closeOk()">Κλείσιμο</button>
+  </div>
+</div>
+
+<!-- MOBILE CATEGORY SHEET -->
+<div class="sheet-ov" id="mobCatOv">
+  <div class="sheet mob-cat-modal">
+    <h3>Επιλέξτε Κατηγορία</h3>
+    <div class="mob-cat-grid" id="mobCatGrid"></div>
+    <button class="mob-cat-close" onclick="closeMobCat()">Κλείσιμο</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
 <script>
+/* ================= CATEGORY ICONS & BRANDS ================= */
 const CAT_ICONS = {
   'Solar Panel':'☀️','Ανεμιστήρας Οροφής':'🌀','Εξωτερικό':'🏡','Εξωτερικού':'🏡',
   'Υποβρύχια':'💧','Κήπου':'🌿','Σποτ':'🔦','Μπάνιο':'🚿','Επαναφορτιζόμενο':'🔋',
@@ -355,45 +879,70 @@ const CAT_ICONS = {
 };
 
 const BRANDS = [
-  {label:'🌐 Όλες', value:''},
-  {label:'☀️ Eurolamp Outdoor', value:'Eurolamp Outdoor 2025'},
-  {label:'✨ Arte Illumina', value:'Arte Illumina 2026'},
-  {label:'💡 Eurolamp', value:'Eurolamp'},
-  {label:'🔦 IT Lighting', value:'IT Lighting 2024'},
-  {label:'⚡ Arlight', value:'Arlight 2026'},
-  {label:'🌟 InLight 25-26', value:'InLight 2025-2026'},
-  {label:'🌟 InLight 23-24', value:'InLight 2023-2024'},
-  {label:'💎 Viokef', value:'Viokef'}
+  {label:'Όλες', value:''},
+  {label:'Eurolamp Outdoor', value:'Eurolamp Outdoor 2025'},
+  {label:'Arte Illumina', value:'Arte Illumina 2026'},
+  {label:'Eurolamp', value:'Eurolamp'},
+  {label:'IT Lighting', value:'IT Lighting 2024'},
+  {label:'Arlight', value:'Arlight 2026'},
+  {label:'InLight 25-26', value:'InLight 2025-2026'},
+  {label:'InLight 23-24', value:'InLight 2023-2024'},
+  {label:'Viokef', value:'Viokef'}
 ];
 
 const PER_PAGE = 30;
+const CAT_MERGE = { 'Solar':'Solar Panel', 'Οροφής/Επιτοίχια':'Οροφής' };
 let cart = {}, activeCat = 'Όλα', activeBrand = '', pgCode = null;
-let filteredAll = [], curPage = 0;
+let filteredAll = [], curPage = 0, sortMode = 'default';
+let CATS = ['Όλα'], byId = {}, byCode = {};
 
-const CATS = ['Όλα', ...new Set(P.map(p => p.cat || 'Άλλο'))];
+/* ---- CART PERSISTENCE ---- */
+function saveCart() { try { localStorage.setItem('roussa_cart', JSON.stringify(cart)); } catch(e){} }
+function loadCart() { try { const d = localStorage.getItem('roussa_cart'); if (d) cart = JSON.parse(d); } catch(e){} }
+loadCart();
+
+/* ---- SVG ICON HELPER ---- */
+function svgIc(id){ return '<svg class="b-ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#'+id+'"/></svg>'; }
+
+/* ---- HARD REFRESH (from logo) — keeps cart in localStorage ---- */
+async function hardRefreshApp() {
+  try {
+    showToast('Γίνεται ανανέωση καταλόγου...', false, true);
+    if ('caches' in window) {
+      const names = await caches.keys();
+      await Promise.all(names.map(name => caches.delete(name)));
+    }
+    if ('serviceWorker' in navigator) {
+      const regs = await navigator.serviceWorker.getRegistrations();
+      await Promise.all(regs.map(reg => reg.update()));
+    }
+  } catch (e) { /* fall through to reload */ }
+  const url = new URL(window.location.href);
+  url.searchParams.set('v', Date.now().toString());
+  window.location.replace(url.toString());
+}
 
 /* ---- BRANDS ---- */
 function buildBrands() {
   document.getElementById('brandBar').innerHTML = BRANDS.map(b =>
     '<button class="br-btn' + (b.value === activeBrand ? ' active' : '') +
-    '" onclick="setBrand(\'' + b.value + '\')">' + b.label + '</button>'
+    '" onclick="setBrand(\'' + b.value + '\',this)">' + b.label + '</button>'
   ).join('');
 }
-function setBrand(v) {
+function setBrand(v, el) {
   activeBrand = v;
-  activeCat = 'Όλα';
-  document.getElementById('srch').value = '';
   document.querySelectorAll('.br-btn').forEach(b => b.classList.remove('active'));
-  event.target.classList.add('active');
-  document.querySelectorAll('.cat-item').forEach(b => b.classList.toggle('active', b.dataset.cat === 'Όλα'));
+  if (el) el.classList.add('active');
+  buildCats();
   doF();
 }
 
 /* ---- CATS ---- */
 function buildCats() {
+  const pool = activeBrand ? P.filter(p => p.brand === activeBrand) : P;
   const counts = {};
   CATS.forEach(c => {
-    counts[c] = c === 'Όλα' ? P.length : P.filter(p => (p.cat || 'Άλλο') === c).length;
+    counts[c] = c === 'Όλα' ? pool.length : pool.filter(p => (p.cat || 'Άλλο') === c).length;
   });
   document.getElementById('catList').innerHTML = CATS.map(c => {
     const ico = CAT_ICONS[c] || '💡';
@@ -407,19 +956,17 @@ function buildCats() {
 }
 function setCat(c) {
   activeCat = c;
-  activeBrand = '';
-  document.getElementById('srch').value = '';
   document.querySelectorAll('.cat-item').forEach(b => b.classList.toggle('active', b.dataset.cat === c));
-  document.querySelectorAll('.br-btn').forEach(b => b.classList.toggle('active', b.textContent.includes('Όλες')));
   doF();
 }
 
-/* ---- FILTER ---- */
 /* ---- GREEK NORMALIZATION ---- */
 function norm(s) {
-  return (s||'').toLowerCase()
-    .replace(/ά/g,'α').replace(/έ/g,'ε').replace(/ή/g,'η').replace(/ί/g,'ι').replace(/ό/g,'ο').replace(/ύ/g,'υ').replace(/ώ/g,'ω')
-    .replace(/ϊ/g,'ι').replace(/ϋ/g,'υ').replace(/ΐ/g,'ι').replace(/ΰ/g,'υ');
+  return (s||'').normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+}
+/* ---- HTML ESCAPE (ασφάλεια/ανθεκτικότητα) ---- */
+function esc(s) {
+  return (s==null?'':(''+s)).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 }
 
 function getF() {
@@ -427,7 +974,7 @@ function getF() {
   return P.filter(p => {
     const mc = activeCat === 'Όλα' || (p.cat || 'Άλλο') === activeCat;
     const mb = !activeBrand || p.brand === activeBrand;
-    const txt = norm([p.code, p.name, p.brand, p.power, p.lum, p.ip, p.temp, p.color, p.mat, p.series, p.cat].join(' '));
+    const txt = norm([p.code, p.name, p.brand, p.power, p.lum, p.ip, p.temp, p.color, p.mat, p.series, p.cat, p.dim, p.warranty].join(' '));
     return mc && mb && (!q || txt.includes(q));
   });
 }
@@ -436,45 +983,61 @@ function specsLine(p) {
 }
 function specBadges(p) {
   let h = '';
-  if (p.power) h += '<span class="spec-badge power">⚡ ' + p.power + '</span>';
-  if (p.temp) h += '<span class="spec-badge temp">🌡 ' + p.temp + '</span>';
-  if (p.ip) h += '<span class="spec-badge ip">💧 ' + p.ip + '</span>';
-  if (p.lum) h += '<span class="spec-badge lum">💡 ' + p.lum + 'Lm</span>';
-  if (p.mat) h += '<span class="spec-badge mat">🔧 ' + p.mat + '</span>';
-  if (p.dim) h += '<span class="spec-badge dim">📐 ' + p.dim + '</span>';
+  if (p.power) h += '<span class="spec-badge power">' + svgIc('i-bolt') + esc(p.power) + '</span>';
+  if (p.temp) h += '<span class="spec-badge temp">' + svgIc('i-temp') + esc(p.temp) + '</span>';
+  if (p.ip) h += '<span class="spec-badge ip">' + svgIc('i-ip') + esc(p.ip) + '</span>';
+  if (p.lum) h += '<span class="spec-badge lum">' + svgIc('i-lumen') + esc(p.lum) + ' lm</span>';
+  if (p.mat) h += '<span class="spec-badge mat">' + svgIc('i-cube') + esc(p.mat) + '</span>';
+  if (p.dim) h += '<span class="spec-badge dim">' + svgIc('i-ruler') + esc(p.dim) + '</span>';
+  if (p.warranty) h += '<span class="spec-badge warranty">' + svgIc('i-shield') + esc(p.warranty) + '</span>';
   return h ? '<div class="spec-badges">' + h + '</div>' : '';
 }
 
 /* ---- CARD HTML ---- */
 function makeCard(p) {
-  const k = p.code, ic = !!cart[k], q = cart[k] ? cart[k].qty : 1;
+  const id = p._id, k = p.code, ic = !!cart[id], q = cart[id] ? cart[id].qty : 1;
   const badges = specBadges(p), ico = CAT_ICONS[p.cat] || '💡';
   const thumb = p.pg
-    ? '<div class="card-img-wrap" onclick="openPg(\'' + k + '\')">' +
-      '<img class="card-thumb" src="' + p.pg + '" loading="lazy" alt="' + k + '">' +
-      '<div class="overlay"><span>🔍 Σελίδα καταλόγου</span></div></div>'
-    : '<div class="card-ph" onclick="openPg(\'' + k + '\')">' + ico + '<small>' + (p.brand || '') + '</small></div>';
-  return '<div class="card' + (ic ? ' selected' : '') + '" id="cd-' + k + '">' +
+    ? '<div class="card-img-wrap" onclick="openPg(\'' + id + '\')">' +
+      '<img class="card-thumb" src="' + p.pg + '" loading="lazy" alt="' + esc(k) + '">' +
+      '<div class="overlay"><span>' + svgIc('i-doc') + ' Προβολή καταλόγου</span></div></div>'
+    : '<div class="card-ph" onclick="openPg(\'' + id + '\')">' + ico + '<small>' + esc(p.brand || '') + '</small></div>';
+  return '<div class="card' + (ic ? ' selected' : '') + '" id="cd-' + id + '">' +
     thumb +
     '<div class="card-body">' +
-    '<div class="card-code">' + k + '</div>' +
-    '<div class="card-name">' + (p.name || '—') + '</div>' +
-    '<span class="card-cat">' + (p.cat || 'Άλλο') + '</span>' +
-    (p.color ? '<span class="card-color">🎨 ' + p.color + '</span>' : '') +
-    '<div class="card-brand">' + ico + ' ' + p.brand + '</div>' +
+    '<div class="card-code">' + esc(k) + '</div>' +
+    '<div class="card-name">' + esc(p.name || '') + '</div>' +
+    '<span class="card-cat">' + esc(p.cat || 'Άλλο') + '</span>' +
+    (p.series ? '<span class="card-series">' + esc(p.series) + '</span>' : '') +
+    (p.color ? '<span class="card-color">' + esc(p.color) + '</span>' : '') +
+    '<div class="card-brand">' + esc(p.brand) + '</div>' +
     badges +
     '<div class="qty-row">' +
-    '<button onclick="chQ(\'' + k + '\',-1)">−</button>' +
-    '<span class="qty-num" id="q-' + k + '">' + q + '</span>' +
-    '<button onclick="chQ(\'' + k + '\',1)">+</button>' +
+    '<button onclick="chQ(\'' + id + '\',-1)" aria-label="Μείωση ποσότητας">−</button>' +
+    '<span class="qty-num" id="q-' + id + '">' + q + '</span>' +
+    '<button onclick="chQ(\'' + id + '\',1)" aria-label="Αύξηση ποσότητας">+</button>' +
     '</div>' +
-    '<button class="add-btn' + (ic ? ' in' : '') + '" onclick="addC(\'' + k + '\',event)">' + (ic ? '✓ Στο Καλάθι' : '🛒 Προσθήκη στο Καλάθι') + '</button>' +
+    '<button class="add-btn' + (ic ? ' in' : '') + '" onclick="addC(\'' + id + '\',event)">' + (ic ? '✓ Στο καλάθι' : 'Προσθήκη στο καλάθι') + '</button>' +
     '</div></div>';
+}
+
+/* ---- SORT ---- */
+function setSort(v) {
+  sortMode = v;
+  applySorting();
+  showPage();
+}
+function applySorting() {
+  if (sortMode === 'code') filteredAll.sort((a,b) => (a.code||'').localeCompare(b.code||'','el'));
+  else if (sortMode === 'brand') filteredAll.sort((a,b) => (a.brand||'').localeCompare(b.brand||'','el'));
+  else if (sortMode === 'cat') filteredAll.sort((a,b) => (a.cat||'').localeCompare(b.cat||'','el'));
+  else if (sortMode === 'name') filteredAll.sort((a,b) => (a.name||'').localeCompare(b.name||'','el'));
 }
 
 /* ---- RENDER + PAGINATION ---- */
 function doF() {
   filteredAll = getF();
+  applySorting();
   curPage = 0;
   showPage();
 }
@@ -488,28 +1051,31 @@ function showPage() {
   const from = total ? curPage * PER_PAGE + 1 : 0;
   const to = Math.min((curPage + 1) * PER_PAGE, total);
 
-  // Stats
   if (!total) {
     g.innerHTML = '<div class="no-res">Δεν βρέθηκαν αποτελέσματα</div>';
     pb.style.display = 'none';
-    document.getElementById('stats').innerHTML = '<span>0 αποτελέσματα | Σύνολο: ' + P.length + '</span>';
+    document.getElementById('stats').innerHTML = '<span>0 αποτελέσματα · Σύνολο καταλόγου: ' + P.length + '</span>';
     return;
   }
-  // Brand breakdown
   const brandCounts = {};
   filteredAll.forEach(p => { brandCounts[p.brand] = (brandCounts[p.brand]||0)+1; });
   const pills = Object.entries(brandCounts).sort((a,b)=>b[1]-a[1])
-    .map(([b,c]) => '<span class="stats-brand-pill">' + b.split(' ')[0] + ' <span>' + c + '</span></span>').join('');
+    .map(([b,c]) => '<span class="stats-brand-pill">' + esc(b.split(' ')[0]) + ' <span>' + c + '</span></span>').join('');
   const mainTxt = totalPages > 1
     ? 'Σελίδα ' + (curPage+1) + '/' + totalPages + ' — ' + from + '–' + to + ' από <strong>' + total + '</strong>'
     : '<strong>' + total + '</strong> προϊόντα';
-  document.getElementById('stats').innerHTML = '<span>' + mainTxt + '</span>' + pills;
+  const sortDD = '<select class="sort-sel" onchange="setSort(this.value)" aria-label="Ταξινόμηση">' +
+    '<option value="default"' + (sortMode==='default'?' selected':'') + '>Ταξινόμηση: Προεπιλογή</option>' +
+    '<option value="code"' + (sortMode==='code'?' selected':'') + '>Κωδικός (Α→Ω)</option>' +
+    '<option value="brand"' + (sortMode==='brand'?' selected':'') + '>Μάρκα (Α→Ω)</option>' +
+    '<option value="cat"' + (sortMode==='cat'?' selected':'') + '>Κατηγορία (Α→Ω)</option>' +
+    '<option value="name"' + (sortMode==='name'?' selected':'') + '>Όνομα (Α→Ω)</option>' +
+    '</select>';
+  document.getElementById('stats').innerHTML = '<span>' + mainTxt + '</span>' + pills + sortDD;
 
-  // Grid
   g.innerHTML = slice.map(makeCard).join('');
   g.scrollTop = 0;
 
-  // Pagination
   if (totalPages <= 1) { pb.style.display = 'none'; return; }
   pb.style.display = 'flex';
 
@@ -539,39 +1105,43 @@ function goPage(n) {
 /* ---- CART QTY ---- */
 function chQ(k, d) {
   const e = document.getElementById('q-' + k); if (!e) return;
-  let v = Math.max(1, +e.textContent + d); e.textContent = v;
+  let v = Math.min(999, Math.max(1, +e.textContent + d)); e.textContent = v;
   if (cart[k]) { cart[k].qty = v; updC(); }
 }
 function addC(k, ev) {
   if (ev) ev.stopPropagation();
-  const p = P.find(x => x.code === k); if (!p) return;
+  const p = byId[k]; if (!p) return;
   const wasIn = !!cart[k];
   if (wasIn) {
     delete cart[k];
-    showToast('Αφαιρέθηκε: ' + k, true);
+    showToast('Αφαιρέθηκε: ' + p.code, true);
   } else {
     const qEl = document.getElementById('q-' + k) || document.getElementById('pgQty');
     const qty = qEl ? +qEl.textContent : 1;
     cart[k] = Object.assign({}, p, {qty: qty});
-    showToast('✓ Προστέθηκε: ' + k);
+    showToast('Προστέθηκε: ' + p.code);
+    pulseCart();
   }
   updC();
-  // update only this card's button - no full re-render
   const cardEl = document.getElementById('cd-' + k);
   if (cardEl) {
     const ic = !!cart[k];
     cardEl.classList.toggle('selected', ic);
     const btn = cardEl.querySelector('.add-btn');
-    if (btn) { btn.textContent = ic ? '✓ Στο Καλάθι' : '+ Καλάθι'; btn.classList.toggle('in', ic); }
+    if (btn) { btn.textContent = ic ? '✓ Στο καλάθι' : 'Προσθήκη στο καλάθι'; btn.classList.toggle('in', ic); }
   }
   if (pgCode === k) updPgBtn();
 }
+function pulseCart() {
+  const b = document.getElementById('cartBtn');
+  if (!b) return;
+  b.classList.remove('pulse'); void b.offsetWidth; b.classList.add('pulse');
+}
 
-function showToast(msg, isRemove) {
+function showToast(msg, isRemove, isInfo) {
   const t = document.getElementById('toast');
   t.textContent = msg;
-  t.className = 'toast' + (isRemove ? ' remove' : '');
-  // force reflow
+  t.className = 'toast' + (isRemove ? ' remove' : (isInfo ? ' info' : ''));
   void t.offsetWidth;
   t.classList.add('show');
   clearTimeout(window._toastT);
@@ -584,16 +1154,17 @@ function updC() {
   badge.textContent = it.length;
   badge.style.display = it.length ? 'flex' : 'none';
   sum2.textContent = it.length ? it.length + ' κωδ. · ' + t + ' τεμ.' : '';
+  saveCart();
 }
 
 /* ---- PAGE VIEWER ---- */
 function openPg(k) {
   pgCode = k;
-  const p = P.find(x => x.code === k); if (!p) return;
+  const p = byId[k]; if (!p) return;
   document.getElementById('pgCode').textContent = p.code + (p.name ? ' — ' + p.name : '');
   document.getElementById('pgBrand').textContent = p.brand + (p.cat ? ' | ' + p.cat : '');
   const a4 = document.getElementById('pgA4');
-  a4.innerHTML = '<div class="pg-a4-loading">⏳ Φόρτωση...</div>';
+  a4.innerHTML = '<div class="pg-a4-loading">Φόρτωση...</div>';
   document.getElementById('pgQty').textContent = document.getElementById('q-' + k) ? document.getElementById('q-' + k).textContent : '1';
   updPgBtn();
   document.getElementById('pgOv').classList.add('open');
@@ -601,21 +1172,21 @@ function openPg(k) {
   if (p.pg) {
     const img = new Image();
     img.onload = function() { a4.innerHTML = ''; a4.appendChild(img); };
-    img.onerror = function() { a4.innerHTML = '<div class="pg-a4-noimg">❌ Δεν φορτώθηκε η εικόνα<br><small>Βεβαιώσου ότι ο φάκελος <b>pages/</b><br>βρίσκεται δίπλα στο index.html</small></div>'; };
+    img.onerror = function() { a4.innerHTML = '<div class="pg-a4-noimg">Δεν φορτώθηκε η εικόνα<br><small>Βεβαιωθείτε ότι ο φάκελος <b>pages/</b> βρίσκεται δίπλα στο index.html</small></div>'; };
     img.src = p.pg;
   } else {
-    a4.innerHTML = '<div class="pg-a4-noimg">Δεν υπάρχει σελίδα καταλόγου</div>';
+    a4.innerHTML = '<div class="pg-a4-noimg">Δεν υπάρχει σελίδα καταλόγου για αυτό το προϊόν</div>';
   }
 }
 function updPgBtn() {
   if (!pgCode) return;
   const ic = !!cart[pgCode], btn = document.getElementById('pgAddBtn');
-  btn.textContent = ic ? '✓ Αφαίρεση από Καλάθι' : '+ Προσθήκη στο Καλάθι';
+  btn.textContent = ic ? '✓ Αφαίρεση από καλάθι' : 'Προσθήκη στο καλάθι';
   btn.classList.toggle('in', ic);
 }
 function pgQ(d) {
   const e = document.getElementById('pgQty');
-  let v = Math.max(1, +e.textContent + d); e.textContent = v;
+  let v = Math.min(999, Math.max(1, +e.textContent + d)); e.textContent = v;
   if (cart[pgCode]) { cart[pgCode].qty = v; updC(); }
   const ge = document.getElementById('q-' + pgCode); if (ge) ge.textContent = v;
 }
@@ -625,24 +1196,25 @@ function closePg() { pgCode = null; document.getElementById('pgOv').classList.re
 /* ---- CART MODAL ---- */
 function openCart() {
   const it = Object.values(cart);
-  if (!it.length) { alert('Κενό καλάθι!'); return; }
+  if (!it.length) { showToast('Το καλάθι είναι κενό', false, true); return; }
   document.getElementById('cItems').innerHTML = it.map(i =>
     '<div class="ci">' +
     '<div class="ci-icon">' + (CAT_ICONS[i.cat] || '💡') + '</div>' +
-    '<div class="ci-info"><strong>' + i.code + (i.name ? ' — ' + i.name : '') + '</strong>' +
-    '<small>' + i.brand + (i.cat ? ' | ' + i.cat : '') + (i.power ? ' | ' + i.power : '') + (i.ip ? ' | ' + i.ip : '') + '</small>' +
-    (i.dim ? '<small>📐 ' + i.dim + '</small>' : '') + '</div>' +
+    '<div class="ci-info"><strong>' + esc(i.code) + (i.name ? ' — ' + esc(i.name) : '') + '</strong>' +
+    '<small>' + esc(i.brand) + (i.cat ? ' | ' + esc(i.cat) : '') + (i.power ? ' | ' + esc(i.power) : '') + (i.ip ? ' | ' + esc(i.ip) : '') + '</small>' +
+    (i.dim ? '<small>' + esc(i.dim) + '</small>' : '') + '</div>' +
     '<div class="ci-qty">' +
-    '<button onclick="cqty(\'' + i.code + '\',-1)">−</button>' +
-    '<span id="cq-' + i.code + '">' + i.qty + '</span>' +
-    '<button onclick="cqty(\'' + i.code + '\',1)">+</button>' +
-    '<button class="rm" onclick="rmv(\'' + i.code + '\')">✕</button>' +
+    '<button onclick="cqty(\'' + i._id + '\',-1)" aria-label="Μείωση">−</button>' +
+    '<span id="cq-' + i._id + '">' + i.qty + '</span>' +
+    '<button onclick="cqty(\'' + i._id + '\',1)" aria-label="Αύξηση">+</button>' +
+    '<button class="rm" onclick="rmv(\'' + i._id + '\')" aria-label="Αφαίρεση">✕</button>' +
     '</div></div>'
   ).join('');
   document.getElementById('cartOv').classList.add('open');
 }
-function cqty(k, d) { if (!cart[k]) return; cart[k].qty = Math.max(1, cart[k].qty + d); document.getElementById('cq-' + k).textContent = cart[k].qty; updC(); }
-function rmv(k) { delete cart[k]; updC(); openCart(); if (!Object.keys(cart).length) closeCart(); }
+function cqty(k, d) { if (!cart[k]) return; cart[k].qty = Math.min(999, Math.max(1, cart[k].qty + d)); document.getElementById('cq-' + k).textContent = cart[k].qty; updC(); }
+function rmv(k) { delete cart[k]; updC(); openCart(); if (!Object.keys(cart).length) closeCart(); refreshCardState(k); }
+function refreshCardState(k){ const cardEl = document.getElementById('cd-' + k); if(cardEl){ cardEl.classList.remove('selected'); const b=cardEl.querySelector('.add-btn'); if(b){ b.textContent='Προσθήκη στο καλάθι'; b.classList.remove('in'); } } }
 function closeCart() { document.getElementById('cartOv').classList.remove('open'); }
 function clearCart() { if (confirm('Καθαρισμός καλαθιού;')) { cart = {}; updC(); showPage(); closeCart(); } }
 
@@ -662,6 +1234,8 @@ function sendEmail() {
   const email = document.getElementById('cfEmail').value.trim();
 
   if (!name) { document.getElementById('cfName').focus(); alert('Παρακαλώ συμπληρώστε το όνομά σας.'); return; }
+  if (!email && !phone) { document.getElementById('cfPhone').focus(); alert('Παρακαλώ συμπληρώστε email ή τηλέφωνο, ώστε να μπορέσουμε να σας στείλουμε την προσφορά.'); return; }
+  if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { document.getElementById('cfEmail').focus(); alert('Το email δεν φαίνεται σωστό. Ελέγξτε το ή αφήστε το κενό.'); return; }
 
   const it = Object.values(cart);
   const today = new Date().toLocaleDateString('el-GR');
@@ -670,7 +1244,7 @@ function sendEmail() {
   let msg = '━━━━━━━━━━━━━━━━━━━━━━\n';
   msg += 'Ημερομηνία: ' + today + '\n';
   msg += 'Πελάτης: ' + name + '\n';
-  if (phone) msg += 'Τηλέφωνο (Viber): ' + phone + '\n';
+  if (phone) msg += 'Τηλέφωνο: ' + phone + '\n';
   if (email) msg += 'Email πελάτη: ' + email + '\n';
   msg += '━━━━━━━━━━━━━━━━━━━━━━\n\nΠΡΟΙΟΝΤΑ:\n\n';
 
@@ -688,31 +1262,54 @@ function sendEmail() {
   msg += '━━━━━━━━━━━━━━━━━━━━━━\n';
   msg += 'Σύνολο: ' + it.length + ' κωδ. / ' + t + ' τεμ.';
 
-  // Disable button during send
+  const itemsHtml = it.map((i,j) => (j+1) + '. <strong>' + esc(i.code) + '</strong>' + (i.name ? ' — ' + esc(i.name) : '') + ' × ' + i.qty + ' τεμ.').join('<br>');
+
   const btn = document.querySelector('.cf-confirm');
   btn.disabled = true;
-  btn.textContent = '⏳ Αποστολή...';
+  btn.textContent = 'Αποστολή...';
 
+  // 1. Send to store (existing template)
   emailjs.send('service_yo4iacb', 'template_mk2ou15', {
     name:    name,
-    time:    today + (phone ? ' | Viber: ' + phone : ''),
+    time:    today + (phone ? ' | Τηλ: ' + phone : ''),
     message: msg,
     email:   email || 'Δεν δόθηκε'
   })
   .then(() => {
-    closeCF();
-    closeCart();
-    showToast('✅ Στάλθηκε στο afoiroussa@yahoo.gr!');
-    btn.disabled = false;
-    btn.textContent = '✉️ Αποστολή Αίτησης';
+    // 2. Auto-reply to customer (if email provided) — never blocks the main flow
+    const autoReply = email
+      ? emailjs.send('service_yo4iacb', 'template_aiimxfg', {
+          to_email: email,
+          to_name: name,
+          items_count: it.length + ' κωδικοί / ' + t + ' τεμάχια',
+          items_list: it.map((i,j) => (j+1) + '. ' + i.code + (i.name ? ' — ' + i.name : '') + ' × ' + i.qty + ' τεμ.').join('\n'),
+          date: today
+        }).then(() => true).catch((e) => { console.warn('Auto-reply failed:', e); return false; })
+      : Promise.resolve(false);
+
+    return autoReply.then((replied) => {
+      closeCF();
+      closeCart();
+      document.getElementById('okMsg').innerHTML = 'Ευχαριστούμε <strong>' + esc(name) + '</strong>! Λάβαμε το αίτημά σας για προσφορά (' + it.length + ' κωδικοί / ' + t + ' τεμάχια).' + (replied ? '<br><small style="color:#6F7788">Θα λάβετε επιβεβαίωση στο <strong>' + esc(email) + '</strong></small>' : '');
+      document.getElementById('okItems').innerHTML = itemsHtml;
+      document.getElementById('okOv').classList.add('open');
+
+      cart = {};
+      updC();
+      showPage();
+
+      btn.disabled = false;
+      btn.textContent = 'Αποστολή Αίτησης';
+    });
   })
-  .catch((err) => {
-    alert('Σφάλμα αποστολής. Δοκίμασε ξανά.\n' + JSON.stringify(err));
+  .catch(() => {
+    alert('Δεν ήταν δυνατή η αποστολή αυτή τη στιγμή. Παρακαλώ δοκιμάστε ξανά σε λίγο ή καλέστε μας στο 210 248 3377.');
     btn.disabled = false;
-    btn.textContent = '✉️ Αποστολή Αίτησης';
+    btn.textContent = 'Αποστολή Αίτησης';
   });
 }
 
+function closeOk() { document.getElementById('okOv').classList.remove('open'); }
 function openInfo() { document.getElementById('infoOv').classList.add('open'); }
 function closeInfo() { document.getElementById('infoOv').classList.remove('open'); }
 
@@ -720,103 +1317,109 @@ document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('infoOv').onclick = e => { if (e.target.id === 'infoOv') closeInfo(); };
   document.getElementById('cartOv').onclick = e => { if (e.target.id === 'cartOv') closeCart(); };
   document.getElementById('cfOv').onclick = e => { if (e.target.id === 'cfOv') closeCF(); };
+  document.getElementById('okOv').onclick = e => { if (e.target.id === 'okOv') closeOk(); };
+  document.getElementById('mobCatOv').onclick = e => { if (e.target.id === 'mobCatOv') closeMobCat(); };
   document.getElementById('grid').addEventListener('scroll', function() {
     document.getElementById('backTop').classList.toggle('show', this.scrollTop > 300);
   });
   if (typeof localStorage !== 'undefined' && localStorage.getItem('wc_seen')) {
     document.getElementById('wcOv').style.display='none';
-  } else {
-    setTimeout(closeWc, 3000);
   }
+  showIntroSplash();
 });
 
 function closeWc() { document.getElementById('wcOv').style.display='none'; try{localStorage.setItem('wc_seen','1');}catch(e){} }
 
-document.addEventListener('keydown', e => { if (e.key === 'Escape') { closePg(); closeCart(); closeCF(); closeInfo(); } });
+/* ---- INTRO SPLASH (ανεξάρτητο overlay, μία φορά ανά session) ---- */
+function showIntroSplash() {
+  const el = document.getElementById('introSplash');
+  if (!el) { afterIntro(); return; }
+  let seen = false;
+  try { seen = !!sessionStorage.getItem('intro_seen'); } catch(e){}
+  if (seen) { if (el.parentNode) el.parentNode.removeChild(el); afterIntro(); return; }
+  try { sessionStorage.setItem('intro_seen', '1'); } catch(e){}
+  const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  clearTimeout(window._introT);
+  window._introT = setTimeout(hideIntroSplash, reduce ? 650 : 1500);
+}
+function hideIntroSplash() {
+  const el = document.getElementById('introSplash');
+  if (!el || el.classList.contains('hide')) return;
+  clearTimeout(window._introT);
+  el.classList.add('hide');
+  setTimeout(function(){ if (el.parentNode) el.parentNode.removeChild(el); afterIntro(); }, 480);
+}
+function skipIntroSplash() { hideIntroSplash(); }
+function afterIntro() {
+  // Το welcome modal εμφανίζεται ΜΕΤΑ το splash — ξαναπαίζει το entrance animation του
+  const wc = document.getElementById('wcOv');
+  if (wc && getComputedStyle(wc).display !== 'none') {
+    const m = wc.querySelector('.wc-modal');
+    if (m) { m.style.animation = 'none'; void m.offsetWidth; m.style.animation = ''; }
+  }
+}
 
-buildBrands();
-buildCats();
-filteredAll = getF();
-showPage();
+/* ---- MOBILE CATEGORY ---- */
+function openMobCat() {
+  const pool = activeBrand ? P.filter(p => p.brand === activeBrand) : P;
+  const counts = {};
+  CATS.forEach(c => { counts[c] = c === 'Όλα' ? pool.length : pool.filter(p => (p.cat || 'Άλλο') === c).length; });
+  document.getElementById('mobCatGrid').innerHTML = CATS.map(c => {
+    const ico = CAT_ICONS[c] || '💡';
+    return '<div class="mob-cat-item' + (c === activeCat ? ' active' : '') +
+      '" onclick="setMobCat(\'' + c.replace(/'/g, "\\'") + '\')">' +
+      '<span class="mci">' + ico + '</span>' +
+      '<span class="mcn">' + c + '</span>' +
+      '<span class="mcc">' + counts[c] + '</span></div>';
+  }).join('');
+  document.getElementById('mobCatOv').classList.add('open');
+}
+function setMobCat(c) { setCat(c); closeMobCat(); }
+function closeMobCat() { document.getElementById('mobCatOv').classList.remove('open'); }
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { closePg(); closeCart(); closeCF(); closeInfo(); closeOk(); closeMobCat(); } });
+
+/* ================= INIT (runs after products.js loads) ================= */
+function initApp() {
+  if (typeof P === 'undefined' || !Array.isArray(P)) {
+    document.getElementById('grid').innerHTML = '<div class="no-res">Δεν φορτώθηκε ο κατάλογος προϊόντων.<br>Παρακαλώ ανανεώστε τη σελίδα.</div>';
+    return;
+  }
+  // ενοποίηση διπλών κατηγοριών
+  P.forEach(p => { if (p.cat && CAT_MERGE[p.cat]) p.cat = CAT_MERGE[p.cat]; });
+  // μοναδικό id ανά προϊόν (λύνει διπλότυπους κωδικούς)
+  P.forEach((p, i) => { p._id = 'p' + i; });
+  byId = {}; P.forEach(p => byId[p._id] = p);
+  byCode = {}; P.forEach(p => { if (!(p.code in byCode)) byCode[p.code] = p; });
+  // migration παλιού καλαθιού (κλειδί code → _id)
+  const m = {};
+  Object.values(cart).forEach(c => {
+    const prod = (c._id != null && byId[c._id]) ? byId[c._id] : (c.code ? byCode[c.code] : null);
+    if (prod) m[prod._id] = Object.assign({}, prod, { qty: c.qty || 1 });
+  });
+  cart = m;
+  CATS = ['Όλα', ...new Set(P.map(p => p.cat || 'Άλλο'))];
+
+  buildBrands();
+  buildCats();
+  filteredAll = getF();
+  showPage();
+  updC();
+}
+
+/* ================= DYNAMIC products.js LOADER + CACHE BUSTING ================= */
+(function loadProducts() {
+  var DEFAULT_V = '20260703b';
+  var v = new URLSearchParams(location.search).get('v') || DEFAULT_V;
+  var s = document.createElement('script');
+  s.src = 'products.js?v=' + encodeURIComponent(v);
+  s.onload = function() { try { initApp(); } catch (e) { console.error('initApp error:', e); } };
+  s.onerror = function() {
+    var g = document.getElementById('grid');
+    if (g) g.innerHTML = '<div class="no-res">Δεν φορτώθηκε ο κατάλογος. Ελέγξτε τη σύνδεση και ανανεώστε.</div>';
+  };
+  document.head.appendChild(s);
+})();
 </script>
-<!-- WELCOME MODAL -->
-<div class="wc-ov" id="wcOv">
-  <div class="wc-modal">
-    <div class="wc-head">
-      <div class="wc-logo-row">
-        <div class="wc-logo-icon">🔆</div>
-        <div class="wc-logo-text">
-          <strong>ΗΛΕΚΤΡΟΦΩΤΙΣΤΙΚΗ — ΑΦΟΙ ΡΟΥΣΣΑ Ο.Ε.</strong>
-          <span>Φωτιστικά &amp; Ηλεκτρολογικό Υλικό</span>
-        </div>
-      </div>
-      <div class="wc-tagline">Καλωσήλθατε στον ηλεκτρονικό μας κατάλογο</div>
-    </div>
-    <div class="wc-stores">
-      <div class="wc-store">
-        <div class="wc-store-title">📍 Κεντρικό Κατάστημα</div>
-        <div class="wc-store-line"><span class="ic">🏠</span><p>Λεωφ. Φυλής 104, Άνω Λιόσια 13341</p></div>
-        <div class="wc-store-line"><span class="ic">📞</span><p><a href="tel:+302102483377">210 248 3377</a></p></div>
-        <div class="wc-store-line"><span class="ic">✉️</span><p><a href="mailto:liosia@roussas.eu">liosia@roussas.eu</a></p></div>
-      </div>
-      <div class="wc-store">
-        <div class="wc-store-title">📍 Υποκατάστημα Λουτρακίου</div>
-        <div class="wc-store-line"><span class="ic">🏠</span><p>Λεωφ. Αθηνών 250, Λουτράκι 20300</p></div>
-        <div class="wc-store-line"><span class="ic">📞</span><p><a href="tel:+302744069005">27440 69 005</a></p></div>
-        <div class="wc-store-line"><span class="ic">✉️</span><p><a href="mailto:loutraki@roussas.eu">loutraki@roussas.eu</a></p></div>
-      </div>
-    </div>
-    <div class="wc-divider"></div>
-    <div class="wc-hours">
-      <div class="wc-hours-title">🕐 Ωράριο Λειτουργίας — Κεντρικό Κατάστημα</div>
-      <div class="wc-hours-grid">
-        <div class="wc-hours-row"><span>Δευτέρα · Τετάρτη · Σάββατο</span><span>7:30 – 16:00</span></div>
-        <div class="wc-hours-row"><span>Τρίτη · Πέμπτη · Παρασκευή</span><span>7:30 – 21:00</span></div>
-      </div>
-    </div>
-    <div class="wc-btns">
-      <button class="wc-enter" onclick="closeWc()">🔍 Δείτε τον Κατάλογο</button>
-      <button class="wc-skip" onclick="closeWc()">✕ Κλείσιμο</button>
-    </div>
-  </div>
-</div>
-
-<!-- BACK TO TOP -->
-<button class="back-top" id="backTop" onclick="document.getElementById('grid').scrollTop=0;this.classList.remove('show')">↑</button>
-
-<!-- CONTACT INFO MODAL -->
-<div class="info-ov" id="infoOv">
-  <div class="info-modal">
-    <div class="info-head">
-      <h2>🔆 ΗΛΕΚΤΡΟΦΩΤΙΣΤΙΚΗ — ΑΦΟΙ ΡΟΥΣΣΑ Ο.Ε.</h2>
-      <p>Κατάστημα Φωτιστικών — Ηλεκτρολογικό Υλικό</p>
-    </div>
-    <div class="info-body">
-      <div class="info-row">
-        <div class="info-ico green">📍</div>
-        <div class="info-txt"><strong>Λεωφόρος Φυλής 104 — Άνω Λιόσια</strong><small>☎️ 210 248 3377</small></div>
-      </div>
-      <div class="info-row">
-        <div class="info-ico green">📍</div>
-        <div class="info-txt"><strong>Λεωφόρος Αθηνών 250 — Λουτράκι</strong><small>Υποκατάστημα</small></div>
-      </div>
-      <div class="info-row">
-        <div class="info-ico blue">📱</div>
-        <div class="info-txt"><strong>Viber: 698 005 627</strong><small>Άμεση επικοινωνία για προσφορές</small></div>
-      </div>
-      <div class="info-row">
-        <div class="info-ico red">✉️</div>
-        <div class="info-txt"><strong>afoiroussa@yahoo.gr</strong><small>Αιτήσεις προσφορών email</small></div>
-      </div>
-      <div class="info-row">
-        <div class="info-ico orange">🕐</div>
-        <div class="info-txt"><strong>Δευτ–Παρ 9:00–17:00</strong><small>Σάββατο 9:00–14:00</small></div>
-      </div>
-    </div>
-    <button class="info-close" onclick="closeInfo()">Κλείσιμο</button>
-  </div>
-</div>
-
-<div class="toast" id="toast"></div>
 </body>
 </html>
